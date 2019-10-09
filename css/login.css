@@ -1,0 +1,107 @@
+body{
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: lightslategray;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+ input[type=text], input[type=password]{
+    width: 20vw;
+    padding: 1%;
+    border: none;
+    border-bottom: 2px black solid;
+    background-color: white;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/*
+input[type=password], input[type=text]{
+    width: 15vw;
+    display: inline-block;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    border: none;
+    border-bottom: 2px black solid;
+} */
+i {
+    display: inline-block;
+}
+input[type=text]:focus, input[type=password]:focus{
+    outline: none;
+}
+option{
+    color: white;
+}
+button{
+    background-color: white;
+    border: 2px black solid;
+    color: black;
+    padding: 1%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 10vw;
+    margin-left: 5vw;
+}
+button:hover{
+    background-color: black;
+    color: white;
+}
+#form{
+    width: 20vw;
+    margin: auto;
+    margin-top: 25vh;
+}
+.inline{
+    display: inline;
+}
+input{
+    margin-bottom: 5%;
+}
+#male{
+    margin-top: 5%;
+}
+.faults{
+    color: red;
+}
+h1{
+    color:yellow;
+    font-size: 5vw;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.register{
+    text-align: center;
+}
+
+#home{
+    position: absolute;
+    font-size: 5vh;
+    color: black;
+    left: 5vw;
+    top: 5vh;
+}
+
+#home:hover{
+    cursor: pointer;
+}
+.visibility{
+    position: relative;
+}
+.visibility:hover{
+    color: black;
+}
+
+#loader{
+    margin-left: 42.5vw;
+    margin-top: 41.05vh;
+}
