@@ -5,7 +5,7 @@ body {
 }
 
 nav {
-    width: 90%;
+    width: 95%;
     margin: 10px auto;
     padding: 10px 0;
 }
@@ -23,7 +23,8 @@ nav ul li a {
     display: block;
     padding: 15px;
     text-decoration: none;
-    color: #41ab6b94;
+    color: #41ab6bb9;
+    font-size: 20px;
     font-weight: 800;
     text-transform: uppercase;
     margin: 0 10px;
@@ -34,7 +35,7 @@ nav ul li a, nav ul li a:after, nav ul li a:before {
 }
 
 nav ul li a:hover {
-    color: #41ab6b;
+    color: #2ecc71;
 }
 
 nav#navigation ul li a {
@@ -50,7 +51,7 @@ nav#navigation ul li a:after {
     width: 0%;
     content: '.';
     color: transparent;
-    background: #41ab6b;
+    background: #2ecc71;
     height: 1px;
 }
 
@@ -59,10 +60,10 @@ nav#navigation ul li a:hover:after {
 }
 
 #separator {
-    background: #41ab6b94;
+    background: #41ab6bb9;
     margin: auto 17px;
     display: inline-block;
-    height: 16px;
+    height: 20px;
     width: 1px;
-    color: #41ab6b;
+    color: #2ecc71;
 }
