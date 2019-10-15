@@ -6,24 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/login.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/register.css" />
 </head>
 
 <body>
-    <div id="form" style="display: block">
-        <form>
-            <p id="emailText">Email</p>
-            <input type="text" name="email" id="email">
-            <p id="faultemail" class="faults"></p>
-            <p id="passwordText">Password</p>
-            <div id="box">
-                <input type="password" name="password" id="password">
+    <div id="form">
+        <div id="imageBox" style="width: 25vw"></div>
+        <form id="registerForm" style="width: 25vw">
+            <span id="loginHeading">Log in</span>
+            <div class="input">
+                    <input type="text" name="email" class="inputField" id="email" placeholder="Username">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <p id="faultemail" class="faults"></p>
             </div>
-            <p id="faultpassword" class="faults"></p>
+            <div class="input">
+                    <input type="password" name="password" class="inputField" id="password" placeholder="Password">
+                    <span class="icon"><i class="fas fa-unlock"></i></i></span>
+                    <p id="faultpassword" class="faults"></p>
+            </div>
+            <div class="commitButton">
+                    <button id="button">Login</button>
+            </div>
+            <div class="alternateText">
+                    <p class="register">Don't have an account?<a href="./register.html" class="register" style="color: black">
+                        Create one here</a></p>
+            </div>
         </form>
-        <button id="button">Login</button>
-        <p class="register">Don't have an account?<a href="./register.html" class="register" style="color: black">
-                Create one here</a></p>
     </div>
 </body>
 </html>
