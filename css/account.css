@@ -1,0 +1,115 @@
+body {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: lightslategray;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#form {
+    margin: 0 auto;
+    margin-top: 20vh;
+    width: 60vw;
+    min-height: 40vh;
+    max-height: 40vh;
+    background-color: white;
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw 5vw 2vw 5vw;
+}
+
+#imageBox {
+    margin: 0;
+    padding: 0;
+    width: 25vw;
+    box-sizing: border-box;
+    margin-right: 10vw;
+}
+
+
+#registerForm {
+    margin: 0;
+    padding: 0;
+    width: 25vw;
+    box-sizing: border-box;
+}
+
+#registerHeading, #loginHeading{
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: black;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding-bottom: 3.2vh;
+    box-sizing: border-box;
+}
+
+.input {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 1vh;
+    box-sizing: border-box;
+}
+
+.inputField {
+    font-size: 15px;
+    color: #666666;
+    display: block;
+    width: 80%;
+    background: #e6e6e6;
+    height: 5vh;
+    border-radius: 25px;
+    padding-left: 20%;
+    border: none;
+}
+
+.icon {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 10%;
+    pointer-events: none;
+    color: #666666;
+}
+
+.commitButton {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+#button {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    height: 5vh;
+    border-radius: 25px;
+    background: #57b846;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.login, .register{
+    text-decoration: none;
+    margin-top: 3vh;
+}
