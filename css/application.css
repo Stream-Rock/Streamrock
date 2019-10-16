@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navigationUL {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: black;
+    overflow: auto;
+    padding: 5%;
+    font-size: 2vh;
+}
+
+.navigationLink {
+    display: block;
+    color: white;
+}
+
+.navigationLink:hover:not(.activeLink) {
+    color: green;
+    cursor: pointer;
+}
+
+.activeLink {
+    background-color: green;
+    color: white;
+}
+
+.verticalNavigation {
+    max-width: 15%;
+    min-width: 15%;
+}
+
+#search {
+    width: 75%;
+    height: 7.5vh;
+    font-size: 5.5vh;
+    display: inline-block;
+    font-weight: 100;
+    border: none;
+    outline: none;
+    color: #555;
+    position: absolute;
+    top: 1%;
+    padding-left: 1%;
+    left: 20vw;
+    background: none;
+}
+
+#search:focus:hover {
+    border-bottom: 1px solid #BBB;
+}
+
+#search:focus {
+    border-bottom: 1px solid #BBB;
+    cursor: text;
+}
+
+#cancel {
+    font-size: 4.5vh;
+    width: 5vw;
+    display: inline-block;
+    border: none;
+    position: absolute;
+    top: 3%;
+    right: 2%;
+    z-index: 2;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity .4s ease;
+}
+
+#cancel:hover {
+    opacity: 0.8;
+}
