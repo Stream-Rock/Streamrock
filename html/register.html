@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/account.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
     <div id="form">
         <div id="imageBox" style="width: 25vw"></div>
-        <form id="registerForm" style="width: 25vw">
+        <div id="registerForm" style="width: 25vw">
             <span id="registerHeading">Register now</span>
             <div class="input">
                 <input type="text" name="firstName" class="inputField" id="firstName" placeholder="Username">
@@ -37,10 +38,10 @@
             <div class="alternateText">
                 <p class="login">Already have an account?<a class="login" href="./login.html" style="color: black;"> Log in here</a></p>
             </div>
-        </form>
+        </div>
         <p class="faults" id="faultRegister" style="text-align: center"></p>
 
     </div>
+    <script src="./../js/register.js"></script>
 </body>
-
 </html>
