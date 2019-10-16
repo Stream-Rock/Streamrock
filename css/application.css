@@ -30,8 +30,8 @@ body {
 }
 
 .verticalNavigation {
-    max-width: 15%;
-    min-width: 15%;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 #search {
@@ -75,4 +75,40 @@ body {
 
 #cancel:hover {
     opacity: 0.8;
+}
+
+.songPlayedCover{
+    max-height: 110%;
+    max-width: 110%;
+}
+
+.leftBar{
+    height: 100%;
+    width: 15%;
+}
+
+.songOptions{
+    position: absolute;
+    bottom: 0;
+    height: 10vh;
+    width: 100vw;
+    background-color: black;
+}
+
+#heading{
+    color: white;
+}
+
+.currentSongName{
+    position: relative;
+    bottom: 0.4vh;
+    height: 10vh;
+    width: 100%;
+    padding: 5%;
+    background-color: green;
+}
+
+.currentSongCover{
+    margin: 0;
+    padding: 0;
 }
