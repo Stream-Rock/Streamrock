@@ -36,7 +36,26 @@
         <i class="fas fa-times-circle" id="cancel"></i>
     </div>
     <div class="songOptions">
-        <p>Test</p>
+        <div class="volumeBar">
+            <i class="fas fa-volume-down" id="volume_down"></i>
+            <input type="range" min="0" max="100" step="1" value="0" id="volumeBar">
+            <i class="fas fa-volume-up" id="volume_up"></i>
+        </div>
+        <div class="TrackOptions">
+            <i class="fas fa-random"></i>
+            <i class="far fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-undo-alt"></i>
+        </div>
+        <div class="playOptions">
+            <i class="fas fa-step-backward" id="last"></i>
+            <i class="far fa-pause-circle" id="pause"></i>
+            <i class="fas fa-step-forward" id="next"></i>
+            <i class="far fa-play-circle" id="play" style="visibility: hidden;"></i>  
+        </div>
+        <div class="songBar">
+                <input type="range" min="0" max="100" step="1" value="0" id="songBar">
+        </div>
     </div>
 </body>
 </html>

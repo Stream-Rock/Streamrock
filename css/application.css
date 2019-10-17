@@ -77,17 +77,17 @@ body {
     opacity: 0.8;
 }
 
-.songPlayedCover{
+.songPlayedCover {
     max-height: 110%;
     max-width: 110%;
 }
 
-.leftBar{
+.leftBar {
     height: 100%;
     width: 15%;
 }
 
-.songOptions{
+.songOptions {
     position: absolute;
     bottom: 0;
     height: 10vh;
@@ -95,20 +95,57 @@ body {
     background-color: black;
 }
 
-#heading{
+#heading {
     color: white;
 }
 
-.currentSongName{
+.currentSongName {
     position: relative;
     bottom: 0.4vh;
-    height: 10vh;
+    height: 5vh;
     width: 100%;
     padding: 5%;
     background-color: green;
 }
 
-.currentSongCover{
+.currentSongCover {
     margin: 0;
     padding: 0;
+}
+
+#volumeBar, #songBar {
+    position: absolute;
+    -webkit-appearance: none;
+    background-color: #bdc3c7;
+    width: 7.5%;
+    height: 8%;
+    border-radius: 5px;
+    margin: 0 auto;
+    outline: 0;
+    top: 46%;
+    left: 90%;
+}
+
+#songBar{
+    top: 66%;
+    width: 26%;
+    left: 37%;
+}
+
+i{
+    color: white;
+}
+
+#volume_down, #volume_up{
+    position: absolute;
+    font-size: 2vh;
+    top: 40%;
+}
+
+#volume_down{
+    left: 88.5%;
+}
+
+#volume_up{
+    left: 98%;
 }
