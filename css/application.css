@@ -101,12 +101,29 @@ body {
 }
 
 .currentSongName {
-    position: relative;
-    bottom: 0.4vh;
-    height: 5vh;
-    width: 100%;
-    padding: 5%;
+    width: 110%;
+    max-height: 10vh;
+    min-height: 10vh;
     background-color: green;
+}
+
+#currentSong{
+    padding-top: 4%;
+    padding-left: 4%;
+    font-size: 2.5vh;
+}
+
+#currentArtist{
+    margin-top: -4%;
+    padding-left: 4%;
+    font-size: 2vh;
+}
+
+#star{
+    position: absolute;
+    right: 85%;
+    margin-top: 0.5%;
+    font-size: 2vh;
 }
 
 .currentSongCover {
@@ -124,7 +141,7 @@ body {
     margin: 0 auto;
     outline: 0;
     top: 46%;
-    left: 90%;
+    left: 2.5%;
 }
 
 #songBar{
@@ -144,18 +161,19 @@ i{
 }
 
 #volume_down{
-    left: 88.5%;
+    right: 98.5%;
 }
 
 #volume_up{
-    left: 98%;
+    left: 11%;
 }
 
 .playOptions{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3vh;
+    font-size: 2vh;
+    margin-top: 0.5%;
 }
 
 #pause, #play{
@@ -205,4 +223,16 @@ i{
 
 .recentlyPlayedElement{
     margin-right: 2%;
+}
+
+.trackOptions{
+    position: absolute;
+    top: 40%;
+    font-size: 2vh;
+    right: 1.5vw;
+}
+
+.trackOptions i:nth-child(2){
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
 }

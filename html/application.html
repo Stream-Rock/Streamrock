@@ -28,8 +28,9 @@
         </nav>
             <img src="./../images/albumCover1Example.jpg" alt="Cover of the song that is played" class="songPlayedCover">
         <div class="currentSongName">
-            <p>Current song</p>
-            <i class="far fa-star"></i>
+            <i class="far fa-star" id="star"></i>
+            <p id="currentSong">Current song</p>
+            <p id="currentArtist">Current Artist</p>
         </div>
     </div>
     <div class="searchBar">
@@ -105,6 +106,7 @@
         <div class="trackOptions">
             <i class="fas fa-random"></i>
             <i class="fas fa-undo-alt"></i>
+            <i class="fas fa-bars"></i>
         </div>
         <div class="songBar">
                 <input type="range" min="0" max="100" step="1" value="0" id="songBar">
