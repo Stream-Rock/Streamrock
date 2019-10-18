@@ -184,3 +184,25 @@ i{
     margin-left: 30%;
     margin-right: 30%;
 }
+
+.startSuggestions{
+    width: 75%;
+    position: absolute;
+    top: 25%;
+    left: 20vw;
+}
+
+.recentlyPlayedElement img{
+    height: 10vw;
+    width: 10vw;
+}
+
+.suggestion{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.recentlyPlayedElement{
+    margin-right: 2%;
+}
