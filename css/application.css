@@ -149,3 +149,20 @@ i{
 #volume_up{
     left: 98%;
 }
+
+.playOptions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    margin-top: -0.6%;
+}
+
+#pause, #play{
+    font-size: 4vh;
+}
+
+.playOptions i{
+    margin-left: 0.3%;
+    margin-right: 0.3%;
+}
