@@ -29,11 +29,23 @@
             <img src="./../images/albumCover1Example.jpg" alt="Cover of the song that is played" class="songPlayedCover">
         <div class="currentSongName">
             <p>Current song</p>
+            <i class="far fa-star"></i>
         </div>
     </div>
     <div class="searchBar">
         <input type="text" id="search" placeholder="Search">
-        <i class="fas fa-times-circle" id="cancel"></i>
+        <i class="far fa-times-circle" id="cancel"></i>
+    </div>
+    <div class="navigationHorizontal">
+        <div class="link">
+            <p>Start</p>
+        </div>
+        <div class="link">
+            <p>Favorites</p>
+        </div>
+        <div class="link">
+            <p>Profile</p>
+        </div>
     </div>
     <div class="songOptions">
         <div class="volumeBar">
@@ -41,16 +53,14 @@
             <input type="range" min="0" max="100" step="1" value="0" id="volumeBar">
             <i class="fas fa-volume-up" id="volume_up"></i>
         </div>
-        <div class="TrackOptions">
-            <i class="fas fa-random"></i>
-            <i class="far fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-undo-alt"></i>
-        </div>
         <div class="playOptions">
             <i class="fas fa-step-backward" id="last"></i>
             <i class="far fa-pause-circle" id="pause"></i>
             <i class="fas fa-step-forward" id="next"></i>
+        </div>
+        <div class="trackOptions">
+            <i class="fas fa-random"></i>
+            <i class="fas fa-undo-alt"></i>
         </div>
         <div class="songBar">
                 <input type="range" min="0" max="100" step="1" value="0" id="songBar">

@@ -71,6 +71,7 @@ body {
     opacity: 0.4;
     cursor: pointer;
     transition: opacity .4s ease;
+    color: black;
 }
 
 #cancel:hover {
@@ -155,7 +156,6 @@ i{
     justify-content: center;
     align-items: center;
     font-size: 3vh;
-    margin-top: -0.6%;
 }
 
 #pause, #play{
@@ -165,4 +165,22 @@ i{
 .playOptions i{
     margin-left: 0.3%;
     margin-right: 0.3%;
+}
+
+.navigationHorizontal{
+    background-color: none;
+    width: 75%;
+    height: 7.5vh;
+    position: absolute;
+    left: 20vw;
+    top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+}
+
+.navigationHorizontal .link:nth-child(2){
+    margin-left: 30%;
+    margin-right: 30%;
 }
