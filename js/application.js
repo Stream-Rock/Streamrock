@@ -11,6 +11,11 @@ function init(){
     $('#star')[0].addEventListener('click', () =>{changeIcon($('#star')[0], 'fas fa-star', 'far fa-star')})
     $('#search')[0].addEventListener('focus', () =>{changeDeleteCrossVisibility(true)});
     $('#search')[0].addEventListener('blur', () =>{changeDeleteCrossVisibility(false)})
+    $('#cancel')[0].addEventListener('mouseover', deleteText);
+    
+    for (let i = 0; i < $('.link').length; i++) {
+        $('.link')[i].addEventListener('click', ()=>{switchTab($('.link')[i].dataset.tab)});
+    }
 }
 
 function activateAndDeactivateIcon(icon){
@@ -39,4 +44,15 @@ function changeDeleteCrossVisibility(shouldBeSeen){
     }else{
         $('#cancel')[0].style.display = 'none';
     }
+}
+
+function deleteText(){
+    $('#search')[0].value = ''; 
+}
+
+function switchTab(tab){
+    for (let i = 0; i < $('.tab').length; i++) {
+        $('.tab')[i].style.display = 'none';
+    }
+    document.getElementById(tab).style.display = 'block';
 }

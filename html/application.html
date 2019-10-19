@@ -42,17 +42,17 @@
         <i class="far fa-times-circle" id="cancel" style="display: none;"></i>
     </div>
     <div class="navigationHorizontal">
-        <div class="link">
+        <div class="link" data-tab="startSuggestions">
             <p>Start</p>
         </div>
-        <div class="link">
+        <div class="link" data-tab="favorites">
             <p>Favorites</p>
         </div>
-        <div class="link">
+        <div class="link" data-tab="profile">
             <p>Profile</p>
         </div>
     </div>
-    <div class="startSuggestions">
+    <div class="tab" id="startSuggestions">
         <h1>Recently Played</h1>
         <div class="suggestion">
             <div class="recentlyPlayedElement">
@@ -96,11 +96,11 @@
                 </div>
         </div>
     </div>
-    <div id="favorites">
+    <div class="tab" id="favorites">
 
     </div>
-    <div id="profile">
-        
+    <div class="tab" id="profile">
+
     </div>
     <div class="songOptions">
         <div class="volumeBar">

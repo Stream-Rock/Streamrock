@@ -211,7 +211,7 @@ i{
     margin-right: 30%;
 }
 
-.startSuggestions{
+#startSuggestions{
     width: 75%;
     position: absolute;
     top: 25%;
