@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     user-select: none;
 }
 
@@ -76,7 +75,7 @@ body {
 }
 
 .currentSongCover{
-    position: absolute;
+    position: fixed;
     bottom: 20vh;
     padding: 0;
     margin: 0;
@@ -99,7 +98,7 @@ body {
 }
 
 .songOptions {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     max-height: 10vh;
     min-height: 10vh;
@@ -112,7 +111,7 @@ body {
 }
 
 .currentSongName {
-    position: absolute;
+    position: fixed;
     bottom: 10vh;
     max-width: 16.5vw;
     min-width: 16.5vw;
@@ -211,14 +210,14 @@ i{
     margin-right: 30%;
 }
 
-#startSuggestions{
+#startSuggestions, #favorites, #profile{
     width: 75%;
     position: absolute;
     top: 25%;
     left: 20vw;
 }
 
-.recentlyPlayedElement img{
+.recentlyPlayedElement img, .favoriteElement img{
     height: 10vw;
     width: 10vw;
 }
@@ -229,7 +228,7 @@ i{
     justify-content: flex-start;
 }
 
-.recentlyPlayedElement{
+.recentlyPlayedElement, .favoriteElement{
     margin-right: 2%;
 }
 
