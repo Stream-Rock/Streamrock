@@ -9,6 +9,8 @@ function init(){
     $('#logo')[0].addEventListener('click', openHomePage);
     $('#pause')[0].addEventListener('click', () =>{changeIcon($('#pause')[0], 'far fa-play-circle', 'far fa-pause-circle')});
     $('#star')[0].addEventListener('click', () =>{changeIcon($('#star')[0], 'fas fa-star', 'far fa-star')})
+    $('#search')[0].addEventListener('focus', () =>{changeDeleteCrossVisibility(true)});
+    $('#search')[0].addEventListener('blur', () =>{changeDeleteCrossVisibility(false)})
 }
 
 function activateAndDeactivateIcon(icon){
@@ -28,5 +30,13 @@ function changeIcon(icon, newIconClassName, oldIconClassName){
         icon.className = oldIconClassName;
     }else{
         icon.className = newIconClassName;
+    }
+}
+
+function changeDeleteCrossVisibility(shouldBeSeen){
+    if(shouldBeSeen){
+        $('#cancel')[0].style.display = 'block';
+    }else{
+        $('#cancel')[0].style.display = 'none';
     }
 }
