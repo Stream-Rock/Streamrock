@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    user-select: none;
 }
 
 .navigationUL {
@@ -262,6 +263,6 @@ i{
     color: gray;
 }
 
-#random:hover, #loop:hover, #queue:hover, #last:hover, #pause:hover, #next:hover, #heading:hover{
+#random:hover, #loop:hover, #queue:hover, #last:hover, #pause:hover, #next:hover, #heading:hover, .link:hover{
     cursor: pointer;
 }
