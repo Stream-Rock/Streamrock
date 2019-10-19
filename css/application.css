@@ -262,6 +262,6 @@ i{
     color: gray;
 }
 
-#random:hover, #loop:hover, #queue:hover, #last:hover, #pause:hover, #next:hover{
+#random:hover, #loop:hover, #queue:hover, #last:hover, #pause:hover, #next:hover, #heading:hover{
     cursor: pointer;
 }
