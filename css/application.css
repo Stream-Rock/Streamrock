@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .navigationUL {
@@ -27,11 +28,6 @@ body {
 .activeLink {
     background-color: green;
     color: white;
-}
-
-.verticalNavigation {
-    max-width: 100%;
-    min-width: 100%;
 }
 
 #search {
@@ -78,20 +74,34 @@ body {
     opacity: 0.8;
 }
 
+.currentSongCover{
+    position: absolute;
+    bottom: 20vh;
+    padding: 0;
+    margin: 0;
+    max-width: 16.5vw;
+    min-width: 16.5vw;
+    height: 16.5vw;
+}
+
 .songPlayedCover {
-    max-height: 110%;
-    max-width: 110%;
+    min-height: auto;
+    max-height: auto;
+    min-width: 16.5vw;
+    max-width: 16.5vw;
 }
 
 .leftBar {
-    height: 100%;
+    min-height: 90vh;
+    max-height: 90vh;
     width: 15%;
 }
 
 .songOptions {
     position: absolute;
     bottom: 0;
-    height: 10vh;
+    max-height: 10vh;
+    min-height: 10vh;
     width: 100vw;
     background-color: black;
 }
@@ -101,14 +111,16 @@ body {
 }
 
 .currentSongName {
-    width: 110%;
+    position: absolute;
+    bottom: 10vh;
+    max-width: 16.5vw;
+    min-width: 16.5vw;
     max-height: 10vh;
     min-height: 10vh;
     background-color: green;
 }
 
 #currentSong{
-    padding-top: 4%;
     padding-left: 4%;
     font-size: 2.5vh;
 }
@@ -121,14 +133,9 @@ body {
 
 #star{
     position: absolute;
-    right: 85%;
-    margin-top: 0.5%;
+    left: 85%;
+    top: 15%;
     font-size: 2vh;
-}
-
-.currentSongCover {
-    margin: 0;
-    padding: 0;
 }
 
 #volumeBar, #songBar {
@@ -235,4 +242,18 @@ i{
 .trackOptions i:nth-child(2){
     margin-left: 1.5vw;
     margin-right: 1.5vw;
+}
+
+#logo{
+    height: 8vh;
+    background-color: gainsboro;
+}
+
+#playlists{
+    margin-top: 4%;
+    height: 32vh;
+}
+
+#playlistsHeading{
+    color: white;
 }

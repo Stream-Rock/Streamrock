@@ -12,12 +12,13 @@
     <div class="leftBar">
         <nav>
             <div class="verticalNavigation">
-                <ul class="navigationUL">
+                <ul class="navigationUL" id="logo">
                         <h1 id="heading">Streamrock</h1>
                 </ul>
             </div>
             <div class="verticalNavigation">
-                <ul class="navigationUL">
+                <ul class="navigationUL" id="playlists">
+                    <h1 id="playlistsHeading">Playlists</h1>
                     <li><p class="navigationLink">Playlist 1</p></li>
                     <li><p class="navigationLink">Playlist 2</p></li>     
                     <li><p class="navigationLink">Playlist 3</p></li>
@@ -26,12 +27,14 @@
                 </ul>
             </div>
         </nav>
+    </div>
+    <div class="currentSongCover">
             <img src="./../images/albumCover1Example.jpg" alt="Cover of the song that is played" class="songPlayedCover">
-        <div class="currentSongName">
-            <i class="far fa-star" id="star"></i>
+    </div>
+    <div class="currentSongName">
             <p id="currentSong">Current song</p>
             <p id="currentArtist">Current Artist</p>
-        </div>
+            <i class="far fa-star" id="star"></i>
     </div>
     <div class="searchBar">
         <input type="text" id="search" placeholder="Search">
