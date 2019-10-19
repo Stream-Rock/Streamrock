@@ -198,7 +198,7 @@ i{
     height: 7.5vh;
     position: absolute;
     left: 20vw;
-    top: 15%;
+    top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -213,13 +213,23 @@ i{
 #startSuggestions, #favorites, #profile{
     width: 75%;
     position: absolute;
-    top: 25%;
+    top: 16%;
     left: 20vw;
 }
 
 .recentlyPlayedElement img, .favoriteElement img{
     height: 10vw;
     width: 10vw;
+}
+
+.recentlyPlayedElement p:nth-last-child(2), .favoriteElement p:nth-last-child(2){
+    margin-top: 1vh;
+    font-size: 2.5vh;
+}
+
+.recentlyPlayedElement p:nth-last-child(1), .favoriteElement p:nth-last-child(1){
+    margin-top: -1.5vh;
+    font-size: 2vh;
 }
 
 .suggestion{
