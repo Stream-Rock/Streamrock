@@ -7,6 +7,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="./../css/application.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <div class="leftBar">
@@ -107,13 +108,14 @@
             <i class="fas fa-step-forward" id="next"></i>
         </div>
         <div class="trackOptions">
-            <i class="fas fa-random"></i>
-            <i class="fas fa-undo-alt"></i>
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-random" id="random"></i>
+            <i class="fas fa-undo-alt" id="loop"></i>
+            <i class="fas fa-bars" id="queue"></i>
         </div>
         <div class="songBar">
                 <input type="range" min="0" max="100" step="1" value="0" id="songBar">
         </div>
     </div>
+    <script src="./../js/application.js"></script>
 </body>
 </html>

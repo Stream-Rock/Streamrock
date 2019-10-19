@@ -257,3 +257,11 @@ i{
 #playlistsHeading{
     color: white;
 }
+
+i{
+    color: gray;
+}
+
+#random:hover, #loop:hover, #queue:hover, #last:hover, #pause:hover, #next:hover{
+    cursor: pointer;
+}
