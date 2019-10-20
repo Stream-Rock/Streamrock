@@ -15,7 +15,7 @@ function init(){
     $('#cancel')[0].addEventListener('mouseover', deleteText);
     
     for (let i = 0; i < $('.link').length; i++) {
-        $('.link')[i].addEventListener('click', ()=>{switchTab($('.link')[i].dataset.tab)});
+        $('.link')[i].addEventListener('click', ()=>{switchTab($('.link')[i].dataset.tab, $('.navigationP')[i])});
     }
 }
 
@@ -51,11 +51,13 @@ function deleteText(){
     $('#search')[0].value = ''; 
 }
 
-function switchTab(tab){
+function switchTab(tab, pElement){
     for (let i = 0; i < $('.tab').length; i++) {
         $('.tab')[i].style.display = 'none';
+        $('.navigationP')[i].setAttribute('id', '');
     }
     document.getElementById(tab).style.display = 'block';
+    pElement.setAttribute('id', 'active');
 }
 
 slider

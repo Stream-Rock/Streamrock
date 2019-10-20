@@ -214,11 +214,13 @@ i {
 .recentlyPlayedElement p:nth-last-child(2), .favoriteElement p:nth-last-child(2) {
     margin-top: 1vh;
     font-size: 2.5vh;
+    color: darkslategray;
 }
 
 .recentlyPlayedElement p:nth-last-child(1), .favoriteElement p:nth-last-child(1) {
     margin-top: -1.5vh;
     font-size: 2vh;
+    color: gray;
 }
 
 .suggestion {
@@ -309,4 +311,8 @@ i {
     top: 66%;
     width: 26%;
     left: 37%;
+}
+
+#active{
+    border-bottom: green 2px solid;
 }
