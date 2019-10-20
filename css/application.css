@@ -19,16 +19,16 @@ body {
 
 .navigationLink {
     display: block;
-    color: white;
+    color: black;
 }
 
 .navigationLink:hover:not(.activeLink) {
-    color: green;
+    color: #5ac878;
     cursor: pointer;
 }
 
 .activeLink {
-    background-color: green;
+    background-color: #50f095;
     color: white;
 }
 
@@ -257,7 +257,7 @@ i {
 }
 
 #playlistsHeading {
-    color: white;
+    color: black;
 }
 
 i {
