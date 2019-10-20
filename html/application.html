@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet"> </head>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <body>
     <div class="leftBar">
         <nav>
@@ -41,151 +42,153 @@
         <input type="text" id="search" placeholder="Search">
         <i class="far fa-times-circle" id="cancel" style="display: none;"></i>
     </div>
-    <div class="navigationHorizontal">
-        <div class="link" data-tab="startSuggestions">
-            <p>Start</p>
-        </div>
-        <div class="link" data-tab="favorites">
-            <p>Favorites</p>
-        </div>
-        <div class="link" data-tab="profile">
-            <p>Profile</p>
-        </div>
-    </div>
-    <div class="tab" id="startSuggestions">
-        <h1>Recently Played</h1>
-        <div class="suggestion">
-            <div class="recentlyPlayedElement">
-                <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                <p>Name</p>
-                <p>Artist</p>
+    <div id="content">
+        <div class="navigationHorizontal">
+            <div class="link" data-tab="startSuggestions">
+                <p>Start</p>
             </div>
-            <div class="recentlyPlayedElement">
-                <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                <p>Name</p>
-                <p>Artist</p>
+            <div class="link" data-tab="favorites">
+                <p>Favorites</p>
             </div>
-            <div class="recentlyPlayedElement">
-                <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                <p>Name</p>
-                <p>Artist</p>
-            </div>
-            <div class="recentlyPlayedElement">
-                <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                <p>Name</p>
-                <p>Artist</p>
-            </div>
-            <div class="recentlyPlayedElement">
-                <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                <p>Name</p>
-                <p>Artist</p>
-            </div>
-            <div class="recentlyPlayedElement">
-                <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                <p>Name</p>
-                <p>Artist</p>
+            <div class="link" data-tab="profile">
+                <p>Profile</p>
             </div>
         </div>
-        <h1>Genres</h1>
-        <div class="suggestion">
-                <div class="recentlyPlayedElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="recentlyPlayedElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="recentlyPlayedElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="recentlyPlayedElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="recentlyPlayedElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="recentlyPlayedElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-        </div>
-    </div>
-    <div class="tab" id="favorites" style="display: none;">
-            <h1>Favorite songs</h1>
+        <div class="tab" id="startSuggestions">
+            <h1>Recently Played</h1>
             <div class="suggestion">
-                <div class="favoriteElement">
+                <div class="recentlyPlayedElement">
                     <img src="./../images/albumCover1Example.jpg" alt="Album cover">
                     <p>Name</p>
                     <p>Artist</p>
                 </div>
-                <div class="favoriteElement">
+                <div class="recentlyPlayedElement">
                     <img src="./../images/albumCover1Example.jpg" alt="Album cover">
                     <p>Name</p>
                     <p>Artist</p>
                 </div>
-                <div class="favoriteElement">
+                <div class="recentlyPlayedElement">
                     <img src="./../images/albumCover1Example.jpg" alt="Album cover">
                     <p>Name</p>
                     <p>Artist</p>
                 </div>
-                <div class="favoriteElement">
+                <div class="recentlyPlayedElement">
                     <img src="./../images/albumCover1Example.jpg" alt="Album cover">
                     <p>Name</p>
                     <p>Artist</p>
                 </div>
-                <div class="favoriteElement">
+                <div class="recentlyPlayedElement">
                     <img src="./../images/albumCover1Example.jpg" alt="Album cover">
                     <p>Name</p>
                     <p>Artist</p>
                 </div>
-                <div class="favoriteElement">
+                <div class="recentlyPlayedElement">
                     <img src="./../images/albumCover1Example.jpg" alt="Album cover">
                     <p>Name</p>
                     <p>Artist</p>
                 </div>
             </div>
-            <h1>Favorite artists</h1>
+            <h1>Genres</h1>
             <div class="suggestion">
-                <div class="favoriteElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
+                    <div class="recentlyPlayedElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="recentlyPlayedElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="recentlyPlayedElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="recentlyPlayedElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="recentlyPlayedElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="recentlyPlayedElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+            </div>
+        </div>
+        <div class="tab" id="favorites" style="display: none;">
+                <h1>Favorite songs</h1>
+                <div class="suggestion">
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
                 </div>
-                <div class="favoriteElement">
-                     <img src="./../images/albumCover1Example.jpg" alt="Album cover">                    
-                     <p>Name</p>
-                     <p>Artist</p>
-                </div>
-                <div class="favoriteElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="favoriteElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="favoriteElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
-                <div class="favoriteElement">
-                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                    <p>Name</p>
-                    <p>Artist</p>
-                </div>
+                <h1>Favorite artists</h1>
+                <div class="suggestion">
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                         <img src="./../images/albumCover1Example.jpg" alt="Album cover">                    
+                         <p>Name</p>
+                         <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+                    <div class="favoriteElement">
+                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                        <p>Name</p>
+                        <p>Artist</p>
+                    </div>
+            </div>
         </div>
     </div>
     <div class="tab" id="profile" style="display: none;">
@@ -194,7 +197,7 @@
     <div class="songOptions">
         <div class="volumeBar">
             <i class="fas fa-volume-down" id="volume_down"></i>
-            <input type="range" min="0" max="100" step="1" value="0" id="volumeBar">
+            <div id="volumeBar" class="slider"></div>
             <i class="fas fa-volume-up" id="volume_up"></i>
         </div>
         <div class="playOptions">
@@ -208,7 +211,7 @@
             <i class="fas fa-bars" id="queue"></i>
         </div>
         <div class="songBar">
-                <input type="range" min="0" max="100" step="1" value="0" id="songBar">
+            <div id="songBar" class="slider"></div>
         </div>
     </div>
     <script src="./../js/application.js"></script>

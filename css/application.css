@@ -3,6 +3,7 @@ body {
     padding: 0;
     user-select: none;
     font-family: 'Rubik', sans-serif;
+    background-color: #F5F1ED;
 }
 
 .navigationUL {
@@ -75,7 +76,7 @@ body {
     opacity: 0.8;
 }
 
-.currentSongCover{
+.currentSongCover {
     position: fixed;
     bottom: 20vh;
     padding: 0;
@@ -104,11 +105,12 @@ body {
     max-height: 10vh;
     min-height: 10vh;
     width: 100vw;
-    background-color: black;
+    background-color: #E6E2DF;
 }
 
 #heading {
-    color: white;
+    color: black;
+    font-size: 3vh;
 }
 
 .currentSongName {
@@ -118,83 +120,66 @@ body {
     min-width: 16.5vw;
     max-height: 10vh;
     min-height: 10vh;
-    background-color: green;
+    background-color: white;
 }
 
-#currentSong{
+#currentSong {
     padding-left: 4%;
     font-size: 2.5vh;
 }
 
-#currentArtist{
+#currentArtist {
     margin-top: -4%;
     padding-left: 4%;
     font-size: 2vh;
 }
 
-#star{
+#star {
     position: absolute;
     left: 85%;
     top: 15%;
     font-size: 2vh;
 }
 
-#volumeBar, #songBar {
-    position: absolute;
-    -webkit-appearance: none;
-    background-color: #bdc3c7;
-    width: 7.5%;
-    height: 8%;
-    border-radius: 5px;
-    margin: 0 auto;
-    outline: 0;
-    top: 46%;
-    left: 2.5%;
-}
 
-#songBar{
-    top: 66%;
-    width: 26%;
-    left: 37%;
-}
 
-i{
+i {
     color: white;
 }
 
-#volume_down, #volume_up{
+#volume_down, #volume_up {
     position: absolute;
     font-size: 2vh;
     top: 40%;
 }
 
-#volume_down{
+#volume_down {
     right: 98.5%;
 }
 
-#volume_up{
+#volume_up {
     left: 11%;
 }
 
-.playOptions{
+.playOptions {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2vh;
-    margin-top: 0.5%;
+    margin-top: 0.8%;
 }
 
-#pause, #play{
+#pause, #play {
     font-size: 4vh;
 }
 
-.playOptions i{
+.playOptions i {
     margin-left: 0.3%;
     margin-right: 0.3%;
 }
 
-.navigationHorizontal{
-    background-color: none;
+.navigationHorizontal {
+    background-color: white;
     width: 75%;
     height: 7.5vh;
     position: absolute;
@@ -204,75 +189,124 @@ i{
     justify-content: center;
     align-items: center;
     font-size: 3vh;
+    padding-left: 2%;
 }
 
-.navigationHorizontal .link:nth-child(2){
+.navigationHorizontal .link:nth-child(2) {
     margin-left: 30%;
     margin-right: 30%;
 }
 
-#startSuggestions, #favorites, #profile{
+#startSuggestions, #favorites, #profile {
     width: 75%;
     position: absolute;
     top: 16%;
     left: 20vw;
+    background-color: white;
+    padding-left: 2%;
 }
 
-.recentlyPlayedElement img, .favoriteElement img{
+.recentlyPlayedElement img, .favoriteElement img {
     height: 10vw;
     width: 10vw;
 }
 
-.recentlyPlayedElement p:nth-last-child(2), .favoriteElement p:nth-last-child(2){
+.recentlyPlayedElement p:nth-last-child(2), .favoriteElement p:nth-last-child(2) {
     margin-top: 1vh;
     font-size: 2.5vh;
 }
 
-.recentlyPlayedElement p:nth-last-child(1), .favoriteElement p:nth-last-child(1){
+.recentlyPlayedElement p:nth-last-child(1), .favoriteElement p:nth-last-child(1) {
     margin-top: -1.5vh;
     font-size: 2vh;
 }
 
-.suggestion{
+.suggestion {
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.recentlyPlayedElement, .favoriteElement{
+.recentlyPlayedElement, .favoriteElement {
     margin-right: 2%;
 }
 
-.trackOptions{
+.trackOptions {
     position: absolute;
     top: 40%;
     font-size: 2vh;
     right: 1.5vw;
 }
 
-.trackOptions i:nth-child(2){
+.trackOptions i:nth-child(2) {
     margin-left: 1.5vw;
     margin-right: 1.5vw;
 }
 
-#logo{
+#logo {
     height: 8vh;
-    background-color: gainsboro;
+    background-color: white;
 }
 
-#playlists{
+#playlists {
     margin-top: 4%;
     height: 32vh;
+    background-color: white;
 }
 
-#playlistsHeading{
+#playlistsHeading {
     color: white;
 }
 
-i{
+i {
     color: gray;
 }
 
-#random:hover, #loop:hover, #queue:hover, #last:hover, #pause:hover, #next:hover, #heading:hover, .link:hover{
+#random:hover, #loop:hover, #queue:hover, #last:hover, #pause:hover, #next:hover, #heading:hover, .link:hover {
     cursor: pointer;
+}
+
+#content {
+    background-color: black;
+}
+
+#volumeBar, #songBar {
+    position: absolute;
+    width: 7.5%;
+    height: 8%;
+    margin: 0 auto;
+    top: 46%;
+    left: 2.5%;
+    background-color: #bdc3c7;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    font-size: 1em;
+    -ms-touch-action: none;
+    touch-action: none;
+    cursor: pointer;
+}
+
+#volumeBar:before, #songBar:before {
+    content: "";
+    display: block;
+    position: relative;
+    top: -0.5em;
+    width: 1.5em;
+    height: 1.5em;
+    margin-left: -1em;
+    border: solid 0.25em #fff;
+    border-radius: 1em;
+    background-color: inherit;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#volumeBar:hover, #songBar:hover{
+    cursor: pointer;
+}
+
+#songBar {
+    top: 66%;
+    width: 26%;
+    left: 37%;
 }
