@@ -1,5 +1,5 @@
-var rellax = new Rellax('.rellax', {
-    speed: -2,
+var rellax = new Rellax('#shamrock', {
+    speed: -5,
     center: false,
     wrapper: null,
     round: true,
