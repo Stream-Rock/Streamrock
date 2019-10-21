@@ -1,5 +1,5 @@
-let activeColor = 'green';
-let deactiveColor = 'grey';
+let activeColor = 'rgb(46, 204, 113)';
+let deactiveColor = 'gray';
 const slider = interact('.slider');
 
 window.addEventListener('load', init);

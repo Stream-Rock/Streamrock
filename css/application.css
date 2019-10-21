@@ -23,7 +23,7 @@ body {
 }
 
 .navigationLink:hover:not(.activeLink) {
-    color: #5ac878;
+    color: #2ecc71;
     cursor: pointer;
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 #search {
-    width: 75%;
+    width: 76%;
     height: 7.5vh;
     font-size: 5.5vh;
     display: inline-block;
@@ -64,7 +64,7 @@ body {
     border: none;
     position: absolute;
     top: 3%;
-    right: 2%;
+    right: 1%;
     z-index: 2;
     opacity: 0.4;
     cursor: pointer;
@@ -105,7 +105,7 @@ body {
     max-height: 10vh;
     min-height: 10vh;
     width: 100vw;
-    background-color: #E6E2DF;
+    background-color: #e6e6e6;
 }
 
 #heading {
@@ -314,5 +314,5 @@ i {
 }
 
 #active{
-    border-bottom: green 2px solid;
+    color: #2ecc71;
 }
