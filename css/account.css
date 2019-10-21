@@ -109,6 +109,10 @@ body {
     border: none;
 }
 
+#button:hover{
+    cursor: pointer;
+}
+
 .login, .register{
     text-decoration: none;
     margin-top: 3vh;

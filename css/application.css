@@ -141,7 +141,9 @@ body {
     font-size: 2vh;
 }
 
-
+#star:hover{
+    cursor: pointer;
+}
 
 i {
     color: white;
