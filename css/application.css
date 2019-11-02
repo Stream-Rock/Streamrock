@@ -318,3 +318,17 @@ i {
 #active{
     color: #2ecc71;
 }
+
+.fa-chevron-left, .fa-chevron-right{
+    font-size: 0.8em;
+    position: absolute;
+    color: rgb(223, 213, 213);
+}
+
+.fa-chevron-left{
+    right: 15%;
+}
+
+.fa-chevron-right{
+    right: 10%;
+}
