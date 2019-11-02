@@ -110,7 +110,7 @@ body {
 
 #heading {
     color: black;
-    font-size: 3vh;
+    font-size: 1.5em;
 }
 
 .currentSongName {
@@ -331,4 +331,15 @@ i {
 
 .fa-chevron-right{
     right: 10%;
+}
+
+.fa-plus{
+    font-size: 0.8em;
+    position: absolute;
+    left: 14%;
+    color: black;
+}
+
+.fa-plus:hover{
+    cursor: pointer;
 }
