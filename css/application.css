@@ -298,7 +298,7 @@ i {
     width: 1.5em;
     height: 1.5em;
     margin-left: -1em;
-    border: solid 0.25em #fff;
+    border: solid 0.25em gray;
     border-radius: 1em;
     background-color: inherit;
     box-sizing: border-box;
