@@ -17,6 +17,8 @@ function init(){
     for (let i = 0; i < $('.link').length; i++) {
         $('.link')[i].addEventListener('click', ()=>{switchTab($('.link')[i].dataset.tab, $('.navigationP')[i])});
     }
+
+    $('#playlistAdd')[0].addEventListener('click', addPlaylist);
 }
 
 function activateAndDeactivateIcon(icon){
@@ -76,3 +78,7 @@ slider
     event.target.style.paddingLeft = (value * 100) + '%'
     event.target.setAttribute('data-value', value.toFixed(2))
   })
+
+  function addPlaylist(){
+      $('.createNewPlaylist')[0].style.display = 'block';
+  }
