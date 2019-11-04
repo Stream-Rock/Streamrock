@@ -141,7 +141,7 @@ body {
     font-size: 2vh;
 }
 
-#star:hover{
+#star:hover {
     cursor: pointer;
 }
 
@@ -305,7 +305,7 @@ i {
     cursor: pointer;
 }
 
-#volumeBar:hover, #songBar:hover{
+#volumeBar:hover, #songBar:hover {
     cursor: pointer;
 }
 
@@ -315,31 +315,79 @@ i {
     left: 37%;
 }
 
-#active{
+#active {
     color: #2ecc71;
 }
 
-.fa-chevron-left, .fa-chevron-right{
+.fa-chevron-left, .fa-chevron-right {
     font-size: 0.8em;
     position: absolute;
     color: rgb(223, 213, 213);
 }
 
-.fa-chevron-left{
+.fa-chevron-left {
     right: 15%;
 }
 
-.fa-chevron-right{
+.fa-chevron-right {
     right: 10%;
 }
 
-.fa-plus{
+.fa-plus {
     font-size: 0.8em;
     position: absolute;
     left: 14%;
     color: black;
 }
 
-.fa-plus:hover{
+.fa-plus:hover {
     cursor: pointer;
+}
+
+.createNewPlaylist {
+    text-align: center;
+    max-height: 40%;
+    min-height: 40%;
+    width: 40%;
+    padding: 0;
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    background: #f8f5f5;
+    z-index: 1000;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.playlistTitle {
+    padding: 1.5px;
+    background: #dad6d6;
+    border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    -khtml-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+}
+
+.playlistOptions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+}
+
+.playlistOptions > img{
+    height: 20vh;
+    width: 20vh;
+    margin-left: -30%;
+    margin-top: 120%;
+}
+
+h6 {
+    font-size: 1.4em;
+    line-height: 0px;
 }
