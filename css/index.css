@@ -4,6 +4,7 @@ body {
     background-color: white;
     font-family: 'Rubik', sans-serif;
     overflow-x: hidden;
+    user-select: none;
 }
 
 section {
