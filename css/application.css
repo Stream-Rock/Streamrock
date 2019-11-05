@@ -320,7 +320,11 @@ i {
 }
 
 #active {
-    color: #2ecc71;
+    border-bottom: 5px solid #2ecc71;
+}
+
+.navigationP:not(#active){
+    color: gray;
 }
 
 .fa-chevron-left, .fa-chevron-right {
