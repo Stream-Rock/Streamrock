@@ -117,3 +117,14 @@ body {
     text-decoration: none;
     margin-top: 3vh;
 }
+
+.fa-times-circle{
+    font-size: 3em;
+    position: absolute;
+    right: 33%;
+    top: 22vh;
+}
+
+.fa-times-circle:hover{
+    cursor: pointer;
+}
