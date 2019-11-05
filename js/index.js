@@ -13,8 +13,44 @@ function init(){
 }
 
 function createRellax(){
-  let rellax = new Rellax('#shamrock', {
+  let rellax1 = new Rellax('#shamrock', {
     speed: -5,
+    center: false,
+    wrapper: null,
+    round: true,
+    vertical: true,
+    horizontal: false
+  });
+
+  let rellax2 = new Rellax('#about', {
+    speed: 3,
+    center: false,
+    wrapper: null,
+    round: true,
+    vertical: true,
+    horizontal: false
+  });
+
+  let rellax3 = new Rellax('#features', {
+    speed: 2,
+    center: false,
+    wrapper: null,
+    round: true,
+    vertical: true,
+    horizontal: false
+  });
+
+  let rellax4 = new Rellax('#stream', {
+    speed: 1,
+    center: false,
+    wrapper: null,
+    round: true,
+    vertical: true,
+    horizontal: false
+  });
+
+  let rellax5 = new Rellax('#register', {
+    speed: 0.5,
     center: false,
     wrapper: null,
     round: true,
