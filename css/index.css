@@ -152,3 +152,11 @@ section:nth-child(2) {
     height: 20vh;
     width: auto;
 }
+
+.imageLeft img:hover, .imageRight img:hover {
+    cursor: pointer;
+}
+
+h2{
+    font-size: 30px;
+}
