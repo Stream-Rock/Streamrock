@@ -18,7 +18,7 @@ function init(){
         $('.link')[i].addEventListener('click', ()=>{switchTab($('.link')[i].dataset.tab, $('.navigationP')[i])});
     }
 
-    $('#playlistAdd')[0].addEventListener('click', addPlaylist);
+    //$('#playlistAdd')[0].addEventListener('click', addPlaylist);
 }
 
 function activateAndDeactivateIcon(icon){

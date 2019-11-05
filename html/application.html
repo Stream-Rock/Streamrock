@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,36 +9,48 @@
     <link rel="stylesheet" href="./../css/application.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet"> </head>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
+
 <body>
     <div class="leftBar">
         <nav>
             <div class="verticalNavigation">
                 <ul class="navigationUL" id="logo">
-                        <h1 id="heading">Streamrock</h1>
+                    <h1 id="heading">Streamrock</h1>
                 </ul>
             </div>
             <div class="verticalNavigation">
                 <ul class="navigationUL" id="playlists">
                     <h1 id="playlistsHeading">Playlists<i class="fas fa-plus" id="playlistAdd"></i></h1>
-                    <li><p class="navigationLink">Playlist 1</p></li>
-                    <li><p class="navigationLink">Playlist 2</p></li>     
-                    <li><p class="navigationLink">Playlist 3</p></li>
-                    <li><p class="navigationLink">Playlist 4</p></li>
-                    <li><p class="navigationLink">Playlist 5</p></li>
+                    <li>
+                        <p class="navigationLink">Playlist 1</p>
+                    </li>
+                    <li>
+                        <p class="navigationLink">Playlist 2</p>
+                    </li>
+                    <li>
+                        <p class="navigationLink">Playlist 3</p>
+                    </li>
+                    <li>
+                        <p class="navigationLink">Playlist 4</p>
+                    </li>
+                    <li>
+                        <p class="navigationLink">Playlist 5</p>
+                    </li>
                 </ul>
             </div>
         </nav>
     </div>
     <div class="currentSongCover">
-            <img src="./../images/albumCover1Example.jpg" alt="Cover of the song that is played" class="songPlayedCover">
+        <img src="./../images/albumCover1Example.jpg" alt="Cover of the song that is played" class="songPlayedCover">
     </div>
     <div class="currentSongName">
-            <p id="currentSong">Current song</p>
-            <p id="currentArtist">Current Artist</p>
-            <i class="far fa-star" id="star"></i>
+        <p id="currentSong">Current song</p>
+        <p id="currentArtist">Current Artist</p>
+        <i class="far fa-star" id="star"></i>
     </div>
     <div class="searchBar">
         <input type="text" id="search" placeholder="Search">
@@ -91,104 +104,104 @@
             </div>
             <h1>Genres<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
             <div class="suggestion">
-                    <div class="recentlyPlayedElement">
-                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="recentlyPlayedElement">
-                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="recentlyPlayedElement">
-                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="recentlyPlayedElement">
-                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="recentlyPlayedElement">
-                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="recentlyPlayedElement">
-                        <img src="./../images/albumCover1Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
+                <div class="recentlyPlayedElement">
+                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="recentlyPlayedElement">
+                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="recentlyPlayedElement">
+                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="recentlyPlayedElement">
+                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="recentlyPlayedElement">
+                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="recentlyPlayedElement">
+                    <img src="./../images/albumCover1Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
             </div>
         </div>
         <div class="tab" id="favorites" style="display: none;">
-                <h1>Favorite songs<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
-                <div class="suggestion">
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
+            <h1>Favorite songs<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
+            <div class="suggestion">
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
                 </div>
-                <h1>Favorite artists<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
-                <div class="suggestion">
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                         <img src="./../images/albumCover2Example.jpg" alt="Album cover">                    
-                         <p>Name</p>
-                         <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
-                    <div class="favoriteElement">
-                        <img src="./../images/albumCover2Example.jpg" alt="Album cover">
-                        <p>Name</p>
-                        <p>Artist</p>
-                    </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+            </div>
+            <h1>Favorite artists<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
+            <div class="suggestion">
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
+                <div class="favoriteElement">
+                    <img src="./../images/albumCover2Example.jpg" alt="Album cover">
+                    <p>Name</p>
+                    <p>Artist</p>
+                </div>
             </div>
         </div>
     </div>
@@ -215,22 +228,26 @@
             <div id="songBar" class="slider"></div>
         </div>
     </div>
-    <div class="createNewPlaylist" style="display: none">
+    <div class="createNewPlaylist">
         <div class="playlistTitle">
             <h6>
                 <strong id="winningText">Create new Playlist</strong>
             </h6>
         </div>
-        <ul class="playlistOptions">
+        <div class="playlistOptions">
             <img src="./../images/playlist_picture.png" alt="Playlist Picture">
-            <li>
+            <div id="playListOptionsInputs">
                 <input type="text" name="" id="">
-            </li>
-            <li>
-                <p class="optionLink" id="finishLink">Finish</p>
-            </li>
-        </ul>
+                <input type="text" name="" id=""> 
+            </div>
+        </div>
+        <div id="playlistButton">
+            <div>
+                <p>Create</p>
+            </div>
+        </div>
     </div>
     <script src="./../js/application.js"></script>
 </body>
+
 </html>

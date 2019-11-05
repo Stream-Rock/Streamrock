@@ -94,6 +94,7 @@ body {
 }
 
 .leftBar {
+    position: fixed;
     min-height: 90vh;
     max-height: 90vh;
     width: 15%;
@@ -206,6 +207,7 @@ i {
     left: 20vw;
     background-color: white;
     padding-left: 2%;
+    overflow-y: visible;
 }
 
 .recentlyPlayedElement img, .favoriteElement img {
@@ -336,7 +338,7 @@ i {
 .fa-plus {
     font-size: 0.8em;
     position: absolute;
-    left: 14%;
+    right: 1%;
     color: black;
 }
 
@@ -345,9 +347,8 @@ i {
 }
 
 .createNewPlaylist {
-    text-align: center;
-    max-height: 40%;
-    min-height: 40%;
+    display: flex;
+    height: 30%;
     width: 40%;
     padding: 0;
     position: absolute;
@@ -359,35 +360,54 @@ i {
     -moz-border-radius: 6px;
     -khtml-border-radius: 6px;
     -webkit-border-radius: 6px;
+    flex-direction: column;
 }
 
 .playlistTitle {
-    padding: 1.5px;
     background: #dad6d6;
     border-radius: 6px 6px 0 0;
     -moz-border-radius: 6px 6px 0 0;
     -khtml-border-radius: 6px 6px 0 0;
     -webkit-border-radius: 6px 6px 0 0;
+    text-align: center;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .playlistOptions {
-    list-style: none;
     padding: 0;
     margin: 0;
-    position: absolute;
-    bottom: 20px;
     left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .playlistOptions > img{
     height: 20vh;
     width: 20vh;
-    margin-left: -30%;
-    margin-top: 120%;
+    margin-right: 3vh;
 }
 
 h6 {
     font-size: 1.4em;
-    line-height: 0px;
+}
+
+#playListOptionsInputs{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+#playlistButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
 }
