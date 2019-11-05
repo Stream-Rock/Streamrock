@@ -18,7 +18,8 @@ function init(){
         $('.link')[i].addEventListener('click', ()=>{switchTab($('.link')[i].dataset.tab, $('.navigationP')[i])});
     }
 
-    //$('#playlistAdd')[0].addEventListener('click', addPlaylist);
+    $('#playlistAdd')[0].addEventListener('click', addPlaylistOn);
+    $('#createButton')[0].addEventListener('click', addPlaylist);
 }
 
 function activateAndDeactivateIcon(icon){
@@ -79,6 +80,12 @@ slider
     event.target.setAttribute('data-value', value.toFixed(2))
   })
 
+  function addPlaylistOn(){
+      $('.createNewPlaylist')[0].style.display = 'flex';
+      $('#startSuggestions')[0].style.filter = 'blur(5px)';
+  }
+
   function addPlaylist(){
-      $('.createNewPlaylist')[0].style.display = 'block';
+    $('.createNewPlaylist')[0].style.display = 'none';
+    $('#startSuggestions')[0].style.filter = 'blur(0px)';
   }
