@@ -114,6 +114,7 @@ body {
     font-size: 1.5vw;
     margin-left: 7vh;
     margin-top: 2.5vh;
+    overflow: hidden;
 }
 
 .currentSongName {
@@ -254,6 +255,7 @@ i {
 #logo {
     height: 8vh;
     background-color: white;
+    overflow: hidden;
 }
 
 #playlists {
@@ -457,4 +459,5 @@ h6 {
     height: 6vh;
     width: 6vh;
     top: 2vh;
+    overflow: hidden;
 }
