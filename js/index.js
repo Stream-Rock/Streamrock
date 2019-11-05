@@ -2,6 +2,14 @@ window.addEventListener('load', init);
 
 function init(){
     createRellax();
+    for (let i = 0; i < document.getElementsByClassName('linkApplication').length; i++) {
+      document.getElementsByClassName('linkApplication')[i].addEventListener('click', ()=>{
+        openLink('./html/application.html');
+      });
+    }
+    document.getElementById('linkRegister').addEventListener('click', ()=>{
+      openLink('./html/register.html');
+    });
 }
 
 function createRellax(){
@@ -13,5 +21,8 @@ function createRellax(){
     vertical: true,
     horizontal: false
   });
-  
+}
+
+function openLink(link){
+  window.open(link, '_self');
 }
