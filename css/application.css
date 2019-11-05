@@ -111,7 +111,9 @@ body {
 
 #heading {
     color: black;
-    font-size: 1.5em;
+    font-size: 1.5vw;
+    margin-left: 7vh;
+    margin-top: 2.5vh;
 }
 
 .currentSongName {
@@ -444,4 +446,11 @@ h6 {
     background-color: #555555;
     color: white;
     cursor: pointer;
+}
+
+#logo > img{
+    position: absolute;
+    height: 6vh;
+    width: 6vh;
+    top: 2vh;
 }
