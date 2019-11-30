@@ -61,7 +61,7 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
         if (this.readyState == 4 && this.status == 200) {
             // parse response into JSON object
             let answer = JSON.parse(this.responseText);
-
+            console.log(answer);
         }
     };
     xhttp.open("POST", "./../php/login.php", true);
