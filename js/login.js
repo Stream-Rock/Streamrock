@@ -16,6 +16,8 @@ function openSite(site){
 function login(fieldUserName, fieldFaultUsername, fieldPassword, fieldFaultPassword) {
     let invalidUsername = isInvalid(fieldUserName.value, fieldUserName.dataset.name, fieldFaultUsername);
     let invalidPassword = isInvalid(fieldPassword.value, fieldPassword.dataset.name, fieldFaultPassword);
+    fieldFaultPassword.textContent = "";
+    fieldFaultUsername.textContent = "";
 
     if (!invalidUsername && !invalidPassword) {
         sendData(fieldUserName.value, fieldUserName.dataset.name, fieldFaultUsername, fieldPassword.value, fieldPassword.dataset.name, fieldFaultPassword);
@@ -62,6 +64,13 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
             // parse response into JSON object
             let answer = JSON.parse(this.responseText);
             console.log(answer);
+            if (answer === "Correct") {
+
+            }else if (answer === "This user does not exist!") {
+                faultUserName.textContent = answer;
+            }else if (answer === "Please enter the correct password!") {
+                faultPassword.textContent = answer;
+            }
         }
     };
     xhttp.open("POST", "./../php/login.php", true);
