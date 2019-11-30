@@ -18,7 +18,7 @@ function login(fieldUserName, fieldFaultUsername, fieldPassword, fieldFaultPassw
     let invalidPassword = isInvalid(fieldPassword.value, fieldPassword.dataset.name, fieldFaultPassword);
 
     if (!invalidUsername && !invalidPassword) {
-
+        sendData(fieldUserName.value, fieldUserName.dataset.name, fieldFaultUsername, fieldPassword.value, fieldPassword.dataset.name, fieldFaultPassword);
     }
 }
 
@@ -27,8 +27,12 @@ function isInvalid(valueToProof, nameOfField, faultField) {
 }
 
 function isEmpty(valueToProof, nameOfField, faultField) {
-    faultField.textContent = `${nameOfField} mustn't be blank!`;
-    return valueToProof === '';
+    if (valueToProof === '') {
+        faultField.textContent = `${nameOfField} mustn't be blank!`;
+        return true;
+    }
+
+    return false;
 }
 
 function containsSpace(valueToProof, nameOfField, faultField) {
@@ -49,4 +53,18 @@ function countSpaces(valueToProof) {
     }
 
     return count;
+}
+
+function sendData(username, usernameText, faultUserName, password, passwordText, faultPassword) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // parse response into JSON object
+            let answer = JSON.parse(this.responseText);
+
+        }
+    };
+    xhttp.open("POST", "./../php/login.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username=" + username + "&password=" + password);
 }
