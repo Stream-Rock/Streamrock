@@ -41,7 +41,8 @@ function checkCorrectAccount($username, $password, $accounts){
 
     for ($i = 0; $i < count($accounts); $i++) {
         if ($accounts[$i]["username"] === $username && $accounts[$i]["password"] === $password) {
-            echo json_encode("");
+            echo json_encode("Correct");
+            exit();
         }else if ($accounts[$i]["username"] === $username) {
             $userFound = true;
         }
