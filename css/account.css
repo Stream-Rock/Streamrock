@@ -128,3 +128,8 @@ body {
 .fa-times-circle:hover{
     cursor: pointer;
 }
+
+.faults {
+    color: red;
+    margin-left: 1vw;
+}
