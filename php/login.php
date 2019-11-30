@@ -48,6 +48,6 @@ function checkCorrectAccount($username, $password, $accounts){
         }
     }
 
-    echo $userFound ? json_encode("Wrong Username") : json_encode("Wrong Password");
+    echo $userFound ? json_encode("Please enter the correct password!") : json_encode("This user does not exist!");
 }
 ?>
