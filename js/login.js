@@ -14,10 +14,11 @@ function openSite(site){
 }
 
 function login(fieldUserName, fieldFaultUsername, fieldPassword, fieldFaultPassword) {
-    let invalidUsername = isInvalid(fieldUserName.value, fieldUserName.dataset.name, fieldFaultUsername);
-    let invalidPassword = isInvalid(fieldPassword.value, fieldPassword.dataset.name, fieldFaultPassword);
     fieldFaultPassword.textContent = "";
     fieldFaultUsername.textContent = "";
+    let invalidUsername = isInvalid(fieldUserName.value, fieldUserName.dataset.name, fieldFaultUsername);
+    let invalidPassword = isInvalid(fieldPassword.value, fieldPassword.dataset.name, fieldFaultPassword);
+
 
     if (!invalidUsername && !invalidPassword) {
         sendData(fieldUserName.value, fieldUserName.dataset.name, fieldFaultUsername, fieldPassword.value, fieldPassword.dataset.name, fieldFaultPassword);
