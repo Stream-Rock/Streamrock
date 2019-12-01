@@ -94,7 +94,7 @@ body {
     padding-top: 3vh;
 }
 
-#button {
+#button, #buttonRegister {
     font-size: 15px;
     line-height: 1.5;
     color: #fff;
@@ -113,8 +113,16 @@ body {
     cursor: pointer;
 }
 
+#buttonRegister:hover{
+    cursor: not-allowed;
+}
+
 .login, .register{
     text-decoration: none;
+    margin-top: 0.5vh;
+}
+
+.register{
     margin-top: 3vh;
 }
 

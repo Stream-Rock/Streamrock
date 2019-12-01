@@ -66,7 +66,8 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
             let answer = JSON.parse(this.responseText);
             console.log(answer);
             if (answer === "Correct") {
-
+                localStorage.setItem("username", username);
+                window.open("./../html/application.html", "_self");
             }else if (answer === "This user does not exist!") {
                 faultUserName.textContent = answer;
             }else if (answer === "Please enter the correct password!") {
