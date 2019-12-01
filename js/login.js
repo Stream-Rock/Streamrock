@@ -64,7 +64,6 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
         if (this.readyState == 4 && this.status == 200) {
             // parse response into JSON object
             let answer = JSON.parse(this.responseText);
-            console.log(answer);
             if (answer === "Correct") {
                 localStorage.setItem("username", username);
                 window.open("./../html/application.html", "_self");
