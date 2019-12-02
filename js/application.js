@@ -5,6 +5,7 @@ const slider = interact('.slider');
 window.addEventListener('load', init);
 
 function init() {
+    document.getElementById("profileName").textContent = localStorage.getItem("username");
     $('#random')[0].addEventListener('click', () => {
         activateAndDeactivateIcon($('#random')[0])
     });

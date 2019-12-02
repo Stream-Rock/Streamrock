@@ -461,3 +461,22 @@ h6 {
     top: 2vh;
     overflow: hidden;
 }
+
+#profileBox{
+    display: flex;
+    height: 40vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#profileBox > img{
+    margin-top: 5vh;
+    border-radius: 100px;
+    height: 20vh;
+    width: 20vh;
+}
+
+#profileBox > p{
+    font-size: 5vh;
+}
