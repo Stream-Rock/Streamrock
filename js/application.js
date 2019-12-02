@@ -36,6 +36,10 @@ function init() {
     $('#createButton')[0].addEventListener('click', addPlaylist);
     writePlaylistsFromUser();
     writeData("./../csv/recentlyPlayed.csv", "recentlyPlayedElement", "recentlyPlayed");
+    writeData("./../csv/artists.csv", "recentlyPlayedElement", "artists");
+    writeData("./../csv/favoritesongs.csv", "favoriteElement", "favoriteSongs");
+    writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums");
+
 }
 
 function activateAndDeactivateIcon(icon) {
