@@ -35,6 +35,7 @@ function init() {
     $('#playlistAdd')[0].addEventListener('click', addPlaylistOn);
     $('#createButton')[0].addEventListener('click', addPlaylist);
     writePlaylistsFromUser();
+    writeData("./../csv/recentlyPlayed.csv", "recentlyPlayedElement", "recentlyPlayed");
 }
 
 function activateAndDeactivateIcon(icon) {
@@ -123,4 +124,31 @@ function writePlaylistsFromUser() {
     xhttp.open("POST", "./../php/getPlaylists.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + localStorage.getItem("username"));
+}
+
+function writeData(filename, className, idToPutTo) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let data = JSON.parse(this.responseText);
+            for (let i = 0; i < data.length; i++) {
+                let element = document.createElement('div');
+                element.setAttribute('class', className);
+                let image = document.createElement('img');
+                image.setAttribute('src', './../images/' + data[i]['picture']);
+                image.setAttribute('alt', 'Image');
+                let name = document.createElement('p');
+                name.textContent = data[i]['title'];
+                let artist = document.createElement('p');
+                artist.textContent = data[i]['artist'];
+                element.appendChild(image);
+                element.appendChild(name);
+                element.appendChild(artist);
+                document.getElementById(idToPutTo).appendChild(element);
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/getData.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username=" + localStorage.getItem("username") + "&filename=" + filename);
 }
