@@ -3,7 +3,7 @@ if (!empty($_POST["username"]) && !empty($_POST["password"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 }else{
-    echo "Not used correctly";
+    die("Username and password must not be empty");
     exit();
 }
 
@@ -21,19 +21,23 @@ function readAccounts($fileName){
         $partsFirstLine[$i] = rtrim($partsFirstLine[$i]);
     }
 
-    while (!feof($file)) {
-        $line = fgets($file);
-        $parts = explode(";", $line);
-        for ($i = 0; $i < count($parts); $i++) {
-            $parts[$i] = rtrim($parts[$i]);
+    if(count($partsFirstLine) != 2){
+        die("Columns of file must be 2");
+    }else{
+        while (!feof($file)) {
+            $line = fgets($file);
+            $parts = explode(";", $line);
+            for ($i = 0; $i < count($parts); $i++) {
+                $parts[$i] = rtrim($parts[$i]);
+            }
+            $accounts[] = array(
+                $partsFirstLine[0] => $parts[0],
+                $partsFirstLine[1] => $parts[1]
+            );
         }
-        $accounts[] = array(
-            $partsFirstLine[0] => $parts[0],
-            $partsFirstLine[1] => $parts[1]
-        );
+    
+        return $accounts;
     }
-
-    return $accounts;
 }
 
 function checkCorrectAccount($username, $password, $accounts){
