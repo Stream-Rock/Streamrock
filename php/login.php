@@ -1,5 +1,7 @@
 <?php
-if (!empty($_POST["username"]) && !empty($_POST["password"])) {
+session_start();
+
+if (!empty($_POST["username"]) && $_POST["username"] !== "" && !empty($_POST["password"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 }else{
@@ -40,7 +42,9 @@ function checkCorrectAccount($username, $password, $accounts){
     $userFound = false;
 
     for ($i = 0; $i < count($accounts); $i++) {
-        if ($accounts[$i]["username"] === $username && $accounts[$i]["password"] === $password) {
+        if ($accounts[$i]["username"] === $username && $accounts[$i]["password"] === md5($password)) {
+            $_SESSION["username"] = $username;
+            $_SESSION["loggedin"] = true;
             echo json_encode("Correct");
             exit();
         }else if ($accounts[$i]["username"] === $username) {
