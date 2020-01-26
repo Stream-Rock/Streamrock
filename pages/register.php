@@ -1,3 +1,13 @@
+<?php
+include './../php/checkLoggedIn.php';
+if (isset($loggedIn)) {
+    if ($loggedIn === true) {
+        echo "<script>window.open('application.php', '_self')</script>";
+    }
+}else{
+    die('File import does not work correctly');
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -40,7 +50,7 @@
                 <p style="color: red">This feature is not implemented yet!</p>
             </div>
             <div class="alternateText">
-                <p class="login">Already have an account?<a class="login" href="./login.html" style="color: black;"> Log in here</a></p>
+                <p class="login">Already have an account?<a class="login" href="login.php" style="color: black;"> Log in here</a></p>
             </div>
         </div>
         <p class="faults" id="faultRegister" style="text-align: center"></p>

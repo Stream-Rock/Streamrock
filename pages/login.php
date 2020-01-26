@@ -1,3 +1,14 @@
+<?php
+ include './../php/checkLoggedIn.php';
+if (isset($loggedIn)) {
+    if ($loggedIn === true) {
+        echo "<script>window.open('application.php', '_self')</script>";
+    }
+}else{
+    die('File import does not work correctly');
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -32,7 +43,7 @@
                     <button id="button">Login</button>
             </div>
             <div class="alternateText">
-                    <p class="register">Don't have an account?<a href="./register.html" class="register" style="color: black">
+                    <p class="register">Don't have an account?<a href="register.php" class="register" style="color: black">
                         Create one here</a></p>
             </div>
         </div>
