@@ -8,7 +8,7 @@ function init() {
     createRellax();
     for (let i = 0; i < document.getElementsByClassName('linkApplication').length; i++) {
         document.getElementsByClassName('linkApplication')[i].addEventListener('click', () => {
-            openLink('./pages/application.html');
+            openLink('./pages/application.php');
         });
     }
     document.getElementById('linkRegister').addEventListener('click', () => {
@@ -73,13 +73,13 @@ function seeIfUserIsLoggedIn() {
         let listElement1 = document.createElement("li");
         let listLink1 = document.createElement("a");
         listLink1.textContent = "Application";
-        listLink1.href = "./pages/application.html";
+        listLink1.href = "./pages/application.php";
         listElement1.appendChild(listLink1);
         document.getElementById("navigationList").appendChild(listElement1);
         let listElement2 = document.createElement("li");
         let listLink2 = document.createElement("a");
         listLink2.textContent = localStorage.getItem("username");
-        listLink2.href = "./pages/application.html";
+        listLink2.href = "./pages/application.php";
         listElement2.appendChild(listLink2);
         document.getElementById("navigationList").appendChild(listElement2);
     } else {

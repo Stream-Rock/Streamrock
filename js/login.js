@@ -65,7 +65,7 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
             // parse response into JSON object
             let answer = JSON.parse(this.responseText);
             if (answer === "Correct") {
-                window.open("./../pages/application.html", "_self");
+                window.open("./../pages/application.php", "_self");
             }else if (answer === "This user does not exist!") {
                 faultUserName.textContent = answer;
             }else if (answer === "Please enter the correct password!") {
