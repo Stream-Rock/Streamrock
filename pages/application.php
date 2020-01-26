@@ -27,7 +27,11 @@ if (isset($loggedIn)) {
 <link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
 
 <body onload="init('<?php
-echo $_SESSION['username'];
+if (isset($_SESSION['username'])) {
+    echo $_SESSION['username'];
+}else{
+    die("An error occurred");
+}
 ?>')">
 <div class="leftBar">
     <nav>
