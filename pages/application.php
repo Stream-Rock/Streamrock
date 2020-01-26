@@ -1,6 +1,16 @@
+<?php
+ include './../php/checkLoggedIn.php';
+if (isset($loggedIn)) {
+    if ($loggedIn === false) {
+        header("HTTP/1.1 403 Forbidden");
+        exit();
+    }
+}else{
+    die('File import does not work correctly');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
