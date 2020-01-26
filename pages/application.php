@@ -1,4 +1,6 @@
 <?php
+session_start();
+
  include './../php/checkLoggedIn.php';
 if (isset($loggedIn)) {
     if ($loggedIn === false) {
