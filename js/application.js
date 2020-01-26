@@ -4,43 +4,45 @@ const slider = interact('.slider');
 
 window.addEventListener('load', init);
 
-function init() {
-    document.getElementById("profileName").textContent = localStorage.getItem("username");
-    $('#random')[0].addEventListener('click', () => {
-        activateAndDeactivateIcon($('#random')[0])
-    });
-    $('#loop')[0].addEventListener('click', () => {
-        activateAndDeactivateIcon($('#loop')[0])
-    });
-    $('#logo')[0].addEventListener('click', openHomePage);
-    $('#pause')[0].addEventListener('click', () => {
-        changeIcon($('#pause')[0], 'far fa-play-circle', 'far fa-pause-circle')
-    });
-    $('#star')[0].addEventListener('click', () => {
-        changeIcon($('#star')[0], 'fas fa-star', 'far fa-star')
-    })
-    $('#search')[0].addEventListener('focus', () => {
-        changeDeleteCrossVisibility(true)
-    });
-    $('#search')[0].addEventListener('blur', () => {
-        changeDeleteCrossVisibility(false)
-    })
-    $('#cancel')[0].addEventListener('mouseover', deleteText);
+function init(username) {
+    if (typeof username == "string") {
+        document.getElementById("profileName").textContent = username;
 
-    for (let i = 0; i < $('.link').length; i++) {
-        $('.link')[i].addEventListener('click', () => {
-            switchTab($('.link')[i].dataset.tab, $('.navigationP')[i])
+        $('#random')[0].addEventListener('click', () => {
+            activateAndDeactivateIcon($('#random')[0])
         });
+        $('#loop')[0].addEventListener('click', () => {
+            activateAndDeactivateIcon($('#loop')[0])
+        });
+        $('#logo')[0].addEventListener('click', openHomePage);
+        $('#pause')[0].addEventListener('click', () => {
+            changeIcon($('#pause')[0], 'far fa-play-circle', 'far fa-pause-circle')
+        });
+        $('#star')[0].addEventListener('click', () => {
+            changeIcon($('#star')[0], 'fas fa-star', 'far fa-star')
+        })
+        $('#search')[0].addEventListener('focus', () => {
+            changeDeleteCrossVisibility(true)
+        });
+        $('#search')[0].addEventListener('blur', () => {
+            changeDeleteCrossVisibility(false)
+        })
+        $('#cancel')[0].addEventListener('mouseover', deleteText);
+
+        for (let i = 0; i < $('.link').length; i++) {
+            $('.link')[i].addEventListener('click', () => {
+                switchTab($('.link')[i].dataset.tab, $('.navigationP')[i])
+            });
+        }
+
+        $('#playlistAdd')[0].addEventListener('click', addPlaylistOn);
+        $('#createButton')[0].addEventListener('click', addPlaylist);
+        writePlaylistsFromUser(username);
+        writeData("./../csv/recentlyPlayed.csv", "recentlyPlayedElement", "recentlyPlayed", username);
+        writeData("./../csv/artists.csv", "recentlyPlayedElement", "artists", username);
+        writeData("./../csv/favoritesongs.csv", "favoriteElement", "favoriteSongs", username);
+        writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums", username);
     }
-
-    $('#playlistAdd')[0].addEventListener('click', addPlaylistOn);
-    $('#createButton')[0].addEventListener('click', addPlaylist);
-    writePlaylistsFromUser();
-    writeData("./../csv/recentlyPlayed.csv", "recentlyPlayedElement", "recentlyPlayed");
-    writeData("./../csv/artists.csv", "recentlyPlayedElement", "artists");
-    writeData("./../csv/favoritesongs.csv", "favoriteElement", "favoriteSongs");
-    writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums");
-
 }
 
 function activateAndDeactivateIcon(icon) {
@@ -111,7 +113,7 @@ function addPlaylist() {
     $('#startSuggestions')[0].style.filter = 'blur(0px)';
 }
 
-function writePlaylistsFromUser() {
+function writePlaylistsFromUser(username) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -128,10 +130,10 @@ function writePlaylistsFromUser() {
     };
     xhttp.open("POST", "./../php/getPlaylists.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("username=" + localStorage.getItem("username"));
+    xhttp.send("username=" + username);
 }
 
-function writeData(filename, className, idToPutTo) {
+function writeData(filename, className, idToPutTo, username) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -155,5 +157,5 @@ function writeData(filename, className, idToPutTo) {
     };
     xhttp.open("POST", "./../php/getData.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("username=" + localStorage.getItem("username") + "&filename=" + filename);
+    xhttp.send("username=" + username + "&filename=" + filename);
 }

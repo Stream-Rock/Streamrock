@@ -26,7 +26,9 @@ if (isset($loggedIn)) {
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
 
-<body>
+<body onload="init('<?php
+echo $_SESSION['username'];
+?>')">
 <div class="leftBar">
     <nav>
         <div class="verticalNavigation">
