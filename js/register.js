@@ -2,7 +2,7 @@ window.addEventListener('load', init);
 
 function init(){
     // $("#button")[0].addEventListener('click', ()=>{
-    //     openSite('./../html/application.html');
+    //     openSite('./../pages/application.pages');
     // });
     $('#cancel')[0].addEventListener('click', () =>{
         openSite('./../index.html');

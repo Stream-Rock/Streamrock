@@ -8,11 +8,11 @@ function init() {
     createRellax();
     for (let i = 0; i < document.getElementsByClassName('linkApplication').length; i++) {
         document.getElementsByClassName('linkApplication')[i].addEventListener('click', () => {
-            openLink('./html/application.html');
+            openLink('./pages/application.html');
         });
     }
     document.getElementById('linkRegister').addEventListener('click', () => {
-        openLink('./html/register.html');
+        openLink('./pages/register.html');
     });
     seeIfUserIsLoggedIn();
 }
@@ -73,26 +73,26 @@ function seeIfUserIsLoggedIn() {
         let listElement1 = document.createElement("li");
         let listLink1 = document.createElement("a");
         listLink1.textContent = "Application";
-        listLink1.href = "./html/application.html";
+        listLink1.href = "./pages/application.html";
         listElement1.appendChild(listLink1);
         document.getElementById("navigationList").appendChild(listElement1);
         let listElement2 = document.createElement("li");
         let listLink2 = document.createElement("a");
         listLink2.textContent = localStorage.getItem("username");
-        listLink2.href = "./html/application.html";
+        listLink2.href = "./pages/application.html";
         listElement2.appendChild(listLink2);
         document.getElementById("navigationList").appendChild(listElement2);
     } else {
         let listElement1 = document.createElement("li");
         let listLink1 = document.createElement("a");
         listLink1.textContent = "Register";
-        listLink1.href = "./html/register.html";
+        listLink1.href = "./pages/register.html";
         listElement1.appendChild(listLink1);
         document.getElementById("navigationList").appendChild(listElement1);
         let listElement2 = document.createElement("li");
         let listLink2 = document.createElement("a");
         listLink2.textContent = "Login";
-        listLink2.href = "./html/login.html";
+        listLink2.href = "./pages/login.html";
         listElement2.appendChild(listLink2);
         document.getElementById("navigationList").appendChild(listElement2);
     }
