@@ -5,7 +5,7 @@ function init(){
     //     openSite('./../pages/application.pages');
     // });
     $('#cancel')[0].addEventListener('click', () =>{
-        openSite('./../index.html');
+        openSite('./../index.php');
     });
 }
 

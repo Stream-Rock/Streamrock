@@ -54,7 +54,7 @@ function activateAndDeactivateIcon(icon) {
 }
 
 function openHomePage() {
-    window.open('./../index.html', '_self');
+    window.open('./../index.php', '_self');
 }
 
 function changeIcon(icon, newIconClassName, oldIconClassName) {

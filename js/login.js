@@ -5,7 +5,7 @@ function init(){
         login($("#username")[0], $("#faultusername")[0], $("#password")[0], $("#faultpassword")[0]);
     });
     $('#cancel')[0].addEventListener('click', () =>{
-        openSite('./../index.html');
+        openSite('./../index.php');
     });
 }
 
