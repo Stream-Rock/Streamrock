@@ -1,10 +1,6 @@
 window.addEventListener('load', init);
 
 function init() {
-    if (!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-    }
     createRellax();
     for (let i = 0; i < document.getElementsByClassName('linkApplication').length; i++) {
         document.getElementsByClassName('linkApplication')[i].addEventListener('click', () => {
@@ -12,7 +8,7 @@ function init() {
         });
     }
     document.getElementById('linkRegister').addEventListener('click', () => {
-        openLink('./pages/register.html');
+        openLink('./pages/register.php');
     });
     seeIfUserIsLoggedIn();
 }
@@ -86,13 +82,13 @@ function seeIfUserIsLoggedIn() {
         let listElement1 = document.createElement("li");
         let listLink1 = document.createElement("a");
         listLink1.textContent = "Register";
-        listLink1.href = "./pages/register.html";
+        listLink1.href = "./pages/register.php";
         listElement1.appendChild(listLink1);
         document.getElementById("navigationList").appendChild(listElement1);
         let listElement2 = document.createElement("li");
         let listLink2 = document.createElement("a");
         listLink2.textContent = "Login";
-        listLink2.href = "./pages/login.html";
+        listLink2.href = "./pages/login.php";
         listElement2.appendChild(listLink2);
         document.getElementById("navigationList").appendChild(listElement2);
     }
