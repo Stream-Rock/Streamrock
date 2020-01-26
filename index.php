@@ -11,49 +11,57 @@
     <link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
 </head>
 </head>
-<body>
-    <section id="start">
-        <nav id="navigation">
-            <ul id="navigationList">
-                <li><a href="#">Home</a></li>
-                <li id="separator"></li>
-            </ul>
-            <h1>Streamrock</h1>
-            <h2>Stream your favorite music</h2>
-        </nav>
-        <img src="./images/shamrock.png" id="shamrock" alt="Shamrock">
-    </section>
-    <section>
-        <h1 class="heading">About</h1>
-        <div class="divLeft">
-            <h2><strong>Streamrock </strong> is a free online audio streaming platform, that allows users to listen to their favorite songs.</h2>
-        </div>
-        <div class="imageRight" id="about">
-            <img src="./images/aboutIcon.png" alt="Shamrock" class="linkApplication">
-        </div>
-        <h1 class="heading">Features</h1>
-        <div class="divRight">
-            <h2>With Streamrock you can create your own unique playlists and add music from your favorite artists to your library. Streamrock also saves detailed statistics about the songs and genres you are listening to.</h2>
-        </div>
-        <div class="imageLeft" id="features">
-            <img src="./images/featuresIcon.png" alt="Shamrock" class="linkApplication">
-        </div>
-        <h1 class="heading">Stream</h1>
-        <div class="divLeft">
-            <h2>Streamrock provides a huge spectrum of different songs, artist and playlists you can choose from.</h2>
-        </div>
-        <div class="imageRight" id="stream">
-            <img src="./images/streamIcon.png" alt="Shamrock" class="linkApplication">
-        </div>
-        <h1 class="heading">Register now</h1>
-        <div class="divRight">
-            <h2>In order to get the full experience out of Streamrock you need to quickly create an account or log in with your credentials.</h2>
-        </div>
-        <div class="imageLeft" id="register">
-            <img src="./images/registerIcon.png" alt="Shamrock" id="linkRegister">
-        </div>
-    </section>
-    <script src="./js/rellax.min.js"></script>
-    <script src="./js/index.js"></script>
+<body onload="init('<?php
+session_start();
+if (isset($_SESSION['username'])) {
+    echo $_SESSION['username'];
+}
+?>')">
+<section id="start">
+    <nav id="navigation">
+        <ul id="navigationList">
+            <li><a href="#">Home</a></li>
+            <li id="separator"></li>
+        </ul>
+        <h1>Streamrock</h1>
+        <h2>Stream your favorite music</h2>
+    </nav>
+    <img src="./images/shamrock.png" id="shamrock" alt="Shamrock">
+</section>
+<section>
+    <h1 class="heading">About</h1>
+    <div class="divLeft">
+        <h2><strong>Streamrock </strong> is a free online audio streaming platform, that allows users to listen to their
+            favorite songs.</h2>
+    </div>
+    <div class="imageRight" id="about">
+        <img src="./images/aboutIcon.png" alt="Shamrock" class="linkApplication">
+    </div>
+    <h1 class="heading">Features</h1>
+    <div class="divRight">
+        <h2>With Streamrock you can create your own unique playlists and add music from your favorite artists to your
+            library. Streamrock also saves detailed statistics about the songs and genres you are listening to.</h2>
+    </div>
+    <div class="imageLeft" id="features">
+        <img src="./images/featuresIcon.png" alt="Shamrock" class="linkApplication">
+    </div>
+    <h1 class="heading">Stream</h1>
+    <div class="divLeft">
+        <h2>Streamrock provides a huge spectrum of different songs, artist and playlists you can choose from.</h2>
+    </div>
+    <div class="imageRight" id="stream">
+        <img src="./images/streamIcon.png" alt="Shamrock" class="linkApplication">
+    </div>
+    <h1 class="heading">Register now</h1>
+    <div class="divRight">
+        <h2>In order to get the full experience out of Streamrock you need to quickly create an account or log in with
+            your credentials.</h2>
+    </div>
+    <div class="imageLeft" id="register">
+        <img src="./images/registerIcon.png" alt="Shamrock" id="linkRegister">
+    </div>
+</section>
+<script src="./js/rellax.min.js"></script>
+<script src="./js/index.js"></script>
 </body>
 </html>
