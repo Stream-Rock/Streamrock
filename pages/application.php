@@ -95,6 +95,7 @@ if (isset($_SESSION['username'])) {
     <div id="profileBox">
         <img src="./../images/profile_picture.png" alt="Image">
         <p id="profileName"></p>
+        <button id="logoutButton">Log out</button>
     </div>
 </div>
 <div class="songOptions">
