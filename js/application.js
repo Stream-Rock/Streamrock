@@ -42,6 +42,8 @@ function init(username) {
         writeData("./../csv/artists.csv", "recentlyPlayedElement", "artists", username);
         writeData("./../csv/favoritesongs.csv", "favoriteElement", "favoriteSongs", username);
         writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums", username);
+
+        $('#logoutButton')[0].addEventListener('click', logout);
     }
 }
 
@@ -158,4 +160,11 @@ function writeData(filename, className, idToPutTo, username) {
     xhttp.open("POST", "./../php/getData.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username + "&filename=" + filename);
+}
+
+function logout() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "./../php/logOut.php", false);
+    xhttp.send();
+    location.replace("../index.php");
 }
