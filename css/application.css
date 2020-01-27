@@ -211,6 +211,11 @@ i {
     background-color: white;
     padding-left: 2%;
     overflow-y: visible;
+    height: 100%;
+}
+
+#profile{
+    height: 80%;
 }
 
 .recentlyPlayedElement img, .favoriteElement img {
@@ -479,4 +484,23 @@ h6 {
 
 #profileBox > p{
     font-size: 5vh;
+}
+
+#logoutButton {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    width: 20%;
+    height: 5vh;
+    border-radius: 25px;
+    background: #2ecc71;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+#logoutButton:hover {
+    cursor: pointer;
 }
