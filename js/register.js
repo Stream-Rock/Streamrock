@@ -16,7 +16,16 @@ function openSite(site){
 function checkRegister(username, password, password2) {
     if (username !== '' && password !== '' && password2 !== '') {
         if (!userExists(username) && passwordsAreTheSame(password, password2) && passwordCorrect(password)) {
-            let result = doAjax(username, password, "./../php/saveAccountToDB.php");
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    let response = JSON.parse(this.responseText);
+                    console.log(response);
+                }
+            };
+            xhttp.open("POST", "./../php/saveAccountToDB.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("username=" + username + "&password=" + password);
         }
     }else{
         document.getElementById("faultpassword2").textContent = 'Please make sure every field is set';
@@ -46,16 +55,4 @@ function passwordCorrect(password) {
         document.getElementById('faultpassword').textContent = 'Please make sure the password is at least 8 characters long';
     }
     return false;
-}
-
-function doAjax(username, password, url) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            return JSON.parse(this.responseText);
-        }
-    };
-    xhttp.open("POST", url, true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("username=" + username + "&password=" + password);
 }
