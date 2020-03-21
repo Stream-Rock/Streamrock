@@ -114,7 +114,7 @@ body {
 }
 
 #buttonRegister:hover{
-    cursor: not-allowed;
+    cursor: pointer;
 }
 
 .login, .register{

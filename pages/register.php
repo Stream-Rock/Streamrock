@@ -49,7 +49,6 @@ if (isset($loggedIn)) {
             </div>
             <div class="commitButton">
                 <button id="buttonRegister">Register</button>
-                <p style="color: red">This feature is not implemented yet!</p>
             </div>
             <div class="alternateText">
                 <p class="login">Already have an account?<a class="login" href="login.php" style="color: black;"> Log in here</a></p>
