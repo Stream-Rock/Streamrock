@@ -32,21 +32,21 @@ if (isset($loggedIn)) {
             <i class="far fa-times-circle" id="cancel"></i>
             <span id="registerHeading">Register now</span>
             <div class="input">
-                <input type="text" name="firstName" class="inputField" id="firstName" placeholder="Username">
+                <input type="text" name="username" class="inputField" id="username" placeholder="Username">
                 <span class="icon"><i class="fas fa-user"></i></span>
-                <p class="faults" id="faultfirstName"></p>
             </div>
+            <p class="faults" id="faultfirstName"></p>
             <div class="input">
                 <input type="password" name="password" class="inputField" id="password" placeholder="Password">
-                <p class="faults" id="faultpassword"></p>
                 <span class="icon"><i class="fas fa-lock"></i></span>
             </div>
+            <p class="faults" id="faultpassword"></p>
             <div class="input">
                 <input type="password" name="password2" class="inputField" id="password2"
                     placeholder="Confirm Password">
                 <span class="icon"><i class="fas fa-lock"></i></span>
-                <p class="faults" id="faultpassword2"></p>
             </div>
+            <p class="faults" id="faultpassword2"></p>
             <div class="commitButton">
                 <button id="buttonRegister">Register</button>
             </div>
