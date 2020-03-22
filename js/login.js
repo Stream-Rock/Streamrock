@@ -64,8 +64,9 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
         if (this.readyState == 4 && this.status == 200) {
             let answer = JSON.parse(this.responseText);
             if (answer['message'] !== username + ' is now logged in') {
-                document.getElementById('faultpassword').textContent = 'Please make sure your credentials are correct';
+                userExists(username);
             }else{
+                document.getElementById('faultusername').textContent = '';
                 document.getElementById('faultpassword').textContent = '';
                 openSite('./../pages/application.php');
             }
@@ -74,4 +75,21 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
     xhttp.open("POST", "./../php/logInFromDB.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username + "&password=" + password);
+}
+
+function userExists(username) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            let response = JSON.parse(this.responseText);
+            if (response.length !== 0) {
+                document.getElementById("faultpassword").textContent = 'Please make sure that your credentials are correct';
+            }else{
+                document.getElementById('faultusername').textContent = 'This user does not exist';
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/checkIfUserExists.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username=" + username);
 }
