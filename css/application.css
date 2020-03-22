@@ -218,9 +218,13 @@ i {
     height: 80%;
 }
 
-.recentlyPlayedElement img, .favoriteElement img {
+.recentlyPlayedElement img, .favoriteElement img, .suggestion img {
     height: 10vw;
     width: 10vw;
+}
+
+.searchResult{
+    margin-right: 2%;
 }
 
 .recentlyPlayedElement p:nth-last-child(2), .favoriteElement p:nth-last-child(2) {
@@ -509,4 +513,16 @@ h6 {
 
 #logoutButton:hover, #deleteAccountButton:hover, #sureButton:hover, #cancelButton:hover {
     cursor: pointer;
+}
+
+#searchResultsBox{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 100%;
+}
+
+#searchResults{
+    height: auto;
+    max-width: 100%;
+    text-align: center;
 }

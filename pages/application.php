@@ -104,6 +104,8 @@ if (isset($_SESSION['username'])) {
 </div>
 <div id="searchResults" style="display: none">
     <h1>Results</h1>
+    <div class="suggestion" id="searchResultsBox">
+    </div>
 </div>
 <div class="songOptions">
     <div class="volumeBar">

@@ -58,9 +58,6 @@ function init(username) {
         document.getElementById('search').addEventListener('focus', () =>{
             switchResultTab('none');
         });
-        document.getElementById('search').addEventListener('blur', () =>{
-            switchResultTab('block');
-        });
         document.getElementById('search').addEventListener('keyup', () => {
             getResults(document.getElementById('search').value);
         });
@@ -97,6 +94,7 @@ function changeDeleteCrossVisibility(shouldBeSeen) {
 
 function deleteText() {
     $('#search')[0].value = '';
+    switchResultTab('block');
 }
 
 function switchTab(tab, pElement) {
@@ -236,14 +234,35 @@ function switchResultTab(argument) {
 }
 
 function getResults(value) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            let response = JSON.parse(this.responseText);
-            console.log(response);
-        }
-    };
-    xhttp.open("POST", "./../php/getSongsFromDB.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("search=" + value);
+    if (value.length > 3) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                deleteAllPreviousChilds(document.getElementById('searchResultsBox'));
+                let response = JSON.parse(this.responseText);
+                for (let i = 0; i < response.length; i++) {
+                    let divBox = document.createElement('div');
+                    divBox.setAttribute('class', 'searchResult');
+                    let image = document.createElement('img');
+                    image.setAttribute('src', './../images/profile_picture.png');
+                    image.setAttribute('alt', 'Picture');
+                    let nameP = document.createElement('p');
+                    nameP.textContent = response[i]["song_name"];
+                    let artistP = document.createElement('p');
+                    artistP.textContent = response[i]["artist"];
+                    let yearP = document.createElement('p');
+                    yearP.textContent = response[i]["release_year"] + "\n";
+
+                    divBox.appendChild(image);
+                    divBox.appendChild(nameP);
+                    divBox.appendChild(artistP);
+                    divBox.appendChild(yearP);
+                    document.getElementById('searchResultsBox').appendChild(divBox);
+                }
+            }
+        };
+        xhttp.open("POST", "./../php/getSongsFromDB.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("search=" + value);
+    }
 }
