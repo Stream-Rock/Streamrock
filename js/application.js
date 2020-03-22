@@ -61,7 +61,9 @@ function init(username) {
         document.getElementById('search').addEventListener('blur', () =>{
             switchResultTab('block');
         });
-
+        document.getElementById('search').addEventListener('keyup', () => {
+            getResults(document.getElementById('search').value);
+        });
     }
 }
 
@@ -231,4 +233,17 @@ function switchResultTab(argument) {
         document.getElementById('searchResults').style.display = 'block';
     }
     document.getElementById('startSuggestions').style.display = argument;
+}
+
+function getResults(value) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = JSON.parse(this.responseText);
+            console.log(response);
+        }
+    };
+    xhttp.open("POST", "./../php/getSongsFromDB.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("search=" + value);
 }
