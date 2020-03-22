@@ -35,7 +35,7 @@ if (isset($loggedIn)) {
                 <input type="text" name="username" class="inputField" id="username" placeholder="Username">
                 <span class="icon"><i class="fas fa-user"></i></span>
             </div>
-            <p class="faults" id="faultfirstName"></p>
+            <p class="faults" id="faultusername"></p>
             <div class="input">
                 <input type="password" name="password" class="inputField" id="password" placeholder="Password">
                 <span class="icon"><i class="fas fa-lock"></i></span>
