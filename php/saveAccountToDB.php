@@ -15,20 +15,24 @@ if((isset($_POST["password"])) && !empty($_POST["password"]) && isset($_POST["us
     $_password = $conn->real_escape_string($_POST["password"]);
     $_password = "saver" . $_password . "now";
 
-    $stmt = $conn->prepare("INSERT INTO accounts (username, password, user_deleted, last_login) VALUES (?, ?, 0, NOW())");
-    $stmt->bind_param("ss", $_username, md5($_password));
+    $stmt = "INSERT INTO accounts (username, password, user_deleted, last_login) VALUES ('$_username', md5('$_password'), 0, NOW())";
 
-    $stmt->execute();
-    $response["message"] = "$_username has been created";
-    $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = $_username;
+
+    if($_res = $conn->query($stmt)) {
+        $response["message"] = "$_username has been created";
+        $_SESSION["loggedin"] = true;
+        $_SESSION["username"] = $_username;
+        echo json_encode($_res->fetch_all());
+    }else{
+        $response["message"] = "Something went wrong";
+        echo json_encode($_res->fetch_all());
+    }
 } else{
     $response["message"] = "Username and password must be set";
     die("Username and password must be set");
 }
-
-echo json_encode($response);
-
 $stmt->close();
 $conn->close();
+
+echo json_encode($response);
 ?>
