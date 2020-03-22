@@ -102,6 +102,9 @@ if (isset($_SESSION['username'])) {
         <button style="display: none" class="deleteAccountButton" id="cancelButton">Cancel</button>
     </div>
 </div>
+<div id="searchResults" style="display: none">
+    <h1>Results</h1>
+</div>
 <div class="songOptions">
     <div class="volumeBar">
         <i class="fas fa-volume-down" id="volume_down"></i>

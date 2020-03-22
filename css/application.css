@@ -203,7 +203,7 @@ i {
     margin-right: 30%;
 }
 
-#startSuggestions, #favorites, #profile {
+#startSuggestions, #favorites, #profile, #searchResults {
     width: 75%;
     position: absolute;
     top: 16%;

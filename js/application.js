@@ -55,6 +55,13 @@ function init(username) {
         document.getElementById('sureButton').addEventListener('click', () =>{
             deleteAccount(document.getElementById('profileName').textContent);
         });
+        document.getElementById('search').addEventListener('focus', () =>{
+            switchResultTab('none');
+        });
+        document.getElementById('search').addEventListener('blur', () =>{
+            switchResultTab('block');
+        });
+
     }
 }
 
@@ -98,23 +105,6 @@ function switchTab(tab, pElement) {
     document.getElementById(tab).style.display = 'block';
     pElement.setAttribute('id', 'active');
 }
-
-slider
-    .draggable({
-        origin: 'self',
-        inertia: true,
-        modifiers: [
-            interact.modifiers.restrict({
-                restriction: 'self'
-            })
-        ]
-    })
-    .on('dragmove', function (event) {
-        const sliderWidth = interact.getElementRect(event.target.parentNode).width;
-        const value = event.pageX / sliderWidth;
-        event.target.style.paddingLeft = (value * 100) + '%';
-        event.target.setAttribute('data-value', value.toFixed(2));
-    });
 
 function addPlaylistOn() {
     $('.createNewPlaylist')[0].style.display = 'flex';
@@ -232,4 +222,13 @@ function savePlaylistToDB(name, description, username) {
     xhttp.open("POST", "./../php/savePlaylistToDB.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("name=" + name + "&description=" + description + "&username=" + username);
+}
+
+function switchResultTab(argument) {
+    if (argument === 'block') {
+        document.getElementById('searchResults').style.display = 'none';
+    }else{
+        document.getElementById('searchResults').style.display = 'block';
+    }
+    document.getElementById('startSuggestions').style.display = argument;
 }
