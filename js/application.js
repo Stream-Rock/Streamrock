@@ -50,7 +50,9 @@ function init(username) {
         document.getElementById('cancelButton').addEventListener('click', () => {
             showWarning('none');
         });
-        document.getElementById('sureButton').addEventListener('click', deleteAccount);
+        document.getElementById('sureButton').addEventListener('click', () =>{
+            deleteAccount(document.getElementById('profileName').textContent);
+        });
     }
 }
 
@@ -184,6 +186,17 @@ function showWarning(argument) {
     document.getElementById('cancelButton').style.display = argument;
 }
 
-function deleteAccount() {
-    
+function deleteAccount(username) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = this.responseText;
+            if (response === 'User has been deleted') {
+                window.open('./../index.php');
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/deleteCurrentUser.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username=" + username);
 }
