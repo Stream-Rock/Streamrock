@@ -145,19 +145,26 @@ function writePlaylistsFromUser(username) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let playlists = JSON.parse(this.responseText);
+            deleteAllPreviousChilds(document.getElementById('playlistListing'));
             for (let i = 0; i < playlists.length; i++) {
                 let playlistLi = document.createElement("li");
                 let playlistp = document.createElement("p");
-                playlistp.textContent = playlists[i];
+                playlistp.textContent = playlists[i][0];
                 playlistp.setAttribute("class", "navigationLink");
                 playlistLi.appendChild(playlistp);
                 document.getElementById("playlistListing").appendChild(playlistLi);
             }
         }
     };
-    xhttp.open("POST", "./../php/getPlaylists.php", true);
+    xhttp.open("POST", "./../php/getPlaylistsFromDB.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username);
+}
+
+function deleteAllPreviousChilds(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
 }
 
 function writeData(filename, className, idToPutTo, username) {
