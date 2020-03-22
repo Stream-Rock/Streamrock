@@ -20,7 +20,11 @@ function checkRegister(username, password, password2) {
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
                     let response = JSON.parse(this.responseText);
-                    console.log(response);
+                    if (response['message'] !== username + ' has been created') {
+                        document.getElementById('faultpassword2').textContent = response['message'];
+                    }else{
+                        openSite('./../pages/application.php');
+                    }
                 }
             };
             xhttp.open("POST", "./../php/saveAccountToDB.php", true);
