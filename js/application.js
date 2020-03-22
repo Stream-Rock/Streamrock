@@ -8,26 +8,26 @@ function init(username) {
     if (typeof username == "string") {
         document.getElementById("profileName").textContent = username;
 
-        $('#random')[0].addEventListener('click', () => {
-            activateAndDeactivateIcon($('#random')[0])
+        document.getElementById('random').addEventListener('click', () => {
+            activateAndDeactivateIcon(document.getElementById('random'))
         });
-        $('#loop')[0].addEventListener('click', () => {
-            activateAndDeactivateIcon($('#loop')[0])
+        document.getElementById('loop').addEventListener('click', () => {
+            activateAndDeactivateIcon(document.getElementById('loop'))
         });
-        $('#logo')[0].addEventListener('click', openHomePage);
-        $('#pause')[0].addEventListener('click', () => {
-            changeIcon($('#pause')[0], 'far fa-play-circle', 'far fa-pause-circle')
+        document.getElementById('logo').addEventListener('click', openHomePage);
+        document.getElementById('pause').addEventListener('click', () => {
+            changeIcon(document.getElementById('pause'), 'far fa-play-circle', 'far fa-pause-circle')
         });
-        $('#star')[0].addEventListener('click', () => {
-            changeIcon($('#star')[0], 'fas fa-star', 'far fa-star')
-        })
-        $('#search')[0].addEventListener('focus', () => {
+        document.getElementById('star').addEventListener('click', () => {
+            changeIcon(document.getElementById('star'), 'fas fa-star', 'far fa-star')
+        });
+        document.getElementById('search').addEventListener('focus', () => {
             changeDeleteCrossVisibility(true)
         });
-        $('#search')[0].addEventListener('blur', () => {
+        document.getElementById('search').addEventListener('blur', () => {
             changeDeleteCrossVisibility(false)
-        })
-        $('#cancel')[0].addEventListener('mouseover', deleteText);
+        });
+        document.getElementById('cancel').addEventListener('mouseover', deleteText);
 
         for (let i = 0; i < $('.link').length; i++) {
             $('.link')[i].addEventListener('click', () => {
@@ -43,7 +43,14 @@ function init(username) {
         writeData("./../csv/favoritesongs.csv", "favoriteElement", "favoriteSongs", username);
         writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums", username);
 
-        $('#logoutButton')[0].addEventListener('click', logout);
+        document.getElementById('logoutButton').addEventListener('click', logout);
+        document.getElementById('deleteAccountButton').addEventListener('click', () =>{
+            showWarning('block');
+        });
+        document.getElementById('cancelButton').addEventListener('click', () => {
+            showWarning('none');
+        });
+        document.getElementById('sureButton').addEventListener('click', deleteAccount);
     }
 }
 
@@ -113,6 +120,8 @@ function addPlaylistOn() {
 function addPlaylist() {
     $('.createNewPlaylist')[0].style.display = 'none';
     $('#startSuggestions')[0].style.filter = 'blur(0px)';
+    document.getElementById('favorites').style.filter = 'blur(0px)';
+    document.getElementById('profile').style.filter = 'blur(0px)';
 }
 
 function writePlaylistsFromUser(username) {
@@ -167,4 +176,14 @@ function logout() {
     xhttp.open("POST", "./../php/logOut.php", false);
     xhttp.send();
     location.replace("../index.php");
+}
+
+function showWarning(argument) {
+    document.getElementById('sureText').style.display = argument;
+    document.getElementById('sureButton').style.display = argument;
+    document.getElementById('cancelButton').style.display = argument;
+}
+
+function deleteAccount() {
+    
 }

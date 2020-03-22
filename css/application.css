@@ -476,7 +476,7 @@ h6 {
 }
 
 #profileBox > img{
-    margin-top: 5vh;
+    margin-top: 15vh;
     border-radius: 100px;
     height: 20vh;
     width: 20vh;
@@ -486,12 +486,13 @@ h6 {
     font-size: 5vh;
 }
 
-#logoutButton, #deleteAccountButton {
+#logoutButton, #deleteAccountButton, #sureButton, #cancelButton {
     font-size: 15px;
     line-height: 1.5;
     color: #fff;
     text-transform: uppercase;
     width: 20%;
+    min-width: 20%;
     height: 5vh;
     border-radius: 25px;
     background: #2ecc71;
@@ -501,11 +502,11 @@ h6 {
     border: none;
 }
 
-#deleteAccountButton{
+#deleteAccountButton, #sureButton, #cancelButton{
     margin-top: 1%;
     background-color: red;
 }
 
-#logoutButton:hover, #deleteAccountButton:hover {
+#logoutButton:hover, #deleteAccountButton:hover, #sureButton:hover, #cancelButton:hover {
     cursor: pointer;
 }
