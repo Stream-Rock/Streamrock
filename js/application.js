@@ -35,8 +35,10 @@ function init(username) {
             });
         }
 
-        $('#playlistAdd')[0].addEventListener('click', addPlaylistOn);
-        $('#createButton')[0].addEventListener('click', addPlaylist);
+        document.getElementById('playlistAdd').addEventListener('click', addPlaylistOn);
+        document.getElementById('createButton').addEventListener('click', () =>{
+            addPlaylist(document.getElementById('nameOfPlaylist').value, document.getElementById('descriptionOfPlaylist').value);
+        });
         writePlaylistsFromUser(username);
         writeData("./../csv/recentlyPlayed.csv", "recentlyPlayedElement", "recentlyPlayed", username);
         writeData("./../csv/artists.csv", "recentlyPlayedElement", "artists", username);
@@ -117,9 +119,21 @@ slider
 function addPlaylistOn() {
     $('.createNewPlaylist')[0].style.display = 'flex';
     $('#startSuggestions')[0].style.filter = 'blur(5px)';
+    document.getElementById('favorites').style.filter = 'blur(5px)';
+    document.getElementById('profile').style.filter = 'blur(5px)';
 }
 
-function addPlaylist() {
+function addPlaylist(name, description) {
+    if (name === '') {
+        disableAddPlaylistBox();
+    }else{
+        savePlaylistToDB(name, description, document.getElementById('profileName').textContent);
+        disableAddPlaylistBox();
+        writePlaylistsFromUser(document.getElementById('profileName').textContent);
+    }
+}
+
+function disableAddPlaylistBox() {
     $('.createNewPlaylist')[0].style.display = 'none';
     $('#startSuggestions')[0].style.filter = 'blur(0px)';
     document.getElementById('favorites').style.filter = 'blur(0px)';
@@ -199,4 +213,16 @@ function deleteAccount(username) {
     xhttp.open("POST", "./../php/deleteCurrentUser.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username);
+}
+
+function savePlaylistToDB(name, description, username) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = this.responseText;
+        }
+    };
+    xhttp.open("POST", "./../php/savePlaylistToDB.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("name=" + name + "&description=" + description + "&username=" + username);
 }

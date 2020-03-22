@@ -132,9 +132,9 @@ if (isset($_SESSION['username'])) {
         <img src="./../images/playlist_picture.png" alt="Playlist Picture">
         <div id="playListOptionsInputs">
             <p>Name</p>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="nameOfPlaylist">
             <p>Description</p>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="descriptionOfPlaylist">
         </div>
     </div>
     <div id="playlistButton">
