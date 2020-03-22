@@ -8,7 +8,7 @@
     <title>Streamrock</title>
     <link rel="stylesheet" href="./css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./images/shamrock_black.png">
 </head>
 </head>
 <body onload="init('<?php
