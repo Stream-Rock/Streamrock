@@ -19,12 +19,8 @@ function checkRegister(username, password, password2) {
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
-                    let response = JSON.parse(this.responseText);
-                    if (response['message'] !== username + ' has been created') {
-                        document.getElementById('faultpassword2').textContent = response['message'];
-                    }else{
-                        openSite('./../pages/application.php');
-                    }
+                    let response = this.responseText;
+                    openSite('./../pages/application.php');
                 }
             };
             xhttp.open("POST", "./../php/saveAccountToDB.php", true);
@@ -51,7 +47,6 @@ function passwordsAreTheSame(password1, password2) {
 }
 
 function passwordCorrect(password) {
-    console.log(password.length);
     if (password.length >= 8) {
         document.getElementById('faultpassword').textContent = '';
         return true;

@@ -20,8 +20,11 @@ if((isset($_POST["password"])) && !empty($_POST["password"]) && isset($_POST["us
 
     $stmt->execute();
     $response["message"] = "$_username has been created";
+    $_SESSION['loggedin'] = true;
+    $_SESSION['username'] = $_username;
 } else{
-    $response["message"] = "Username and Password must be set";
+    $response["message"] = "Username and password must be set";
+    die("Username and password must be set");
 }
 
 echo json_encode($response);
