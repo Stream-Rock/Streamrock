@@ -96,6 +96,7 @@ if (isset($_SESSION['username'])) {
         <img src="./../images/profile_picture.png" alt="Image">
         <p id="profileName"></p>
         <button id="logoutButton">Log out</button>
+        <button id="deleteAccountButton">Delete Account</button>
     </div>
 </div>
 <div class="songOptions">
