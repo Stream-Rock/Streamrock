@@ -39,7 +39,7 @@ if (isset($loggedIn)) {
                 <input type="password" name="password" class="inputField" id="password" data-name="Password" placeholder="Password">
                 <span class="icon"><i class="fas fa-unlock"></i></span>
             </div>
-            <p>Sample Account: User - user</p>
+            <p>Sample Account: testuser - testpassword</p>
             <p id="faultpassword" class="faults"></p>
             <div class="commitButton">
                     <button id="button">Login</button>
