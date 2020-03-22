@@ -62,18 +62,16 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            // parse response into JSON object
             let answer = JSON.parse(this.responseText);
-            if (answer === "Correct") {
-                window.open("./../pages/application.php", "_self");
-            }else if (answer === "This user does not exist!") {
-                faultUserName.textContent = answer;
-            }else if (answer === "Please enter the correct password!") {
-                faultPassword.textContent = answer;
+            if (answer['message'] !== username + ' is now logged in') {
+                document.getElementById('faultpassword').textContent = 'Please make sure your credentials are correct';
+            }else{
+                document.getElementById('faultpassword').textContent = '';
+                openSite('./../pages/application.php');
             }
         }
     };
-    xhttp.open("POST", "./../php/login.php", true);
+    xhttp.open("POST", "./../php/logInFromDB.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username + "&password=" + password);
 }
