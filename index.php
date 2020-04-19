@@ -70,8 +70,8 @@ if (isset($_SESSION['username'])) {
         <p id="faultEmail" class="faults"></p>
 
         <p>Subject</p>
-        <input type="text" id="email" name="email" placeholder="suggestions for improvement">
-        <p id="faultEmail" class="faults"></p>
+        <input type="text" id="subject" name="subject" placeholder="suggestions  for improvement">
+        <p id="faultSubject" class="faults"></p>
 
         <p>Message</p>
         <input type="text" id="message" name="message" placeholder="Describe your request">
