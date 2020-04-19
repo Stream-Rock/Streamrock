@@ -106,6 +106,24 @@ function sendMail(name, faultName, mail, faultMail, subject, faultSubject, messa
     let mailIsCorrect = notBlank(mail, faultMail, "Email") && correctMail(mail, faultMail);
     let subjectIsCorrect = notBlank(subject, faultSubject, "Subject") && notTooLong(subject, faultSubject, 78, "Subject");
     let messageIsCorrect = notBlank(message, faultMessage, "Message") && notTooLong(message, faultMessage, 998, "Message");
+
+    if (nameIsCorrect && mailIsCorrect && subjectIsCorrect && messageIsCorrect) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let response = this.responseText;
+                let lastLine = response.substring(response.lastIndexOf("\n")).trim();
+                if (lastLine === 'Message sent!') {
+                    document.getElementById('sentText').textContent = 'Message sent!';
+                }else{
+                    document.getElementById('sentText').textContent = '';
+                }
+            }
+        };
+        xhttp.open("POST", "./php/sendMail.php", false);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("name=" + name + "&email=" + email + "&subject=" + subject + "&message=" + message);
+    }
 }
 
 function notBlank(value, faultField, fieldName) {
