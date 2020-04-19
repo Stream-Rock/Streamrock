@@ -116,13 +116,13 @@ function sendMail(name, faultName, mail, faultMail, subject, faultSubject, messa
                 if (lastLine === 'Message sent!') {
                     document.getElementById('sentText').textContent = 'Message sent!';
                 }else{
-                    document.getElementById('sentText').textContent = '';
+                    document.getElementById('sentText').textContent = 'An error ocurred. Please try again!';
                 }
             }
         };
         xhttp.open("POST", "./php/sendMail.php", false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("name=" + name + "&email=" + email + "&subject=" + subject + "&message=" + message);
+        xhttp.send("name=" + name + "&email=" + mail + "&subject=" + subject + "&message=" + message);
     }
 }
 
