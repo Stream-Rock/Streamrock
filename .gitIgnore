@@ -1,4 +1,5 @@
 .idea/
 */database-config.php
 streamrock.sql
+*/sendMail.php
 mail
