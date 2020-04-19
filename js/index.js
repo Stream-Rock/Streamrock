@@ -79,33 +79,26 @@ function openLink(link) {
 
 function seeIfUserIsLoggedIn(username) {
     if (username !== '') {
-        let listElement1 = document.createElement("li");
-        let listLink1 = document.createElement("a");
-        listLink1.textContent = "Application";
-        listLink1.href = "./pages/application.php";
-        listElement1.appendChild(listLink1);
-        document.getElementById("navigationList").appendChild(listElement1);
-        let listElement2 = document.createElement("li");
-        let listLink2 = document.createElement("a");
-        listLink2.textContent = username;
-        listLink2.href = "./pages/application.php";
-        listElement2.appendChild(listLink2);
-        document.getElementById("navigationList").appendChild(listElement2);
+        makeNavigation("Application", "./pages/application.php", username, "./pages/application.php");
     } else {
-        let listElement1 = document.createElement("li");
-        let listLink1 = document.createElement("a");
-        listLink1.textContent = "Register";
-        listLink1.href = "./pages/register.php";
-        listElement1.appendChild(listLink1);
-        document.getElementById("navigationList").appendChild(listElement1);
-        let listElement2 = document.createElement("li");
-        let listLink2 = document.createElement("a");
-        listLink2.textContent = "Login";
-        listLink2.href = "./pages/login.php";
-        listElement2.appendChild(listLink2);
-        document.getElementById("navigationList").appendChild(listElement2);
+        makeNavigation("Register", "./pages/register.php", "Login", "./pages/login.php");
     }
-    //TODO: Make a function to prevent code duplication
+
+}
+
+function makeNavigation(firstLinkName, firstLink, secondLinkName, secondLink) {
+    let listElement1 = document.createElement("li");
+    let listLink1 = document.createElement("a");
+    listLink1.textContent = firstLinkName;
+    listLink1.href = firstLink;
+    listElement1.appendChild(listLink1);
+    document.getElementById("navigationList").appendChild(listElement1);
+    let listElement2 = document.createElement("li");
+    let listLink2 = document.createElement("a");
+    listLink2.textContent = secondLinkName;
+    listLink2.href = secondLink;
+    listElement2.appendChild(listLink2);
+    document.getElementById("navigationList").appendChild(listElement2);
 }
 
 function sendMail(name, faultName, mail, faultMail, subject, faultSubject, message, faultMessage) {
