@@ -61,19 +61,23 @@ if (isset($_SESSION['username'])) {
         <img src="./images/registerIcon.png" alt="Shamrock" id="linkRegister">
     </div>
     <div id="contactForm">
-        <p>Name</p>
-        <input type="text" id="name" name="name" placeholder="Max Mustermann">
+        <p>Your name</p>
+        <input type="text" id="name" name="name" placeholder="Jane Doe">
         <p id="faultName" class="faults"></p>
 
-        <p>E-Mail-Adresse</p>
-        <input type="text" id="email" name="email" placeholder="max@mustermail.com">
+        <p>Your email address</p>
+        <input type="text" id="email" name="email" placeholder="jane.doe@yourmail.com">
         <p id="faultEmail" class="faults"></p>
 
-        <p>Nachricht</p>
-        <input type="text" id="message" name="message" placeholder="Max. 300 Zeichen">
+        <p>Subject</p>
+        <input type="text" id="email" name="email" placeholder="suggestions for improvement">
+        <p id="faultEmail" class="faults"></p>
+
+        <p>Message</p>
+        <input type="text" id="message" name="message" placeholder="Describe your request">
         <p id="faultMessage" class="faults"></p>
 
-        <input type="submit" id="submit" value="Senden">
+        <input type="submit" id="submit" value="Send">
         <p id="sentText"></p>
     </div>
 </section>
