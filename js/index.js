@@ -12,6 +12,18 @@ function init(username) {
     if (typeof username === "string") {
         seeIfUserIsLoggedIn(username);
     }
+    document.getElementById('submit').addEventListener('click', () => {
+        sendMail(
+            document.getElementById('name').value,
+            document.getElementById('faultName'),
+            document.getElementById('email').value,
+            document.getElementById('faultEmail'),
+            document.getElementById('subject').value,
+            document.getElementById('faultSubject'),
+            document.getElementById('message').value,
+            document.getElementById('faultMessage')
+        );
+    });
 }
 
 function createRellax() {
@@ -93,4 +105,61 @@ function seeIfUserIsLoggedIn(username) {
         listElement2.appendChild(listLink2);
         document.getElementById("navigationList").appendChild(listElement2);
     }
+    //TODO: Make a function to prevent code duplication
+}
+
+function sendMail(name, faultName, mail, faultMail, subject, faultSubject, message, faultMessage) {
+    let nameIsCorrect = notBlank(name, faultName, "Name") && correctName(name, faultName);
+    let mailIsCorrect = notBlank(mail, faultMail, "Email") && correctMail(mail, faultMail);
+    let subjectIsCorrect = notBlank(subject, faultSubject, "Subject") && notTooLong(subject, faultSubject, 78, "Subject");
+    let messageIsCorrect = notBlank(message, faultMessage, "Message") && notTooLong(message, faultMessage, 998, "Message");
+}
+
+function notBlank(value, faultField, fieldName) {
+    let patt = /./gm;
+    let result = patt.test(value);
+    if (!result) {
+        faultField.textContent = `${fieldName} must not be blank!`;
+    } else{
+        faultField.textContent = '';
+    }
+
+    return result;
+}
+
+function correctName(name, faultField) {
+    let patt = /^[A-Za-z]+ +[A-Za-z]/gm;
+    let result = patt.test(name);
+    if (!result) {
+        faultField.textContent = 'Please enter a correct first and last name!';
+    } else{
+        faultField.textContent = '';
+    }
+
+    return result;
+}
+
+function correctMail(mail, faultField) {
+    let patt = /\S+@\S+\.\S+/gm;
+    let result = patt.test(mail);
+
+    if (!result) {
+        faultField.textContent = 'Please enter a correct email e.g. yourname@mail.com!';
+    } else{
+        faultField.textContent = '';
+    }
+
+    return result;
+}
+
+function notTooLong(value, faultField, limit, fieldName) {
+    let result = value.length < limit;
+
+    if (!result) {
+        faultField.textContent = `${fieldName} must not be longer than ${limit} characters!`
+    } else{
+        faultField.textContent = '';
+    }
+
+    return result;
 }
