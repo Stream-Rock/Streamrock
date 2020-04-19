@@ -60,6 +60,22 @@ if (isset($_SESSION['username'])) {
     <div class="imageLeft" id="register">
         <img src="./images/registerIcon.png" alt="Shamrock" id="linkRegister">
     </div>
+    <div id="contactForm">
+        <p>Name</p>
+        <input type="text" id="name" name="name" placeholder="Max Mustermann">
+        <p id="faultName" class="faults"></p>
+
+        <p>E-Mail-Adresse</p>
+        <input type="text" id="email" name="email" placeholder="max@mustermail.com">
+        <p id="faultEmail" class="faults"></p>
+
+        <p>Nachricht</p>
+        <input type="text" id="message" name="message" placeholder="Max. 300 Zeichen">
+        <p id="faultMessage" class="faults"></p>
+
+        <input type="submit" id="submit" value="Senden">
+        <p id="sentText"></p>
+    </div>
 </section>
 <script src="./js/rellax.min.js"></script>
 <script src="./js/index.js"></script>

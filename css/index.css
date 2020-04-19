@@ -160,3 +160,46 @@ section:nth-child(2) {
 h2{
     font-size: 30px;
 }
+
+input[type=text] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+#message{
+    padding-bottom: 20%;
+}
+
+input[type=submit] {
+    background-color: darkgray;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: darkslategray;
+}
+
+#contactForm{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.faults{
+    color: red;
+}
+
+#sentText {
+    color: #4CAF50;
+}
