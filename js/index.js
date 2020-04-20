@@ -27,6 +27,34 @@ function init(username) {
             document.getElementById('faultMessage')
         );
     });
+    document.getElementById('name').addEventListener('input', () => {
+        changeBorderName(
+          document.getElementById('name'),
+          document.getElementById('faultName')
+        );
+    });
+    document.getElementById('email').addEventListener('input', () => {
+        changeBorderMail(
+            document.getElementById('email'),
+            document.getElementById('faultEmail')
+        );
+    });
+    document.getElementById('subject').addEventListener('input', () => {
+        changeBorderSubjectAndMessage(
+            document.getElementById('subject'),
+            document.getElementById('faultSubject'),
+            "Subject",
+            78
+        );
+    });
+    document.getElementById('message').addEventListener('input', () => {
+        changeBorderSubjectAndMessage(
+            document.getElementById('message'),
+            document.getElementById('faultMessage'),
+            "Message",
+            998
+        )
+    });
 }
 
 function createRellax() {
@@ -189,4 +217,19 @@ function notTooLong(value, faultField, limit, fieldName, field) {
     }
 
     return result;
+}
+
+function changeBorderName(name, faultField) {
+    notBlank(name.value, faultField, "Name", name);
+    correctName(name.value, faultField, name);
+}
+
+function changeBorderMail(mail, faultField) {
+    notBlank(mail.value, faultField, "Email", mail);
+    correctMail(mail.value, faultField, mail);
+}
+
+function changeBorderSubjectAndMessage(field, faultField, name, limit) {
+    notBlank(field.value, faultField, name, field);
+    notTooLong(field.value, faultField, limit, name, field);
 }
