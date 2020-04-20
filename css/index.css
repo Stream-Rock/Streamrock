@@ -217,3 +217,13 @@ input[type=submit]:hover {
 #sentText {
     color: #4CAF50;
 }
+
+#messageSent{
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 10%;
+}
+
+.fa-envelope{
+    font-size: 56px;
+}

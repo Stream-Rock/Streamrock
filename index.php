@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="./images/shamrock_black.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 </head>
 <body onload="init('<?php
@@ -60,8 +61,8 @@ if (isset($_SESSION['username'])) {
     <div class="imageLeft" id="register">
         <img src="./images/registerIcon.png" alt="Shamrock" id="linkRegister">
     </div>
-    <h1 class="heading">Contact</h1>
-    <div id="contactForm">
+    <div id="contactForm" style="display: block">
+        <h1 class="heading">Contact</h1>
         <h3>Your name</h3>
         <input type="text" id="name" name="name" placeholder="Jane Doe">
         <p id="faultName" class="faults">&nbsp</p>
@@ -80,6 +81,10 @@ if (isset($_SESSION['username'])) {
 
         <input type="submit" id="submit" value="Send">
         <p id="sentText"></p>
+    </div>
+    <div id="messageSent" style="display: none">
+        <i class="far fa-envelope"></i>
+        <h1>Message sent!</h1>
     </div>
 </section>
 <script src="./js/rellax.min.js"></script>

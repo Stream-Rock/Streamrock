@@ -150,9 +150,12 @@ function sendMail(nameField, faultName, mailField, faultMail, subjectField, faul
                 let response = this.responseText;
                 let lastLine = response.substring(response.lastIndexOf("\n")).trim();
                 if (lastLine === 'Message sent!') {
-                    document.getElementById('sentText').textContent = 'Message sent!';
+                    document.getElementById('contactForm').style.display = 'none';
+                    document.getElementById('messageSent').style.display = 'block';
                 }else{
                     document.getElementById('sentText').textContent = 'An error ocurred. Please try again!';
+                    document.getElementById('messageSent').style.display = 'none';
+                    document.getElementById('contactForm').style.display = 'block';
                 }
             }
         };
