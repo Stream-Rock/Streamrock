@@ -1,3 +1,6 @@
+let faultColor = '#e74c3c';
+let normalColor = 'green';
+
 function init(username) {
     createRellax();
     for (let i = 0; i < document.getElementsByClassName('linkApplication').length; i++) {
@@ -14,13 +17,13 @@ function init(username) {
     }
     document.getElementById('submit').addEventListener('click', () => {
         sendMail(
-            document.getElementById('name').value,
+            document.getElementById('name'),
             document.getElementById('faultName'),
-            document.getElementById('email').value,
+            document.getElementById('email'),
             document.getElementById('faultEmail'),
-            document.getElementById('subject').value,
+            document.getElementById('subject'),
             document.getElementById('faultSubject'),
-            document.getElementById('message').value,
+            document.getElementById('message'),
             document.getElementById('faultMessage')
         );
     });
@@ -101,11 +104,16 @@ function makeNavigation(firstLinkName, firstLink, secondLinkName, secondLink) {
     document.getElementById("navigationList").appendChild(listElement2);
 }
 
-function sendMail(name, faultName, mail, faultMail, subject, faultSubject, message, faultMessage) {
-    let nameIsCorrect = notBlank(name, faultName, "Name") && correctName(name, faultName);
-    let mailIsCorrect = notBlank(mail, faultMail, "Email") && correctMail(mail, faultMail);
-    let subjectIsCorrect = notBlank(subject, faultSubject, "Subject") && notTooLong(subject, faultSubject, 78, "Subject");
-    let messageIsCorrect = notBlank(message, faultMessage, "Message") && notTooLong(message, faultMessage, 998, "Message");
+function sendMail(nameField, faultName, mailField, faultMail, subjectField, faultSubject, messageField, faultMessage) {
+    let name = nameField.value;
+    let mail = mailField.value;
+    let subject = subjectField.value;
+    let message = messageField.value;
+
+    let nameIsCorrect = notBlank(name, faultName, "Name", nameField) && correctName(name, faultName, nameField);
+    let mailIsCorrect = notBlank(mail, faultMail, "Email", mailField) && correctMail(mail, faultMail, mailField);
+    let subjectIsCorrect = notBlank(subject, faultSubject, "Subject", subjectField) && notTooLong(subject, faultSubject, 78, "Subject", subjectField);
+    let messageIsCorrect = notBlank(message, faultMessage, "Message", messageField) && notTooLong(message, faultMessage, 998, "Message", messageField);
 
     if (nameIsCorrect && mailIsCorrect && subjectIsCorrect && messageIsCorrect) {
         let xhttp = new XMLHttpRequest();
@@ -126,50 +134,58 @@ function sendMail(name, faultName, mail, faultMail, subject, faultSubject, messa
     }
 }
 
-function notBlank(value, faultField, fieldName) {
+function notBlank(value, faultField, fieldName, field) {
     let patt = /./gm;
     let result = patt.test(value);
     if (!result) {
         faultField.textContent = `${fieldName} must not be blank!`;
+        field.style.borderColor = faultColor;
     } else{
         faultField.textContent = '';
+        field.style.borderColor = normalColor;
     }
 
     return result;
 }
 
-function correctName(name, faultField) {
+function correctName(name, faultField, field) {
     let patt = /^[A-Za-z]+ +[A-Za-z]/gm;
     let result = patt.test(name);
     if (!result) {
         faultField.textContent = 'Please enter a correct first and last name!';
+        field.style.borderColor = faultColor;
     } else{
         faultField.textContent = '';
+        field.style.borderColor = normalColor;
     }
 
     return result;
 }
 
-function correctMail(mail, faultField) {
+function correctMail(mail, faultField, field) {
     let patt = /\S+@\S+\.\S+/gm;
     let result = patt.test(mail);
 
     if (!result) {
         faultField.textContent = 'Please enter a correct email e.g. yourname@mail.com!';
+        field.style.borderColor = faultColor;
     } else{
         faultField.textContent = '';
+        field.style.borderColor = normalColor;
     }
 
     return result;
 }
 
-function notTooLong(value, faultField, limit, fieldName) {
+function notTooLong(value, faultField, limit, fieldName, field) {
     let result = value.length < limit;
 
     if (!result) {
         faultField.textContent = `${fieldName} must not be longer than ${limit} characters!`
+        field.style.borderColor = faultColor;
     } else{
         faultField.textContent = '';
+        field.style.borderColor = normalColor;
     }
 
     return result;
