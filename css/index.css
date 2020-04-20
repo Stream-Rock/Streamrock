@@ -167,14 +167,17 @@ h3{
 
 input[type=text] {
     width: 100%;
-    padding: 12px;
-    border: 3px solid #2ecc71;
-    border-radius: 4px;
+    padding: 12px 20px 12px 23px;
+    border: 2px solid rgba(0, 0, 0, 0.0);
+    border-radius: 10px;
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
     outline: none;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0,0,0,.05);
+    font-size: 18px;
 }
 
 #message{
@@ -182,16 +185,22 @@ input[type=text] {
 }
 
 input[type=submit] {
-    background-color: darkgray;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 160px;
+    height: 42px;
+    background-color: #2ecc71;
+    border: 2px solid rgba(0, 0, 0, 0.0);
+    border-radius: 21px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
 }
 
 input[type=submit]:hover {
-    background-color: darkslategray;
+    cursor: pointer;
 }
 
 #contactForm{

@@ -1,5 +1,5 @@
 let faultColor = '#e74c3c';
-let normalColor = 'green';
+let normalColor = 'rgba(0, 0, 0, 0.0)';
 
 function init(username) {
     createRellax();
@@ -169,7 +169,7 @@ function notBlank(value, faultField, fieldName, field) {
         faultField.textContent = `${fieldName} must not be blank!`;
         field.style.borderColor = faultColor;
     } else{
-        faultField.textContent = '';
+        faultField.innerHTML = '&nbsp;';
         field.style.borderColor = normalColor;
     }
 
@@ -183,7 +183,7 @@ function correctName(name, faultField, field) {
         faultField.textContent = 'Please enter a correct first and last name!';
         field.style.borderColor = faultColor;
     } else{
-        faultField.textContent = '';
+        faultField.innerHTML = '&nbsp;';
         field.style.borderColor = normalColor;
     }
 
@@ -198,7 +198,7 @@ function correctMail(mail, faultField, field) {
         faultField.textContent = 'Please enter a correct email e.g. yourname@mail.com!';
         field.style.borderColor = faultColor;
     } else{
-        faultField.textContent = '';
+        faultField.innerHTML = '&nbsp;';
         field.style.borderColor = normalColor;
     }
 
@@ -209,10 +209,10 @@ function notTooLong(value, faultField, limit, fieldName, field) {
     let result = value.length < limit;
 
     if (!result) {
-        faultField.textContent = `${fieldName} must not be longer than ${limit} characters!`
+        faultField.textContent = `${fieldName} must not be longer than ${limit} characters!`;
         field.style.borderColor = faultColor;
     } else{
-        faultField.textContent = '';
+        faultField.innerHTML = '&nbsp;';
         field.style.borderColor = normalColor;
     }
 

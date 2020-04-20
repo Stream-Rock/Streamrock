@@ -64,19 +64,19 @@ if (isset($_SESSION['username'])) {
     <div id="contactForm">
         <h3>Your name</h3>
         <input type="text" id="name" name="name" placeholder="Jane Doe">
-        <p id="faultName" class="faults"></p>
+        <p id="faultName" class="faults">&nbsp</p>
 
         <h3>Your email address</h3>
         <input type="text" id="email" name="email" placeholder="jane.doe@yourmail.com">
-        <p id="faultEmail" class="faults"></p>
+        <p id="faultEmail" class="faults">&nbsp</p>
 
         <h3>Subject</h3>
-        <input type="text" id="subject" name="subject" placeholder="suggestions  for improvement">
-        <p id="faultSubject" class="faults"></p>
+        <input type="text" id="subject" name="subject" placeholder="Suggestions  for improvement">
+        <p id="faultSubject" class="faults">&nbsp</p>
 
         <h3>Message</h3>
         <input type="text" id="message" name="message" placeholder="Describe your request">
-        <p id="faultMessage" class="faults"></p>
+        <p id="faultMessage" class="faults">&nbsp</p>
 
         <input type="submit" id="submit" value="Send">
         <p id="sentText"></p>
