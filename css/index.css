@@ -161,15 +161,20 @@ h2{
     font-size: 30px;
 }
 
+h3{
+    font-size: 24px;
+}
+
 input[type=text] {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 3px solid #2ecc71;
     border-radius: 4px;
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
+    outline: none;
 }
 
 #message{
@@ -197,7 +202,7 @@ input[type=submit]:hover {
 }
 
 .faults{
-    color: red;
+    color: #e74c3c;
 }
 
 #sentText {
