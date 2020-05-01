@@ -61,6 +61,9 @@ function init(username) {
         document.getElementById('search').addEventListener('keyup', () => {
             getResults(document.getElementById('search').value);
         });
+        document.getElementById('profilePictureToUpload').addEventListener('change', () => {
+            uploadPicture(document.getElementById('profilePictureForm'));
+        });
     }
 }
 
@@ -265,4 +268,8 @@ function getResults(value) {
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("search=" + value);
     }
+}
+
+function uploadPicture(form) {
+    form.submit();
 }

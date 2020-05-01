@@ -96,7 +96,9 @@ if (isset($_SESSION['username'])) {
         <img src="./../images/profile_picture.png" alt="Image">
         <p id="profileName"></p>
         <div>
-            <p>Change profile picture <input type="file" name="fileToUpload" id="profilePictureToUpload" class="file-input"></p>
+            <form id="profilePictureForm" action="./../php/uploadProfilePicture.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="fileToUpload" id="profilePictureToUpload" class="file-input">
+            </form>
         </div>
         <button id="logoutButton">Log out</button>
         <button class="deleteAccountButton" id="deleteAccountButton">Delete Account</button>
