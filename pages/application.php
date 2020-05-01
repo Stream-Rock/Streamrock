@@ -95,11 +95,15 @@ if (isset($_SESSION['username'])) {
     <div id="profileBox">
         <img src="./../images/profile_picture.png" alt="Image">
         <p id="profileName"></p>
+        <div>
+            <p>Change profile picture <input type="file" name="fileToUpload" id="profilePictureToUpload" class="file-input"></p>
+        </div>
         <button id="logoutButton">Log out</button>
         <button class="deleteAccountButton" id="deleteAccountButton">Delete Account</button>
         <p style="font-size: 20px; display: none" id="sureText">Are you sure you want to delete your account?</p>
         <button style="display: none" class="deleteAccountButton" id="sureButton">Yes, I am sure</button>
         <button style="display: none" class="deleteAccountButton" id="cancelButton">Cancel</button>
+
     </div>
 </div>
 <div id="searchResults" style="display: none">
