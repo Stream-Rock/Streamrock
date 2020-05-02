@@ -65,6 +65,7 @@ function init(username, profile_picture) {
         document.getElementById('profilePictureToUpload').addEventListener('change', () => {
             uploadPicture(document.getElementById('profilePictureForm'));
         });
+        document.getElementById('cancelCreateNewPlaylist').addEventListener('click', disableAddPlaylistBox);
     }
 }
 
@@ -112,7 +113,7 @@ function switchTab(tab, pElement) {
 
 function addPlaylistOn() {
     $('.createNewPlaylist')[0].style.display = 'flex';
-    $('#startSuggestions')[0].style.filter = 'blur(5px)';
+    document.getElementById('startSuggestions').style.filter = 'blur(5px)';
     document.getElementById('favorites').style.filter = 'blur(5px)';
     document.getElementById('profile').style.filter = 'blur(5px)';
 }
@@ -129,7 +130,7 @@ function addPlaylist(name, description) {
 
 function disableAddPlaylistBox() {
     $('.createNewPlaylist')[0].style.display = 'none';
-    $('#startSuggestions')[0].style.filter = 'blur(0px)';
+    document.getElementById('startSuggestions').style.filter = 'blur(0px)';
     document.getElementById('favorites').style.filter = 'blur(0px)';
     document.getElementById('profile').style.filter = 'blur(0px)';
 }

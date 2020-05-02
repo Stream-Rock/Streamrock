@@ -166,6 +166,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
             <p>Create</p>
         </div>
     </div>
+    <i class="far fa-times-circle" id="cancelCreateNewPlaylist"></i>
 </div>
 <script src="./../js/application.js"></script>
 </body>
