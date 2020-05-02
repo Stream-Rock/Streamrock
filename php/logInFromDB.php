@@ -14,25 +14,31 @@ if((isset($_POST["username"])) && !empty($_POST["username"]) && isset($_POST["pa
     $_password = $conn->real_escape_string($_POST["password"]);
     $_password = "saver" . $_password . "now";
 
-    $_sql = "SELECT * FROM accounts WHERE username='$_username' AND password=md5('$_password') AND user_deleted=0 LIMIT 1";
+    $_sql = "SELECT profile_picture FROM accounts WHERE username='$_username' AND password=md5('$_password') AND user_deleted=0 LIMIT 1";
 
     if($_res = $conn->query($_sql)){
         if($_res->num_rows > 0){
             $_SESSION["loggedin"] = true;
             $_SESSION["username"] = $_username;
 
+            if ($row = $_res->fetch_assoc()) {
+                $_SESSION["profile_picture"] = $row["profile_picture"];
+            }
+
             $_sql = "UPDATE accounts SET last_login=NOW() WHERE username=" . $_SESSION["username"];
             $conn->query($_sql);
             $response["message"] = "$_username is now logged in";
+        } else{
+            $response["message"] = "Please make sure the credentials are correct";
         }
-    }else{
+    } else{
         $response["message"] = "Please make sure the credentials are correct";
     }
 } else{
     $response["message"] = "Username and password must be set";
 }
 
-$conn->close();
 
-echo json_encode($response);
-?>
+echo json_encode($response["message"]);
+$conn->close();
+?>;
