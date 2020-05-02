@@ -28,6 +28,7 @@ if ($uploadSuccessful) {
         $insertStatement->execute();
 
         $conn->close();
+        $_SESSION["profile_picture"] = $target_file;
         echo '<script type="text/javascript">
             window.open("./../pages/application.php", "_self");
         </script>';
