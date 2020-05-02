@@ -203,7 +203,7 @@ i {
     margin-right: 30%;
 }
 
-#startSuggestions, #favorites, #profile, #searchResults {
+#startSuggestions, #favorites, #profile, #searchResults, #playlistBox {
     width: 75%;
     position: absolute;
     top: 16%;
@@ -559,4 +559,22 @@ h6 {
 }
 .file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.playlistDescription {
+    width: 400px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.playlistDescription img {
+    margin-right: 15px;
+    float: left;
+}
+
+.playlistDescription h3,
+.playlistDescription p{
+    margin-left: 15px;
+    display: block;
+    margin: 2px 0 0 0;
 }

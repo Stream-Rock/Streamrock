@@ -119,6 +119,13 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     <div class="suggestion" id="searchResultsBox">
     </div>
 </div>
+<div id="playlistBox" style="display: none;">
+    <div class="playlistDescription">
+        <img src="http://cdn4.iconfinder.com/data/icons/socialmediaicons_v120/48/google.png"/ alt="" >
+        <h3>Title</h3>
+        <p>Some Description</p>
+    </div>
+</div>
 <div class="songOptions">
     <div class="volumeBar">
         <i class="fas fa-volume-down" id="volume_down"></i>
