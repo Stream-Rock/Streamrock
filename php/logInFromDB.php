@@ -25,7 +25,7 @@ if((isset($_POST["username"])) && !empty($_POST["username"]) && isset($_POST["pa
                 $_SESSION["profile_picture"] = $row["profile_picture"];
             }
 
-            $_sql = "UPDATE accounts SET last_login=NOW() WHERE username=" . $_SESSION["username"];
+            $_sql = "UPDATE accounts SET last_login=NOW() WHERE username='$_username'";
             $conn->query($_sql);
             $response["message"] = "$_username is now logged in";
         } else{
