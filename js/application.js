@@ -4,9 +4,10 @@ const slider = interact('.slider');
 
 window.addEventListener('load', init);
 
-function init(username) {
+function init(username, profile_picture) {
     if (typeof username == "string") {
         document.getElementById("profileName").textContent = username;
+        document.getElementById('profilePicture').src = profile_picture;
 
         document.getElementById('random').addEventListener('click', () => {
             activateAndDeactivateIcon(document.getElementById('random'))

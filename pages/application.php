@@ -32,6 +32,12 @@ if (isset($_SESSION['username'])) {
 }else{
     die("An error occurred");
 }
+?>', '<?php
+if (isset($_SESSION['profile_picture'])) {
+    echo $_SESSION['profile_picture'];
+}else {
+    echo './../images/profile_picture.png';
+}
 ?>')">
 <div class="leftBar">
     <nav>
@@ -93,7 +99,7 @@ if (isset($_SESSION['username'])) {
 </div>
 <div class="tab" id="profile" style="display: none;">
     <div id="profileBox">
-        <img src="./../images/profile_picture.png" alt="Image">
+        <img src="./../images/profile_picture.png" alt="Image" id="profilePicture">
         <p id="profileName"></p>
         <div>
             <form id="profilePictureForm" action="./../php/uploadProfilePicture.php" method="post" enctype="multipart/form-data">
