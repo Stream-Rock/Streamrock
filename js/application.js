@@ -274,3 +274,20 @@ function getResults(value) {
 function uploadPicture(form) {
     form.submit();
 }
+
+slider
+    .draggable({
+        origin: 'self',
+        inertia: true,
+        modifiers: [
+            interact.modifiers.restrict({
+                restriction: 'self'
+            })
+        ]
+    })
+    .on('dragmove', function (event) {
+        const sliderWidth = interact.getElementRect(event.target.parentNode).width
+        const value = event.pageX / sliderWidth
+        event.target.style.paddingLeft = (value * 100) + '%'
+        event.target.setAttribute('data-value', value.toFixed(2))
+    })
