@@ -17,7 +17,4 @@ if (isset($username) && !empty($username)) {
 }else{
     die("Username must be set");
 }
-
-$stmt->close();
-$conn->close();
 ?>

@@ -33,7 +33,7 @@ if (isset($_SESSION['username'])) {
     die("An error occurred");
 }
 ?>', '<?php
-if (isset($_SESSION['profile_picture'])) {
+if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') {
     echo $_SESSION['profile_picture'];
 }else {
     echo './../images/profile_picture.png';

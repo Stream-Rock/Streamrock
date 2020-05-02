@@ -62,8 +62,8 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            let answer = JSON.parse(this.responseText);
-            if (answer['message'] !== username + ' is now logged in') {
+            let answer = this.responseText;
+            if (!answer.includes(username + ' is now logged in')) {
                 userExists(username);
             }else{
                 document.getElementById('faultusername').textContent = '';
@@ -72,7 +72,7 @@ function sendData(username, usernameText, faultUserName, password, passwordText,
             }
         }
     };
-    xhttp.open("POST", "./../php/logInFromDB.php", true);
+    xhttp.open("POST", "./../php/logInFromDB.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username + "&password=" + password);
 }
@@ -89,7 +89,7 @@ function userExists(username) {
             }
         }
     };
-    xhttp.open("POST", "./../php/checkIfUserExists.php", true);
+    xhttp.open("POST", "./../php/checkIfUserExists.php");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username);
 }
