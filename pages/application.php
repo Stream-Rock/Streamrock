@@ -119,11 +119,47 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     <div class="suggestion" id="searchResultsBox">
     </div>
 </div>
-<div id="playlistBox" style="display: none;">
+<div id="playlistBox" style="display: block;">
     <div class="playlistDescription">
         <img src="http://cdn4.iconfinder.com/data/icons/socialmediaicons_v120/48/google.png"/ alt="" >
-        <h3>Title</h3>
+        <h3>Playlist Name</h3>
         <p>Some Description</p>
+        <p>Made by testuser 0 Songs</p>
+        <button>Play</button>
+    </div>
+    <div>
+        <table class="playlistTable">
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Date added</th>
+            </tr>
+            <tr>
+                <td><span><i class="tableIcon far fa-play-circle"></i></span><i class="far fa-star"></i></td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Lois</td>
+                <td>Griffin</td>
+                <td>$150</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Joe</td>
+                <td>Swanson</td>
+                <td>$300</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Cleveland</td>
+                <td>Brown</td>
+                <td>$250</td>
+            </tr>
+        </table>
     </div>
 </div>
 <div class="songOptions">
