@@ -168,16 +168,44 @@ function writeData(filename, className, idToPutTo, username) {
         if (this.readyState == 4 && this.status == 200) {
             let data = JSON.parse(this.responseText);
             for (let i = 0; i < data.length; i++) {
+
                 let element = document.createElement('div');
                 element.setAttribute('class', className);
+
                 let image = document.createElement('img');
                 image.setAttribute('src', './../images/' + data[i]['picture']);
                 image.setAttribute('alt', 'Image');
+
                 let name = document.createElement('p');
                 name.textContent = data[i]['title'];
+
                 let artist = document.createElement('p');
                 artist.textContent = data[i]['artist'];
-                element.appendChild(image);
+
+                let container = document.createElement('div');
+                container.setAttribute('class', 'container');
+
+                let overlay = document.createElement('div');
+                overlay.setAttribute('class', 'overlay');
+
+                let favorite = document.createElement('i');
+                favorite.setAttribute('class', 'favorite far fa-star');
+
+                let play = document.createElement('i');
+                play.setAttribute('class', 'play far fa-play-circle');
+
+
+                let more = document.createElement('i');
+                more.setAttribute('class', 'moreOptions fas fa-ellipsis-h');
+
+                overlay.appendChild(favorite);
+                overlay.appendChild(play);
+                overlay.appendChild(more);
+
+                container.appendChild(image);
+                container.appendChild(overlay);
+
+                element.appendChild(container);
                 element.appendChild(name);
                 element.appendChild(artist);
                 document.getElementById(idToPutTo).appendChild(element);
