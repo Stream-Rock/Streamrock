@@ -1,6 +1,7 @@
 let activeColor = 'rgb(46, 204, 113)';
 let deactiveColor = 'gray';
 let amountSongs = 0;
+let defaultPicture = './../images/profile_picture.png';
 const slider = interact('.slider');
 
 window.addEventListener('load', init);
@@ -152,6 +153,7 @@ function writePlaylistsFromUser(username) {
                 playlistp.setAttribute('data-name', playlists[i][0]);
                 playlistp.setAttribute('data-username', playlists[i][1]);
                 playlistp.setAttribute('data-description', playlists[i][2]);
+                playlistp.setAttribute('data-playlist_picture', playlists[i][3]);
                 playlistLi.appendChild(playlistp);
                 document.getElementById("playlistListing").appendChild(playlistLi);
             }
@@ -161,7 +163,8 @@ function writePlaylistsFromUser(username) {
                     showPlaylist(
                         document.getElementsByClassName('navigationLink')[i].getAttribute('data-name'),
                         document.getElementsByClassName('navigationLink')[i].getAttribute('data-username'),
-                        document.getElementsByClassName('navigationLink')[i].getAttribute('data-description'));
+                        document.getElementsByClassName('navigationLink')[i].getAttribute('data-description'),
+                        document.getElementsByClassName('navigationLink')[i].getAttribute('data-playlist_picture'));
                 });
             }
         }
@@ -319,10 +322,16 @@ function uploadPicture(form) {
     form.submit();
 }
 
-function showPlaylist(playlistName, playlistUsername, playlistDescription) {
+function showPlaylist(playlistName, playlistUsername, playlistDescription, playlistPicture) {
     document.getElementById('playlistName').textContent = playlistName;
     document.getElementById('playlistDescription').textContent = playlistDescription;
     document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
+
+    if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL') {
+        document.getElementById('playlistPicture').src = defaultPicture;
+    } else {
+        document.getElementById('playlistPicture').src = playlistPicture;
+    }
 }
 
 slider

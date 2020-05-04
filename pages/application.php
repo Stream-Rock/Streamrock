@@ -121,13 +121,13 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
 </div>
 <div id="playlistBox" style="display: block;">
     <div class="playlistDescription">
-        <img src="http://cdn4.iconfinder.com/data/icons/socialmediaicons_v120/48/google.png"/ alt="" >
-        <h3>Playlist Name</h3>
-        <p>Some Description</p>
-        <p>Made by testuser 0 Songs</p>
+        <img id="playlistPicture" src="./../images/profile_picture.png"/ alt="Playlist picture" >
+        <h3 id="playlistName">Playlist Name</h3>
+        <p id="playlistDescription">Some Description</p>
+        <p id="playlistUsername">Made by testuser 0 Songs</p>
         <button>Play</button>
     </div>
-    <div>
+    <div id="playlistData">
         <table class="playlistTable">
             <tr>
                 <th></th>
