@@ -116,6 +116,8 @@ function addPlaylistOn() {
     document.getElementById('favorites').style.filter = 'blur(5px)';
     document.getElementById('profile').style.filter = 'blur(5px)';
     document.getElementById('playlistBox').style.filter = 'blur(5px)';
+    document.getElementById('searchResults').style.filter = 'blur(5px)';
+
 }
 
 function addPlaylist(name, description) {
@@ -134,6 +136,8 @@ function disableAddPlaylistBox() {
     document.getElementById('favorites').style.filter = 'blur(0px)';
     document.getElementById('profile').style.filter = 'blur(0px)';
     document.getElementById('playlistBox').style.filter = 'blur(0px)';
+    document.getElementById('searchResults').style.filter = 'blur(0px)';
+
 }
 
 function writePlaylistsFromUser(username) {
