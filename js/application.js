@@ -105,10 +105,7 @@ function deleteText() {
 }
 
 function switchTab(tab, pElement) {
-    for (let i = 0; i < $('.tab').length; i++) {
-        $('.tab')[i].style.display = 'none';
-        $('.navigationP')[i].setAttribute('id', '');
-    }
+    hideTabs();
     document.getElementById(tab).style.display = 'block';
     pElement.setAttribute('id', 'active');
 }
@@ -323,6 +320,9 @@ function uploadPicture(form) {
 }
 
 function showPlaylist(playlistName, playlistUsername, playlistDescription, playlistPicture) {
+    hideTabs();
+    document.getElementById('playlistBox').style.display = 'block';
+
     document.getElementById('playlistName').textContent = playlistName;
     document.getElementById('playlistDescription').textContent = playlistDescription;
     document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
@@ -332,6 +332,15 @@ function showPlaylist(playlistName, playlistUsername, playlistDescription, playl
     } else {
         document.getElementById('playlistPicture').src = playlistPicture;
     }
+}
+
+function hideTabs() {
+    for (let i = 0; i < document.getElementsByClassName('tab').length; i++) {
+        document.getElementsByClassName('tab')[i].style.display = 'none';
+        document.getElementsByClassName('navigationP')[i].setAttribute('id', '');
+    }
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('playlistBox').style.display = 'none';
 }
 
 slider

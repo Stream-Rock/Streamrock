@@ -119,7 +119,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     <div class="suggestion" id="searchResultsBox">
     </div>
 </div>
-<div id="playlistBox" style="display: block;">
+<div id="playlistBox" style="display: none;">
     <div class="playlistDescription">
         <img id="playlistPicture" src="./../images/profile_picture.png"/ alt="Playlist picture" >
         <h3 id="playlistName">Playlist Name</h3>
