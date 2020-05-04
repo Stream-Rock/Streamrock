@@ -1,5 +1,6 @@
 let activeColor = 'rgb(46, 204, 113)';
 let deactiveColor = 'gray';
+let amountSongs = 0;
 const slider = interact('.slider');
 
 window.addEventListener('load', init);
@@ -32,7 +33,7 @@ function init(username, profile_picture) {
 
         for (let i = 0; i < $('.link').length; i++) {
             $('.link')[i].addEventListener('click', () => {
-                switchTab($('.link')[i].dataset.tab, $('.navigationP')[i])
+                switchTab($('.link')[i].dataset.tab, $('.navigationP')[i]);
             });
         }
 
@@ -116,6 +117,7 @@ function addPlaylistOn() {
     document.getElementById('startSuggestions').style.filter = 'blur(5px)';
     document.getElementById('favorites').style.filter = 'blur(5px)';
     document.getElementById('profile').style.filter = 'blur(5px)';
+    document.getElementById('playlistBox').style.filter = 'blur(5px)';
 }
 
 function addPlaylist(name, description) {
@@ -133,6 +135,7 @@ function disableAddPlaylistBox() {
     document.getElementById('startSuggestions').style.filter = 'blur(0px)';
     document.getElementById('favorites').style.filter = 'blur(0px)';
     document.getElementById('profile').style.filter = 'blur(0px)';
+    document.getElementById('playlistBox').style.filter = 'blur(0px)';
 }
 
 function writePlaylistsFromUser(username) {
@@ -146,8 +149,20 @@ function writePlaylistsFromUser(username) {
                 let playlistp = document.createElement("p");
                 playlistp.textContent = playlists[i][0];
                 playlistp.setAttribute("class", "navigationLink");
+                playlistp.setAttribute('data-name', playlists[i][0]);
+                playlistp.setAttribute('data-username', playlists[i][1]);
+                playlistp.setAttribute('data-description', playlists[i][2]);
                 playlistLi.appendChild(playlistp);
                 document.getElementById("playlistListing").appendChild(playlistLi);
+            }
+
+            for (let i = 0; i < document.getElementsByClassName('navigationLink').length; i++) {
+                document.getElementsByClassName('navigationLink')[i].addEventListener('click', () => {
+                    showPlaylist(
+                        document.getElementsByClassName('navigationLink')[i].getAttribute('data-name'),
+                        document.getElementsByClassName('navigationLink')[i].getAttribute('data-username'),
+                        document.getElementsByClassName('navigationLink')[i].getAttribute('data-description'));
+                });
             }
         }
     };
@@ -304,6 +319,12 @@ function uploadPicture(form) {
     form.submit();
 }
 
+function showPlaylist(playlistName, playlistUsername, playlistDescription) {
+    document.getElementById('playlistName').textContent = playlistName;
+    document.getElementById('playlistDescription').textContent = playlistDescription;
+    document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
+}
+
 slider
     .draggable({
         origin: 'self',
@@ -319,4 +340,4 @@ slider
         const value = event.pageX / sliderWidth
         event.target.style.paddingLeft = (value * 100) + '%'
         event.target.setAttribute('data-value', value.toFixed(2))
-    })
+    });
