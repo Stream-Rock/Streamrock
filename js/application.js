@@ -62,6 +62,7 @@ function init(username, profile_picture) {
             switchResultTab('none');
         });
         document.getElementById('search').addEventListener('keyup', () => {
+            getArtists(document.getElementById('search').value);
             getResults(document.getElementById('search').value);
         });
         document.getElementById('profilePictureToUpload').addEventListener('change', () => {
@@ -292,7 +293,6 @@ function getResults(value) {
             if (this.readyState == 4 && this.status == 200) {
                 deleteAllPreviousChilds(document.getElementById('searchResultsBox'));
                 let response = JSON.parse(this.responseText);
-                console.log(response);
 
                 let divBoxForSongResults = document.createElement('div');
                 divBoxForSongResults.setAttribute('id', 'songResults');
@@ -369,6 +369,39 @@ function getResults(value) {
             }
         };
         xhttp.open("POST", "./../php/getSongsFromDB.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("search=" + value);
+    }
+}
+
+function getArtists(value) {
+    if (value.length > 3) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let response = JSON.parse(this.responseText);
+                let divBoxForArtistResults = document.createElement('div');
+                divBoxForArtistResults.setAttribute('id', 'artistResults');
+                for (let i = 0; i < response.length; i++) {
+
+                    let element = document.createElement('div');
+                    element.setAttribute('class', 'recentlyPlayedElement');
+
+                    let image = document.createElement('img');
+                    image.setAttribute('src', './../images/profile_picture.png');
+                    image.setAttribute('alt', 'Image');
+
+                    let artist = document.createElement('p');
+                    artist.textContent = response[i]['artist'];
+
+                    element.appendChild(image);
+                    element.appendChild(artist);
+                    divBoxForArtistResults.appendChild(element);
+                }
+                document.getElementById('searchResultsBox').appendChild(divBoxForArtistResults);
+            }
+        };
+        xhttp.open("POST", "./../php/getArtistsFromDB.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("search=" + value);
     }
