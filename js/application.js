@@ -332,6 +332,7 @@ function getResults(value) {
 
                     let artistRow = document.createElement('td');
                     artistRow.textContent = response[i]["artist"];
+                    artistRow.setAttribute('class', 'artistRow');
 
                     let releaseRow = document.createElement('td');
                     releaseRow.textContent = response[i]["release_year"] !== '0' ? response[i]["release_year"] : '-';
@@ -344,6 +345,9 @@ function getResults(value) {
                     tableRow.appendChild(artistRow);
                     tableRow.appendChild(releaseRow);
 
+                    artistRow.addEventListener('click', () => {
+                        openArtistPage(tableRow.getAttribute('data-artist'));
+                    });
                     table.appendChild(tableRow);
 
 
@@ -433,6 +437,10 @@ function hideTabs() {
     }
     document.getElementById('searchResults').style.display = 'none';
     document.getElementById('playlistBox').style.display = 'none';
+}
+
+function openArtistPage(artist) {
+    alert(artist);
 }
 
 slider
