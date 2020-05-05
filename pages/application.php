@@ -116,7 +116,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
 </div>
 <div id="searchResults" style="display: none">
     <h1>Results</h1>
-    <div class="suggestion" id="searchResultsBox">
+    <div id="searchResultsBox">
     </div>
 </div>
 <div id="playlistBox" style="display: none;">

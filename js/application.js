@@ -62,7 +62,7 @@ function init(username, profile_picture) {
             switchResultTab('none');
         });
         document.getElementById('search').addEventListener('keyup', () => {
-            getArtists(document.getElementById('search').value);
+            //getArtists(document.getElementById('search').value);
             getResults(document.getElementById('search').value);
         });
         document.getElementById('profilePictureToUpload').addEventListener('change', () => {
@@ -118,6 +118,8 @@ function addPlaylistOn() {
     document.getElementById('profile').style.filter = 'blur(5px)';
     document.getElementById('playlistBox').style.filter = 'blur(5px)';
     document.getElementById('searchResults').style.filter = 'blur(5px)';
+    document.getElementById('artistBox').style.filter = 'blur(5px)';
+
 
 }
 
@@ -138,6 +140,7 @@ function disableAddPlaylistBox() {
     document.getElementById('profile').style.filter = 'blur(0px)';
     document.getElementById('playlistBox').style.filter = 'blur(0px)';
     document.getElementById('searchResults').style.filter = 'blur(0px)';
+    document.getElementById('artistBox').style.filter = 'blur(0px)';
 
 }
 
@@ -278,12 +281,13 @@ function savePlaylistToDB(name, description, username) {
 }
 
 function switchResultTab(argument) {
+    hideTabs();
+
     if (argument === 'block') {
         document.getElementById('searchResults').style.display = 'none';
-    }else{
+    } else {
         document.getElementById('searchResults').style.display = 'block';
     }
-    document.getElementById('startSuggestions').style.display = argument;
 }
 
 function getResults(value) {
