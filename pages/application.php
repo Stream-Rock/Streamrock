@@ -162,45 +162,14 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         </table>
     </div>
 </div>
-<div id="artistBox" style="display: block">
+<div id="artistBox" style="display: none">
     <div class="artistDescription">
         <img class="artistPicture" src="./../images/profile_picture.png"/ alt="Artist picture">
         <h3 id="artistName">Artist name</h3>
         <button>Play</button>
     </div>
-    <div id="artistData">
-        <table class="playlistTable">
-            <tr>
-                <th></th>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Date added</th>
-            </tr>
-            <tr>
-                <td><span><i class="tableIcon far fa-play-circle"></i></span><i class="far fa-star"></i></td>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td>$100</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Joe</td>
-                <td>Swanson</td>
-                <td>$300</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Cleveland</td>
-                <td>Brown</td>
-                <td>$250</td>
-            </tr>
-        </table>
+    <div id="artistResults">
+
     </div>
 </div>
 <div class="songOptions">

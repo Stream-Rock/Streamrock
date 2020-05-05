@@ -314,41 +314,8 @@ function getResults(value) {
                         tableRow1.appendChild(releaseYear);
                         table.appendChild(tableRow1);
                     }
-                    let tableRow = document.createElement('tr');
 
-                    let iconRow = document.createElement('td');
-                    let span = document.createElement('span');
-                    let icon = document.createElement('i');
-                    icon.setAttribute('class', 'tableIcon far fa-play-circle');
-                    let icon2 = document.createElement('i');
-                    icon2.setAttribute('class', 'far fa-star');
-
-                    span.appendChild(icon);
-                    iconRow.appendChild(span);
-                    iconRow.appendChild(icon2);
-
-                    let songRow = document.createElement('td');
-                    songRow.textContent = response[i]["song_name"];
-
-                    let artistRow = document.createElement('td');
-                    artistRow.textContent = response[i]["artist"];
-                    artistRow.setAttribute('class', 'artistRow');
-
-                    let releaseRow = document.createElement('td');
-                    releaseRow.textContent = response[i]["release_year"] !== '0' ? response[i]["release_year"] : '-';
-
-                    tableRow.setAttribute('data-songName', response[i]["song_name"]);
-                    tableRow.setAttribute('data-artist', response[i]["artist"]);
-                    tableRow.setAttribute('data-releaseYear', response[i]["release_year"]);
-                    tableRow.appendChild(iconRow);
-                    tableRow.appendChild(songRow);
-                    tableRow.appendChild(artistRow);
-                    tableRow.appendChild(releaseRow);
-
-                    artistRow.addEventListener('click', () => {
-                        openArtistPage(tableRow.getAttribute('data-artist'));
-                    });
-                    table.appendChild(tableRow);
+                    table.appendChild(createTableRow(response[i]["song_name"], response[i]["artist"], response[i]["release_year"]));
                 }
                 divBoxForSongResults.appendChild(table);
                 document.getElementById('searchResultsBox').appendChild(divBoxForSongResults);
@@ -427,8 +394,81 @@ function openArtistPage(artist) {
     hideTabs();
     document.getElementById('artistName').textContent = artist;
 
-    document.getElementById('artistBox').style.display = 'block';
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            deleteAllPreviousChilds(document.getElementById('artistResults'));
+            let response = JSON.parse(this.responseText);
+            let divBoxForSongResults = document.createElement('div');
+            divBoxForSongResults.setAttribute('id', 'songResults');
+            let table = document.createElement('table');
+            table.setAttribute('class', 'songResultsTable');
+            for (let i = 0; i < response.length; i++) {
+                if (i === 0) {
+                    let tableRow1 = document.createElement('tr');
+                    let placeholder = document.createElement('th');
+                    let songName = document.createElement('th');
+                    songName.textContent = 'Title';
+                    let songArtist = document.createElement('th');
+                    songArtist.textContent = 'Artist';
+                    let releaseYear = document.createElement('th');
+                    releaseYear.textContent = 'Release year';
+                    tableRow1.appendChild(placeholder);
+                    tableRow1.appendChild(songName);
+                    tableRow1.appendChild(songArtist);
+                    tableRow1.appendChild(releaseYear);
+                    table.appendChild(tableRow1);
+                }
 
+                table.appendChild(createTableRow(response[i]["song_name"], response[i]["artist"], response[i]["release_year"]));
+            }
+            divBoxForSongResults.appendChild(table);
+            document.getElementById('artistResults').appendChild(divBoxForSongResults);
+        }
+        document.getElementById('artistBox').style.display = 'block';
+    };
+    xhttp.open("POST", "./../php/getSongsFromArtist.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("artist=" + artist);
+}
+
+function createTableRow(songName, artist, releaseYear) {
+    let tableRow = document.createElement('tr');
+
+    let iconRow = document.createElement('td');
+    let span = document.createElement('span');
+    let icon = document.createElement('i');
+    icon.setAttribute('class', 'tableIcon far fa-play-circle');
+    let icon2 = document.createElement('i');
+    icon2.setAttribute('class', 'far fa-star');
+
+    span.appendChild(icon);
+    iconRow.appendChild(span);
+    iconRow.appendChild(icon2);
+
+    let songRow = document.createElement('td');
+    songRow.textContent = songName;
+
+    let artistRow = document.createElement('td');
+    artistRow.textContent = artist;
+    artistRow.setAttribute('class', 'artistRow');
+
+    let releaseRow = document.createElement('td');
+    releaseRow.textContent = releaseYear !== '0' ? releaseYear : '-';
+
+    tableRow.setAttribute('data-songName', songName);
+    tableRow.setAttribute('data-artist', artist);
+    tableRow.setAttribute('data-releaseYear', releaseYear);
+    tableRow.appendChild(iconRow);
+    tableRow.appendChild(songRow);
+    tableRow.appendChild(artistRow);
+    tableRow.appendChild(releaseRow);
+
+    artistRow.addEventListener('click', () => {
+        openArtistPage(tableRow.getAttribute('data-artist'));
+    });
+
+    return tableRow;
 }
 
 slider
