@@ -349,24 +349,6 @@ function getResults(value) {
                         openArtistPage(tableRow.getAttribute('data-artist'));
                     });
                     table.appendChild(tableRow);
-
-
-                    // let divBox = document.createElement('div');
-                    // divBox.setAttribute('class', 'searchResult');
-                    // let image = document.createElement('img');
-                    // image.setAttribute('src', './../images/profile_picture.png');
-                    // image.setAttribute('alt', 'Picture');
-                    // let nameP = document.createElement('p');
-                    // nameP.textContent = response[i]["song_name"];
-                    // let artistP = document.createElement('p');
-                    // artistP.textContent = response[i]["artist"];
-                    // let yearP = document.createElement('p');
-                    // yearP.textContent = response[i]["release_year"] + "\n";
-                    //
-                    // divBox.appendChild(image);
-                    // divBox.appendChild(nameP);
-                    // divBox.appendChild(artistP);
-                    // divBox.appendChild(yearP);
                 }
                 divBoxForSongResults.appendChild(table);
                 document.getElementById('searchResultsBox').appendChild(divBoxForSongResults);
@@ -417,11 +399,12 @@ function uploadPicture(form) {
 
 function showPlaylist(playlistName, playlistUsername, playlistDescription, playlistPicture) {
     hideTabs();
-    document.getElementById('playlistBox').style.display = 'block';
 
     document.getElementById('playlistName').textContent = playlistName;
     document.getElementById('playlistDescription').textContent = playlistDescription;
     document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
+
+    document.getElementById('playlistBox').style.display = 'block';
 
     if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL') {
         document.getElementById('playlistPicture').src = defaultPicture;
@@ -437,10 +420,15 @@ function hideTabs() {
     }
     document.getElementById('searchResults').style.display = 'none';
     document.getElementById('playlistBox').style.display = 'none';
+    document.getElementById('artistBox').style.display = 'none';
 }
 
 function openArtistPage(artist) {
-    alert(artist);
+    hideTabs();
+    document.getElementById('artistName').textContent = artist;
+
+    document.getElementById('artistBox').style.display = 'block';
+
 }
 
 slider
