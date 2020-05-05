@@ -213,7 +213,8 @@ i {
     background-color: white;
     padding-left: 2%;
     overflow-y: visible;
-    height: 100%;
+    height: auto;
+    padding-bottom: 10%;
 }
 
 #profile{
@@ -716,7 +717,7 @@ h6 {
     visibility: visible;
 }
 
-#songResults {
+#songResults, #artistsSongResults {
     height: auto;
     width: 65vw;
     padding-bottom: 10%;

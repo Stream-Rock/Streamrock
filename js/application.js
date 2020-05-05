@@ -400,7 +400,7 @@ function openArtistPage(artist) {
             deleteAllPreviousChilds(document.getElementById('artistResults'));
             let response = JSON.parse(this.responseText);
             let divBoxForSongResults = document.createElement('div');
-            divBoxForSongResults.setAttribute('id', 'songResults');
+            divBoxForSongResults.setAttribute('id', 'artistsSongResults');
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
             for (let i = 0; i < response.length; i++) {
