@@ -481,14 +481,24 @@ function createTableRow(songID, songName, artist, releaseYear) {
     });
 
     icon2.addEventListener('click', () => {
-        addFavoriteSong(tableRow.getAttribute('data-songID'));
+        addFavoriteSong(icon2, tableRow.getAttribute('data-songID'));
     });
 
     return tableRow;
 }
 
-function addFavoriteSong(songID) {
-    console.log(songID);
+function addFavoriteSong(icon, songID) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText === 'Song was added to favorites') {
+                icon.setAttribute('class', 'fas fa-star');
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/saveSongToFavorites.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("song=" + songID);
 }
 
 slider
