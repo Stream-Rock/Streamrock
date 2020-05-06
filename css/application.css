@@ -702,7 +702,7 @@ h6 {
 }
 
 .playlistTable th, .playlistTable td, .songResultsTable th, .songResultsTable td {
-    padding: 8px;
+    padding: 4px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
@@ -715,6 +715,16 @@ h6 {
 
 .playlistTable tr:hover .tableIcon, .songResultsTable tr:hover .tableIcon{
     visibility: visible;
+}
+
+.playlistTable i, .songResultsTable i{
+    font-size: 2.6vh;
+    margin-left: 1vw;
+}
+
+.playlistTable i:hover, .songResultsTable i:hover{
+    cursor: pointer;
+    color: black;
 }
 
 #songResults, #artistsSongResults {
