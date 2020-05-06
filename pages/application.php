@@ -22,6 +22,7 @@ if (isset($loggedIn)) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
@@ -130,16 +131,18 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     <div id="playlistData">
         <table class="playlistTable">
             <tr>
-                <th></th>
+                <th class="firstTableRow"></th>
                 <th>Title</th>
                 <th>Artist</th>
                 <th>Date added</th>
+                <th class="lastTableRow"></th>
             </tr>
             <tr>
                 <td><span><i class="tableIcon far fa-play-circle"></i></span><i class="far fa-star"></i></td>
                 <td>Peter</td>
                 <td>Griffin</td>
                 <td>$100</td>
+                <td><span class="material-icons">queue</span><span class="material-icons">playlist_add</span></td>
             </tr>
             <tr>
                 <td></td>
