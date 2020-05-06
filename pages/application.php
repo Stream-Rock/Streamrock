@@ -138,11 +138,11 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
                 <th class="lastTableRow"></th>
             </tr>
             <tr>
-                <td><span><i class="tableIcon far fa-play-circle"></i></span><i class="far fa-star"></i></td>
+                <td ><span><i title="Play" class="tableIcon far fa-play-circle"></i></span><i title="Add to favorites" class="far fa-star"></i></td>
                 <td>Peter</td>
                 <td>Griffin</td>
                 <td>$100</td>
-                <td><span class="material-icons">queue</span><span class="material-icons">playlist_add</span></td>
+                <td><span title="Add to queue" class="material-icons">queue</span><span title="Add to playlist" class="material-icons">playlist_add</span></td>
             </tr>
             <tr>
                 <td></td>
