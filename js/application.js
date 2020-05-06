@@ -439,8 +439,10 @@ function createTableRow(songID, songName, artist, releaseYear) {
     let span = document.createElement('span');
     let icon = document.createElement('i');
     icon.setAttribute('class', 'tableIcon far fa-play-circle');
+    icon.setAttribute('title', 'Play');
     let icon2 = document.createElement('i');
     icon2.setAttribute('class', 'far fa-star');
+    icon2.setAttribute('title', 'Add to favorites');
 
     span.appendChild(icon);
     iconRow.appendChild(span);
@@ -460,9 +462,11 @@ function createTableRow(songID, songName, artist, releaseYear) {
     let queueIcon = document.createElement('span');
     queueIcon.setAttribute('class', 'tableIcon material-icons');
     queueIcon.textContent = 'queue';
+    queueIcon.setAttribute('title', 'Add to queue');
     let addIcon = document.createElement('span');
     addIcon.setAttribute('class', 'tableIcon material-icons');
     addIcon.textContent = 'playlist_add';
+    addIcon.setAttribute('title', 'Add to playlist');
     lastRow.appendChild(queueIcon);
     lastRow.appendChild(addIcon);
 
