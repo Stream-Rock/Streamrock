@@ -187,9 +187,9 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <i class="fas fa-step-forward" id="next"></i>
     </div>
     <div class="trackOptions">
-        <i class="fas fa-random" id="random"></i>
-        <i class="fas fa-undo-alt" id="loop"></i>
-        <i class="fas fa-bars" id="queue"></i>
+        <span class="material-icons" id="random">shuffle</span>
+        <span class="material-icons" id="loop">repeat</span>
+        <span class="material-icons" id="queue">queue_music</span>
     </div>
     <div class="songBar">
         <div id="songBar" class="slider"></div>
