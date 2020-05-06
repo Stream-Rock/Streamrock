@@ -480,7 +480,15 @@ function createTableRow(songID, songName, artist, releaseYear) {
         openArtistPage(tableRow.getAttribute('data-artist'));
     });
 
+    icon2.addEventListener('click', () => {
+        addFavoriteSong(tableRow.getAttribute('data-songID'));
+    });
+
     return tableRow;
+}
+
+function addFavoriteSong(songID) {
+    console.log(songID);
 }
 
 slider
