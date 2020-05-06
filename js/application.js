@@ -304,19 +304,7 @@ function getResults(value) {
                 table.setAttribute('class', 'songResultsTable');
                 for (let i = 0; i < response.length; i++) {
                     if (i === 0) {
-                        let tableRow1 = document.createElement('tr');
-                        let placeholder = document.createElement('th');
-                        let songName = document.createElement('th');
-                        songName.textContent = 'Title';
-                        let songArtist = document.createElement('th');
-                        songArtist.textContent = 'Artist';
-                        let releaseYear = document.createElement('th');
-                        releaseYear.textContent = 'Release year';
-                        tableRow1.appendChild(placeholder);
-                        tableRow1.appendChild(songName);
-                        tableRow1.appendChild(songArtist);
-                        tableRow1.appendChild(releaseYear);
-                        table.appendChild(tableRow1);
+                        table.appendChild(insertFirstRow());
                     }
 
                     table.appendChild(createTableRow(response[i]["song_name"], response[i]["artist"], response[i]["release_year"]));
@@ -329,6 +317,27 @@ function getResults(value) {
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("search=" + value);
     }
+}
+
+function insertFirstRow() {
+    let tableRow1 = document.createElement('tr');
+    let placeholder = document.createElement('th');
+    placeholder.setAttribute('class', 'firstTableRow');
+    let songName = document.createElement('th');
+    songName.textContent = 'Title';
+    let songArtist = document.createElement('th');
+    songArtist.textContent = 'Artist';
+    let releaseYear = document.createElement('th');
+    releaseYear.textContent = 'Release year';
+    let placeholder2 = document.createElement('th');
+    placeholder2.setAttribute('class', 'lastTableRow');
+    tableRow1.appendChild(placeholder);
+    tableRow1.appendChild(songName);
+    tableRow1.appendChild(songArtist);
+    tableRow1.appendChild(releaseYear);
+    tableRow1.appendChild(placeholder2);
+
+    return tableRow1;
 }
 
 function getArtists(value) {
@@ -409,24 +418,11 @@ function openArtistPage(artist) {
             table.setAttribute('class', 'songResultsTable');
             for (let i = 0; i < response.length; i++) {
                 if (i === 0) {
-                    let tableRow1 = document.createElement('tr');
-                    let placeholder = document.createElement('th');
-                    let songName = document.createElement('th');
-                    songName.textContent = 'Title';
-                    let songArtist = document.createElement('th');
-                    songArtist.textContent = 'Artist';
-                    let releaseYear = document.createElement('th');
-                    releaseYear.textContent = 'Release year';
-                    tableRow1.appendChild(placeholder);
-                    tableRow1.appendChild(songName);
-                    tableRow1.appendChild(songArtist);
-                    tableRow1.appendChild(releaseYear);
-                    table.appendChild(tableRow1);
+                    table.appendChild(insertFirstRow());
                 }
-
                 table.appendChild(createTableRow(response[i]["song_name"], response[i]["artist"], response[i]["release_year"]));
             }
-            divBoxForSongResults.appendChild(table);
+            divBoxForSongResults.appendChild(table);-
             document.getElementById('artistResults').appendChild(divBoxForSongResults);
         }
         document.getElementById('artistBox').style.display = 'block';
@@ -460,6 +456,16 @@ function createTableRow(songName, artist, releaseYear) {
     let releaseRow = document.createElement('td');
     releaseRow.textContent = releaseYear !== '0' ? releaseYear : '-';
 
+    let lastRow = document.createElement('td');
+    let queueIcon = document.createElement('span');
+    queueIcon.setAttribute('class', 'tableIcon material-icons');
+    queueIcon.textContent = 'queue';
+    let addIcon = document.createElement('span');
+    addIcon.setAttribute('class', 'tableIcon material-icons');
+    addIcon.textContent = 'playlist_add';
+    lastRow.appendChild(queueIcon);
+    lastRow.appendChild(addIcon);
+
     tableRow.setAttribute('data-songName', songName);
     tableRow.setAttribute('data-artist', artist);
     tableRow.setAttribute('data-releaseYear', releaseYear);
@@ -467,6 +473,7 @@ function createTableRow(songName, artist, releaseYear) {
     tableRow.appendChild(songRow);
     tableRow.appendChild(artistRow);
     tableRow.appendChild(releaseRow);
+    tableRow.appendChild(lastRow);
 
     artistRow.addEventListener('click', () => {
         openArtistPage(tableRow.getAttribute('data-artist'));
