@@ -307,7 +307,7 @@ function getResults(value) {
                         table.appendChild(insertFirstRow());
                     }
 
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"]));
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
                 }
                 divBoxForSongResults.appendChild(table);
                 document.getElementById('searchResultsBox').appendChild(divBoxForSongResults);
@@ -420,7 +420,7 @@ function openArtistPage(artist) {
                 if (i === 0) {
                     table.appendChild(insertFirstRow());
                 }
-                table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"]));
+                table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
             }
             divBoxForSongResults.appendChild(table);-
             document.getElementById('artistResults').appendChild(divBoxForSongResults);
@@ -432,7 +432,7 @@ function openArtistPage(artist) {
     xhttp.send("artist=" + artist);
 }
 
-function createTableRow(songID, songName, artist, releaseYear) {
+function createTableRow(songID, songName, artist, releaseYear, isLiked) {
     let tableRow = document.createElement('tr');
 
     let iconRow = document.createElement('td');
@@ -441,8 +441,20 @@ function createTableRow(songID, songName, artist, releaseYear) {
     icon.setAttribute('class', 'tableIcon far fa-play-circle');
     icon.setAttribute('title', 'Play');
     let icon2 = document.createElement('i');
-    icon2.setAttribute('class', 'far fa-star');
-    icon2.setAttribute('title', 'Add to favorites');
+
+    if (isLiked) {
+        icon2.setAttribute('class', 'fas fa-star');
+        icon2.setAttribute('title', 'Remove from favorites');
+        icon2.addEventListener('click', () => {
+            removeFavoriteSong(icon2, tableRow.getAttribute('data-songID'));
+        })
+    } else {
+        icon2.setAttribute('class', 'far fa-star');
+        icon2.setAttribute('title', 'Add to favorites');
+        icon2.addEventListener('click', () => {
+            addFavoriteSong(icon2, tableRow.getAttribute('data-songID'));
+        });
+    }
 
     span.appendChild(icon);
     iconRow.appendChild(span);
@@ -484,10 +496,6 @@ function createTableRow(songID, songName, artist, releaseYear) {
         openArtistPage(tableRow.getAttribute('data-artist'));
     });
 
-    icon2.addEventListener('click', () => {
-        addFavoriteSong(icon2, tableRow.getAttribute('data-songID'));
-    });
-
     return tableRow;
 }
 
@@ -503,6 +511,10 @@ function addFavoriteSong(icon, songID) {
     xhttp.open("POST", "./../php/saveSongToFavorites.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("song=" + songID);
+}
+
+function removeFavoriteSong(icon, songID) {
+    icon.setAttribute('class', 'far fa-star');
 }
 
 slider
