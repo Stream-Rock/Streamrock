@@ -57,9 +57,6 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         </div>
     </nav>
 </div>
-<div class="currentSongCover">
-    <img src="./../images/nostalgia_ultra.jpg" alt="Cover of the song that is played" class="songPlayedCover">
-</div>
 <div class="currentSongName">
     <p id="currentSong">Current song</p>
     <p id="currentArtist">Current Artist</p>
