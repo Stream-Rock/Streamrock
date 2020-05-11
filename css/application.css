@@ -745,3 +745,33 @@ h6 {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.showAllDiv, #favoriteSongsHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+#favoriteSongsHeading {
+    width: 90%;
+}
+
+.showAllDiv > i{
+    position: relative;
+    margin-left: 2vw;
+}
+
+.showAllDiv > span {
+    font-size: 70%;
+    color: rgb(223, 213, 213);
+}
+
+.showAllDiv {
+    border-bottom: rgba(0, 0, 0, 0.0) 3px solid;
+}
+
+.showAllDiv:hover{
+    cursor: pointer;
+    border-bottom: gray 3px solid;
+}

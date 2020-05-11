@@ -87,7 +87,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         </div>
     </div>
     <div class="tab" id="favorites" style="display: none;">
-        <h1>Favorite songs<i id="showAllFavorites" title="Show all favorite songs" class="fas fa-chevron-right"></i></h1>
+        <h1 id="favoriteSongsHeading">Favorite songs <div class="showAllDiv"><span id="showAllSpan">Show all</span><i id="showAllFavorites" title="Show all favorite songs" class="fas fa-chevron-right"></i></div></h1>
         <div class="suggestion" id="favoriteSongs">
         </div>
         <h1>Favorite albums<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
