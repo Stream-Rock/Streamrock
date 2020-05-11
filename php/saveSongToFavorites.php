@@ -11,7 +11,7 @@ $song_id = $_POST["song"];
 $username = $_SESSION["username"];
 
 if (isset($song_id) && !empty($song_id) && $song_id !== '' && isset($username) && $username !== '') {
-    $stmt = $conn -> prepare("INSERT INTO accounts_likes (username, song_id) VALUES (?, ?)");
+    $stmt = $conn -> prepare("INSERT INTO accounts_likes (username, song_id, date_added) VALUES (?, ?, NOW())");
     $stmt->bind_param("ss", $username, $song_id);
 
 
