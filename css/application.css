@@ -746,14 +746,14 @@ h6 {
     text-decoration: underline;
 }
 
-.showAllDiv, #favoriteSongsHeading {
+.showAllDiv, #favoriteSongsHeading, #favoriteArtistsHeading, #recentlyPlayedHeading, #favoritePlaylistsHeading {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }
 
-#favoriteSongsHeading {
+#favoriteSongsHeading, #favoriteArtistsHeading, #recentlyPlayedHeading, #favoritePlaylistsHeading {
     width: 90%;
 }
 
@@ -774,4 +774,8 @@ h6 {
 .showAllDiv:hover{
     cursor: pointer;
     border-bottom: gray 3px solid;
+}
+
+.showAllDiv:hover span, .showAllDiv:hover i {
+    color: gray;
 }
