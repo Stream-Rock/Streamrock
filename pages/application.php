@@ -79,10 +79,10 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         </div>
     </div>
     <div class="tab" id="startSuggestions">
-        <h1 id="recentlyPlayedHeading">Recently played<div class="showAllDiv"><span title="Show all recently played songs" id="showAllSpan">Show all</span><i id="showAllFavorites" title="Show all recently played songs" class="fas fa-chevron-right"></i></h1>
+        <h1 id="recentlyPlayedHeading">Recently played<div class="showAllDiv"><span title="Show all recently played songs" id="">Show all</span><i id="" title="Show all recently played songs" class="fas fa-chevron-right"></i></div></h1>
         <div class="suggestion" id="recentlyPlayed">
         </div>
-        <h1 id="favoritePlaylistsHeading">Favorite playlists<div class="showAllDiv"><span title="Show all favorite playlists" id="showAllSpan">Show all</span><i id="showAllFavorites" title="Show all favorite playlists" class="fas fa-chevron-right"></i></h1>
+        <h1 id="favoritePlaylistsHeading">Favorite playlists<div class="showAllDiv"><span title="Show all favorite playlists" id="">Show all</span><i id="" title="Show all favorite playlists" class="fas fa-chevron-right"></i></div></h1>
         <div class="suggestion" id ="artists">
         </div>
     </div>
@@ -90,7 +90,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <h1 id="favoriteSongsHeading">Favorite songs <div class="showAllDiv"><span title="Show all favorite songs" id="showAllSpan">Show all</span><i id="showAllFavorites" title="Show all favorite songs" class="fas fa-chevron-right"></i></div></h1>
         <div class="suggestion" id="favoriteSongs">
         </div>
-        <h1 id="favoriteArtistsHeading">Favorite artists<div class="showAllDiv"><span title="Show all favorite artists" id="showAllSpan">Show all</span><i id="showAllFavorites" title="Show all favorite artists" class="fas fa-chevron-right"></i></h1>
+        <h1 id="favoriteArtistsHeading">Favorite artists<div class="showAllDiv"><span title="Show all favorite artists" id="">Show all</span><i id="" title="Show all favorite artists" class="fas fa-chevron-right"></i></div></h1>
         <div class="suggestion" id="favoriteAlbums">
         </div>
     </div>
