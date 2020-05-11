@@ -69,6 +69,7 @@ function init(username, profile_picture) {
             uploadPicture(document.getElementById('profilePictureForm'));
         });
         document.getElementById('cancelCreateNewPlaylist').addEventListener('click', disableAddPlaylistBox);
+        document.getElementById('showAllFavorites').addEventListener('click', printFavorites);
     }
 }
 
@@ -401,6 +402,7 @@ function hideTabs() {
     document.getElementById('searchResults').style.display = 'none';
     document.getElementById('playlistBox').style.display = 'none';
     document.getElementById('artistBox').style.display = 'none';
+    document.getElementById('favoriteSongsBox').style.display = 'none';
 }
 
 function openArtistPage(artist) {
@@ -534,6 +536,47 @@ function removeFavoriteSong(icon, songID) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("song=" + songID);
 }
+
+function printFavorites() {
+    hideTabs();
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            deleteAllPreviousChilds(document.getElementById('favoritesResult'));
+            let response = JSON.parse(this.responseText);
+            let divBoxForSongResults = document.createElement('div');
+            divBoxForSongResults.setAttribute('id', 'favoriteSongResults');
+            let table = document.createElement('table');
+            table.setAttribute('class', 'songResultsTable');
+            for (let i = 0; i < response.length; i++) {
+                console.log(response[i]["song_id"]);
+                if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
+                    if (i === 0) {
+                        table.appendChild(insertFirstRow());
+                    }
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
+                } else {
+                    printNoAvailable(document.getElementById('favoritesResult'), 'You have no favorite songs so far.');
+                }
+            }
+            divBoxForSongResults.appendChild(table);
+            document.getElementById('favoritesResult').appendChild(divBoxForSongResults);
+        }
+        document.getElementById('favoriteSongsBox').style.display = 'block';
+    };
+    xhttp.open("POST", "./../php/getFavoriteSongs.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+}
+
+function printNoAvailable(field, text) {
+    let element = document.createElement('h3');
+    element.textContent = text;
+    field.appendChild(element);
+}
+
+
 
 slider
     .draggable({

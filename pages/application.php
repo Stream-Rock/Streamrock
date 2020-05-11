@@ -87,7 +87,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         </div>
     </div>
     <div class="tab" id="favorites" style="display: none;">
-        <h1>Favorite songs<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
+        <h1>Favorite songs<i id="showAllFavorites" class="fas fa-chevron-right"></i></h1>
         <div class="suggestion" id="favoriteSongs">
         </div>
         <h1>Favorite albums<i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></h1>
@@ -169,6 +169,14 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <button>Play</button>
     </div>
     <div id="artistResults">
+
+    </div>
+</div>
+<div id="favoriteSongsBox" style="display: none">
+    <div class="artistDescription">
+        <h3>Favorite songs</h3>
+    </div>
+    <div id="favoritesResult">
 
     </div>
 </div>
