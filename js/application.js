@@ -514,7 +514,18 @@ function addFavoriteSong(icon, songID) {
 }
 
 function removeFavoriteSong(icon, songID) {
-    icon.setAttribute('class', 'far fa-star');
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            if (this.responseText === 'Song was removed from favorites') {
+                icon.setAttribute('class', 'far fa-star');
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/removeSongFromFavorites.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("song=" + songID);
 }
 
 slider
