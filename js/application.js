@@ -447,7 +447,7 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked) {
         icon2.setAttribute('title', 'Remove from favorites');
         icon2.addEventListener('click', () => {
             removeFavoriteSong(icon2, tableRow.getAttribute('data-songID'));
-        })
+        });
     } else {
         icon2.setAttribute('class', 'far fa-star');
         icon2.setAttribute('title', 'Add to favorites');
@@ -505,6 +505,10 @@ function addFavoriteSong(icon, songID) {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText === 'Song was added to favorites') {
                 icon.setAttribute('class', 'fas fa-star');
+                icon.addEventListener('click', () => {
+                    removeFavoriteSong(icon, songID);
+                });
+                icon.setAttribute('title', 'Remove from favorites');
             }
         }
     };
@@ -517,9 +521,12 @@ function removeFavoriteSong(icon, songID) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
             if (this.responseText === 'Song was removed from favorites') {
                 icon.setAttribute('class', 'far fa-star');
+                icon.addEventListener('click', () => {
+                    addFavoriteSong(icon, songID);
+                });
+                icon.setAttribute('title', 'Add to favorites');
             }
         }
     };
