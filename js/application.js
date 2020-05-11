@@ -71,7 +71,7 @@ function init(username, profile_picture) {
         document.getElementById('cancelCreateNewPlaylist').addEventListener('click', disableAddPlaylistBox);
         document.getElementById('showAllFavorites').addEventListener('click', printFavorites);
         document.getElementById('showAllSpan').addEventListener('click', printFavorites);
-
+        printFirstFavorites();
     }
 }
 
@@ -549,30 +549,41 @@ function removeFavoriteSong(icon, songID) {
 
 function printFavorites() {
     hideTabs();
+    getFavorites(false, document.getElementById('favoritesResult'));
+    document.getElementById('favoriteSongsBox').style.display = 'block';
+}
 
+function printFirstFavorites() {
+    getFavorites(true, document.getElementById('favoriteSongs'));
+}
+
+function getFavorites(isLimited, elementToAppendTo) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            deleteAllPreviousChilds(document.getElementById('favoritesResult'));
+            deleteAllPreviousChilds(elementToAppendTo);
             let response = JSON.parse(this.responseText);
+            console.log(response);
             let divBoxForSongResults = document.createElement('div');
-            divBoxForSongResults.setAttribute('id', 'favoriteSongResults');
+            divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
-            for (let i = 0; i < response.length; i++) {
+            let max = response.length >= 5 ? isLimited ? 5 : response.length : response.length;
+            console.log(max);
+
+            for (let i = 0; i < max; i++) {
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
                     if (i === 0) {
                         table.appendChild(insertFirstRow());
                     }
                     table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
                 } else {
-                    printNoAvailable(document.getElementById('favoritesResult'), 'You have no favorite songs so far.');
+                    printNoAvailable(elementToAppendTo, 'You have no favorite songs so far.');
                 }
             }
             divBoxForSongResults.appendChild(table);
-            document.getElementById('favoritesResult').appendChild(divBoxForSongResults);
+            elementToAppendTo.appendChild(divBoxForSongResults);
         }
-        document.getElementById('favoriteSongsBox').style.display = 'block';
     };
     xhttp.open("POST", "./../php/getFavoriteSongs.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
