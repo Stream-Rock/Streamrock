@@ -304,11 +304,15 @@ function getResults(value) {
                 let table = document.createElement('table');
                 table.setAttribute('class', 'songResultsTable');
                 for (let i = 0; i < response.length; i++) {
-                    if (i === 0) {
-                        table.appendChild(insertFirstRow());
-                    }
+                    if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
+                        if (i === 0) {
+                            table.appendChild(insertFirstRow());
+                        }
 
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
+                        table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
+                    } else {
+                        printNoAvailable(document.getElementById('songResults'), 'There were no songs found.');
+                    }
                 }
                 divBoxForSongResults.appendChild(table);
                 document.getElementById('searchResultsBox').appendChild(divBoxForSongResults);
@@ -419,10 +423,14 @@ function openArtistPage(artist) {
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
             for (let i = 0; i < response.length; i++) {
-                if (i === 0) {
-                    table.appendChild(insertFirstRow());
+                if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
+                    if (i === 0) {
+                        table.appendChild(insertFirstRow());
+                    }
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
+                } else {
+                    printNoAvailable(document.getElementById('artistResults'), 'This artist has no songs so far.');
                 }
-                table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
             }
             divBoxForSongResults.appendChild(table);-
             document.getElementById('artistResults').appendChild(divBoxForSongResults);
@@ -550,7 +558,6 @@ function printFavorites() {
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
             for (let i = 0; i < response.length; i++) {
-                console.log(response[i]["song_id"]);
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
                     if (i === 0) {
                         table.appendChild(insertFirstRow());
