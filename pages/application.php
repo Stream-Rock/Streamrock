@@ -187,7 +187,11 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         </h6>
     </div>
     <div class="playlistOptions" id="playlistList">
-
+        <ul id="playlistsToChoseFrom">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </div>
     <i class="far fa-times-circle" id="cancelSelectAddToPlaylist"></i>
 </div>
