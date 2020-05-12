@@ -69,6 +69,7 @@ function init(username, profile_picture) {
             uploadPicture(document.getElementById('profilePictureForm'));
         });
         document.getElementById('cancelCreateNewPlaylist').addEventListener('click', disableAddPlaylistBox);
+        document.getElementById('cancelSelectAddToPlaylist').addEventListener('click', disableAddPlaylistBox);
         document.getElementById('showAllFavorites').addEventListener('click', printFavorites);
         document.getElementById('showAllSpan').addEventListener('click', printFavorites);
         printFirstFavorites();

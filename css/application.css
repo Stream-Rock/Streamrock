@@ -682,7 +682,7 @@ h6 {
     cursor: pointer;
 }
 
-#cancelCreateNewPlaylist{
+#cancelCreateNewPlaylist, #cancelSelectAddToPlaylist{
     position: absolute;
     font-size: 26px;
     top: -10px;
@@ -693,7 +693,7 @@ h6 {
     color: white;
 }
 
-#cancelCreateNewPlaylist:hover {
+#cancelCreateNewPlaylist:hover, #cancelSelectAddToPlaylist:hover {
     cursor: pointer;
 }
 
