@@ -504,7 +504,7 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked) {
     addIcon.textContent = 'playlist_add';
     addIcon.setAttribute('title', 'Add to playlist');
     addIcon.addEventListener('click', () => {
-        showPlaylistOptions();
+        showPlaylistOptions(songID, document.getElementById('playlistChooseBox'), document.getElementById('playlistsToChoseFrom'));
     });
     lastRow.appendChild(queueIcon);
     lastRow.appendChild(addIcon);
@@ -611,8 +611,28 @@ function printNoAvailable(field, text) {
     field.appendChild(element);
 }
 
-function showPlaylistOptions() {
-    addPlaylistOn(document.getElementById('playlistChooseBox'));
+function showPlaylistOptions(song_id, element, listForPlaylists) {
+    deleteAllPreviousChilds(listForPlaylists);
+
+    addPlaylistNames(listForPlaylists);
+    addPlaylistOn(element);
+}
+
+function addPlaylistNames(listForPlaylists) {
+    console.log('hi');
+    let playlists = document.getElementsByClassName('navigationLink');
+    console.log(playlists);
+
+    for (let i = 0; i < playlists.length; i++) {
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        let name = playlists[i].getAttribute('data-name');
+        a.textContent = name;
+        a.setAttribute('data-name', name);
+        li.appendChild(a);
+        listForPlaylists.appendChild(li);
+    }
+
 }
 
 
