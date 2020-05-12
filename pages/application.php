@@ -180,7 +180,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
 
     </div>
 </div>
-<div class="createNewPlaylist" style="display: block;">
+<div class="createNewPlaylist" id="playlistChooseBox" style="display: none;">
     <div class="playlistTitle">
         <h6>
             <strong id="winningText">Choose playlist to add song to</strong>
@@ -216,7 +216,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <div id="songBar" class="slider"></div>
     </div>
 </div>
-<div class="createNewPlaylist" style="display: none;">
+<div class="createNewPlaylist" id="createNewPlaylistBox" style="display: none;">
     <div class="playlistTitle">
         <h6>
             <strong id="winningText">Create new Playlist</strong>

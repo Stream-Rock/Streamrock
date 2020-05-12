@@ -38,7 +38,9 @@ function init(username, profile_picture) {
             });
         }
 
-        document.getElementById('playlistAdd').addEventListener('click', addPlaylistOn);
+        document.getElementById('playlistAdd').addEventListener('click', () => {
+            addPlaylistOn(document.getElementById('createNewPlaylistBox'));
+        });
         document.getElementById('createButton').addEventListener('click', () =>{
             addPlaylist(document.getElementById('nameOfPlaylist').value, document.getElementById('descriptionOfPlaylist').value);
         });
@@ -68,8 +70,12 @@ function init(username, profile_picture) {
         document.getElementById('profilePictureToUpload').addEventListener('change', () => {
             uploadPicture(document.getElementById('profilePictureForm'));
         });
-        document.getElementById('cancelCreateNewPlaylist').addEventListener('click', disableAddPlaylistBox);
-        document.getElementById('cancelSelectAddToPlaylist').addEventListener('click', disableAddPlaylistBox);
+        document.getElementById('cancelCreateNewPlaylist').addEventListener('click', () => {
+            disableAddPlaylistBox(document.getElementById('createNewPlaylistBox'))
+        });
+        document.getElementById('cancelSelectAddToPlaylist').addEventListener('click', () => {
+            disableAddPlaylistBox(document.getElementById('playlistChooseBox'));
+        });
         document.getElementById('showAllFavorites').addEventListener('click', printFavorites);
         document.getElementById('showAllSpan').addEventListener('click', printFavorites);
         printFirstFavorites();
@@ -115,14 +121,16 @@ function switchTab(tab, pElement) {
     pElement.setAttribute('id', 'active');
 }
 
-function addPlaylistOn() {
+function addPlaylistOn(element) {
     $('.createNewPlaylist')[0].style.display = 'flex';
+    element.style.display = 'flex';
     document.getElementById('startSuggestions').style.filter = 'blur(5px)';
     document.getElementById('favorites').style.filter = 'blur(5px)';
     document.getElementById('profile').style.filter = 'blur(5px)';
     document.getElementById('playlistBox').style.filter = 'blur(5px)';
     document.getElementById('searchResults').style.filter = 'blur(5px)';
     document.getElementById('artistBox').style.filter = 'blur(5px)';
+    document.getElementById('favoriteSongsBox').style.filter = 'blur(5px)';
 
 
 }
@@ -137,14 +145,17 @@ function addPlaylist(name, description) {
     }
 }
 
-function disableAddPlaylistBox() {
+function disableAddPlaylistBox(element) {
     $('.createNewPlaylist')[0].style.display = 'none';
+    element.style.display = 'none';
     document.getElementById('startSuggestions').style.filter = 'blur(0px)';
     document.getElementById('favorites').style.filter = 'blur(0px)';
     document.getElementById('profile').style.filter = 'blur(0px)';
     document.getElementById('playlistBox').style.filter = 'blur(0px)';
     document.getElementById('searchResults').style.filter = 'blur(0px)';
     document.getElementById('artistBox').style.filter = 'blur(0px)';
+    document.getElementById('favoriteSongsBox').style.filter = 'blur(0px)';
+
 
 }
 
@@ -492,6 +503,9 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked) {
     addIcon.setAttribute('class', 'tableIcon material-icons');
     addIcon.textContent = 'playlist_add';
     addIcon.setAttribute('title', 'Add to playlist');
+    addIcon.addEventListener('click', () => {
+        showPlaylistOptions();
+    });
     lastRow.appendChild(queueIcon);
     lastRow.appendChild(addIcon);
 
@@ -597,6 +611,9 @@ function printNoAvailable(field, text) {
     field.appendChild(element);
 }
 
+function showPlaylistOptions() {
+    addPlaylistOn(document.getElementById('playlistChooseBox'));
+}
 
 
 slider
