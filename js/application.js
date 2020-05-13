@@ -322,7 +322,7 @@ function getResults(value) {
                             table.appendChild(insertFirstRow());
                         }
 
-                        table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
+                        table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                     } else {
                         printNoAvailable(document.getElementById('songResults'), 'There were no songs found.');
                     }
@@ -471,7 +471,7 @@ function openArtistPage(artist) {
                     if (i === 0) {
                         table.appendChild(insertFirstRow());
                     }
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 } else {
                     printNoAvailable(document.getElementById('artistResults'), 'This artist has no songs so far.');
                 }
@@ -633,7 +633,7 @@ function getFavorites(isLimited, elementToAppendTo) {
                     if (i === 0) {
                         table.appendChild(insertFirstRow());
                     }
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"]));
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 } else {
                     printNoAvailable(elementToAppendTo, 'You have no favorite songs so far.');
                 }
