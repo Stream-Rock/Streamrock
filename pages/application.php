@@ -126,40 +126,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <button>Play</button>
     </div>
     <div id="playlistData">
-        <table class="playlistTable">
-            <tr>
-                <th class="firstTableRow"></th>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Date added</th>
-                <th class="lastTableRow"></th>
-            </tr>
-            <tr>
-                <td ><span><i title="Play" class="tableIcon far fa-play-circle"></i></span><i title="Add to favorites" class="far fa-star"></i></td>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td>$100</td>
-                <td><span title="Add to queue" class="material-icons">queue</span><span title="Add to playlist" class="material-icons">playlist_add</span></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Joe</td>
-                <td>Swanson</td>
-                <td>$300</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Cleveland</td>
-                <td>Brown</td>
-                <td>$250</td>
-            </tr>
-        </table>
+
     </div>
 </div>
 <div id="artistBox" style="display: none">

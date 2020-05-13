@@ -402,13 +402,44 @@ function showPlaylist(playlistName, playlistUsername, playlistDescription, playl
     document.getElementById('playlistDescription').textContent = playlistDescription;
     document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
 
-    document.getElementById('playlistBox').style.display = 'block';
+    getPlaylistSongs(playlistName, playlistUsername);
 
     if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL') {
         document.getElementById('playlistPicture').src = defaultPicture;
     } else {
         document.getElementById('playlistPicture').src = playlistPicture;
     }
+
+    document.getElementById('playlistBox').style.display = 'block';
+}
+
+function getPlaylistSongs(playlistName, playlistUsername) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            deleteAllPreviousChilds(document.getElementById('playlistData'));
+            let response = JSON.parse(this.responseText);
+            let divBoxForSongResults = document.createElement('div');
+            divBoxForSongResults.setAttribute('id', 'playlistSongResults');
+            let table = document.createElement('table');
+            table.setAttribute('class', 'songResultsTable');
+            for (let i = 0; i < response.length; i++) {
+                if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
+                    if (i === 0) {
+                        table.appendChild(insertFirstRow());
+                    }
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], true));
+                } else {
+                    printNoAvailable(document.getElementById('artistResults'), 'There are no songs in this playlist so far');
+                }
+            }
+            divBoxForSongResults.appendChild(table);
+            document.getElementById('playlistData').appendChild(divBoxForSongResults);
+        }
+    };
+    xhttp.open("POST", "./../php/getSongsFromPlaylist.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("playlistName=" + playlistName + "&playlistUsername=" + playlistUsername);
 }
 
 function hideTabs() {
@@ -455,7 +486,7 @@ function openArtistPage(artist) {
     xhttp.send("artist=" + artist);
 }
 
-function createTableRow(songID, songName, artist, releaseYear, isLiked) {
+function createTableRow(songID, songName, artist, releaseYear, isLiked, playlistDelete) {
     let tableRow = document.createElement('tr');
 
     let iconRow = document.createElement('td');
@@ -498,13 +529,23 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked) {
     queueIcon.setAttribute('class', 'tableIcon material-icons');
     queueIcon.textContent = 'queue';
     queueIcon.setAttribute('title', 'Add to queue');
+
     let addIcon = document.createElement('span');
-    addIcon.setAttribute('class', 'tableIcon material-icons');
-    addIcon.textContent = 'playlist_add';
-    addIcon.setAttribute('title', 'Add to playlist');
-    addIcon.addEventListener('click', () => {
-        showPlaylistOptions(songID, document.getElementById('playlistChooseBox'), document.getElementById('playlistsToChoseFrom'));
-    });
+    if (playlistDelete) {
+        addIcon.setAttribute('class', 'tableIcon material-icons');
+        addIcon.textContent = 'playlist_add_check';
+        addIcon.setAttribute('title', 'Remove from playlist');
+        addIcon.addEventListener('click', () => {
+            removeFromPlaylist();
+        });
+    } else {
+        addIcon.setAttribute('class', 'tableIcon material-icons');
+        addIcon.textContent = 'playlist_add';
+        addIcon.setAttribute('title', 'Add to playlist');
+        addIcon.addEventListener('click', () => {
+            showPlaylistOptions(songID, document.getElementById('playlistChooseBox'), document.getElementById('playlistsToChoseFrom'));
+        });
+    }
     lastRow.appendChild(queueIcon);
     lastRow.appendChild(addIcon);
 
@@ -523,6 +564,10 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked) {
     });
 
     return tableRow;
+}
+
+function removeFromPlaylist() {
+    console.log('Remove');
 }
 
 function addFavoriteSong(icon, songID) {
