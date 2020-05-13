@@ -21,6 +21,14 @@ if (isset($username) && $username !== '' && $username === $_SESSION["username"] 
             $song = $conn->query($stmt)->fetch_assoc();
 
             $response[$count] = $song;
+
+            $favoriteStmt = "SELECT * FROM accounts_likes WHERE username = '$username' AND song_id = " . $row["song_id"];
+            if ($conn->query($favoriteStmt)->fetch_assoc()) {
+                $response[$count]["star"] = true;
+            } else {
+                $response[$count]["star"] = false;
+            }
+            
             $response[$count]["date_added"] = $row["date_added"];
 
             $count++;
