@@ -614,11 +614,11 @@ function printNoAvailable(field, text) {
 function showPlaylistOptions(song_id, element, listForPlaylists) {
     deleteAllPreviousChilds(listForPlaylists);
 
-    addPlaylistNames(listForPlaylists);
+    addPlaylistNames(listForPlaylists, song_id);
     addPlaylistOn(element);
 }
 
-function addPlaylistNames(listForPlaylists) {
+function addPlaylistNames(listForPlaylists, song_id) {
     console.log('hi');
     let playlists = document.getElementsByClassName('navigationLink');
     console.log(playlists);
@@ -629,10 +629,16 @@ function addPlaylistNames(listForPlaylists) {
         let name = playlists[i].getAttribute('data-name');
         a.textContent = name;
         a.setAttribute('data-name', name);
+        a.addEventListener('click', () => {
+            addSongToPlaylist(name, song_id, playlists[i].getAttribute('data-username'));
+        });
         li.appendChild(a);
         listForPlaylists.appendChild(li);
     }
+}
 
+function addSongToPlaylist(playlistName, songID, username) {
+    console.log(playlistName + ' ' + songID + ' ' + username);
 }
 
 
@@ -647,8 +653,8 @@ slider
         ]
     })
     .on('dragmove', function (event) {
-        const sliderWidth = interact.getElementRect(event.target.parentNode).width
-        const value = event.pageX / sliderWidth
-        event.target.style.paddingLeft = (value * 100) + '%'
+        const sliderWidth = interact.getElementRect(event.target.parentNode).width;
+        const value = event.pageX / sliderWidth;
+        event.target.style.paddingLeft = (value * 100) + '%';
         event.target.setAttribute('data-value', value.toFixed(2))
     });
