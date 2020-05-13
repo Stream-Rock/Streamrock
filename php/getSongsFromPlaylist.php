@@ -28,7 +28,7 @@ if (isset($username) && $username !== '' && $username === $_SESSION["username"] 
             } else {
                 $response[$count]["star"] = false;
             }
-            
+
             $response[$count]["date_added"] = $row["date_added"];
 
             $count++;
