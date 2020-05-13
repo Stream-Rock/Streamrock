@@ -183,14 +183,11 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
 <div class="createNewPlaylist" id="playlistChooseBox" style="display: none;">
     <div class="playlistTitle">
         <h6>
-            <strong id="winningText">Choose playlist to add song to</strong>
+            <strong id="addToPlaylistHeading">Choose playlist to add song to</strong>
         </h6>
     </div>
     <div class="playlistOptions" id="playlistList">
         <ul id="playlistsToChoseFrom">
-            <li><a>Home</a></li>
-            <li><a>News</a></li>
-            <li><a>Contact</a></li>
         </ul>
     </div>
     <i class="far fa-times-circle" id="cancelSelectAddToPlaylist"></i>

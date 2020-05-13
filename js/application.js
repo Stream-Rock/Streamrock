@@ -146,7 +146,6 @@ function addPlaylist(name, description) {
 }
 
 function disableAddPlaylistBox(element) {
-    $('.createNewPlaylist')[0].style.display = 'none';
     element.style.display = 'none';
     document.getElementById('startSuggestions').style.filter = 'blur(0px)';
     document.getElementById('favorites').style.filter = 'blur(0px)';
@@ -578,13 +577,11 @@ function getFavorites(isLimited, elementToAppendTo) {
         if (this.readyState == 4 && this.status == 200) {
             deleteAllPreviousChilds(elementToAppendTo);
             let response = JSON.parse(this.responseText);
-            console.log(response);
             let divBoxForSongResults = document.createElement('div');
             divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
             let max = response.length >= 5 ? isLimited ? 5 : response.length : response.length;
-            console.log(max);
 
             for (let i = 0; i < max; i++) {
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
@@ -614,14 +611,12 @@ function printNoAvailable(field, text) {
 function showPlaylistOptions(song_id, element, listForPlaylists) {
     deleteAllPreviousChilds(listForPlaylists);
 
-    addPlaylistNames(listForPlaylists, song_id);
+    addPlaylistNames(listForPlaylists, song_id, element);
     addPlaylistOn(element);
 }
 
-function addPlaylistNames(listForPlaylists, song_id) {
-    console.log('hi');
+function addPlaylistNames(listForPlaylists, song_id, element) {
     let playlists = document.getElementsByClassName('navigationLink');
-    console.log(playlists);
 
     for (let i = 0; i < playlists.length; i++) {
         let li = document.createElement('li');
@@ -630,15 +625,27 @@ function addPlaylistNames(listForPlaylists, song_id) {
         a.textContent = name;
         a.setAttribute('data-name', name);
         a.addEventListener('click', () => {
-            addSongToPlaylist(name, song_id, playlists[i].getAttribute('data-username'));
+            addSongToPlaylist(name, song_id, playlists[i].getAttribute('data-username'), element);
         });
         li.appendChild(a);
         listForPlaylists.appendChild(li);
     }
 }
 
-function addSongToPlaylist(playlistName, songID, username) {
-    console.log(playlistName + ' ' + songID + ' ' + username);
+function addSongToPlaylist(playlistName, songID, username, element) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText === 'Song was added to playlist') {
+                disableAddPlaylistBox(element);
+            } else {
+                document.getElementById('addToPlaylistHeading').textContent = 'Something went wrong!';
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/insertIntoPlaylist.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("playlistName=" + playlistName + "&song=" + songID + "&username=" + username);
 }
 
 
