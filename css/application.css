@@ -806,6 +806,7 @@ h6 {
 }
 
 #playlistsToChoseFrom a:hover {
+    cursor: pointer;
     background-color: gray;
     color: white;
 }
