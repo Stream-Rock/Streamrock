@@ -319,7 +319,7 @@ function getResults(value) {
                 for (let i = 0; i < response.length; i++) {
                     if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
                         if (i === 0) {
-                            table.appendChild(insertFirstRow());
+                            table.appendChild(insertFirstRow('Release year'));
                         }
 
                         table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
@@ -337,7 +337,7 @@ function getResults(value) {
     }
 }
 
-function insertFirstRow() {
+function insertFirstRow(text) {
     let tableRow1 = document.createElement('tr');
     let placeholder = document.createElement('th');
     placeholder.setAttribute('class', 'firstTableRow');
@@ -346,7 +346,7 @@ function insertFirstRow() {
     let songArtist = document.createElement('th');
     songArtist.textContent = 'Artist';
     let releaseYear = document.createElement('th');
-    releaseYear.textContent = 'Release year';
+    releaseYear.textContent = text;
     let placeholder2 = document.createElement('th');
     placeholder2.setAttribute('class', 'lastTableRow');
     tableRow1.appendChild(placeholder);
@@ -426,9 +426,9 @@ function getPlaylistSongs(playlistName, playlistUsername) {
             for (let i = 0; i < response.length; i++) {
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
                     if (i === 0) {
-                        table.appendChild(insertFirstRow());
+                        table.appendChild(insertFirstRow('Date added'));
                     }
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], true));
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["date_added"], response[i]["star"], true));
                 } else {
                     printNoAvailable(document.getElementById('artistResults'), 'There are no songs in this playlist so far');
                 }
@@ -469,7 +469,7 @@ function openArtistPage(artist) {
             for (let i = 0; i < response.length; i++) {
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
                     if (i === 0) {
-                        table.appendChild(insertFirstRow());
+                        table.appendChild(insertFirstRow('Release year'));
                     }
                     table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 } else {
@@ -631,7 +631,7 @@ function getFavorites(isLimited, elementToAppendTo) {
             for (let i = 0; i < max; i++) {
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
                     if (i === 0) {
-                        table.appendChild(insertFirstRow());
+                        table.appendChild(insertFirstRow('Release year'));
                     }
                     table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 } else {
