@@ -7,11 +7,11 @@ if ($conn->connect_error) {
 }
 
 session_start();
-$username = $_POST["playlistUsername"];
+$username = &$_SESSION["username"];
 $playlist_name = $_POST["playlistName"];
 $count = 0;
 
-if (isset($username) && $username !== '' && $username === $_SESSION["username"] && isset($playlist_name) && $playlist_name !== '') {
+if (isset($username) && $username !== '' && isset($playlist_name) && $playlist_name !== '') {
     $stmt = "SELECT song_id, date_added FROM playlists_songs WHERE username = '$username'  AND playlist_name = '$playlist_name' ORDER BY date_added ASC";
 
     $result = $conn->query($stmt);
