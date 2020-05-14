@@ -122,7 +122,6 @@ function switchTab(tab, pElement) {
 }
 
 function addPlaylistOn(element) {
-    $('.createNewPlaylist')[0].style.display = 'flex';
     element.style.display = 'flex';
     document.getElementById('startSuggestions').style.filter = 'blur(5px)';
     document.getElementById('favorites').style.filter = 'blur(5px)';
@@ -578,6 +577,7 @@ function addFavoriteSong(icon, songID) {
                 });
                 icon.setAttribute('title', 'Remove from favorites');
             }
+            printFirstFavorites();
         }
     };
     xhttp.open("POST", "./../php/saveSongToFavorites.php", true);
