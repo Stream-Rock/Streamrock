@@ -395,13 +395,9 @@ function uploadPicture(form) {
 }
 
 function showPlaylist(playlistName, playlistUsername, playlistDescription, playlistPicture) {
+    amountSongs = 0;
     hideTabs();
-
-    document.getElementById('playlistName').textContent = playlistName;
-    document.getElementById('playlistDescription').textContent = playlistDescription;
-    document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
-
-    getPlaylistSongs(playlistName);
+    getPlaylistSongs(playlistName, playlistDescription, playlistUsername);
 
     if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL') {
         document.getElementById('playlistPicture').src = defaultPicture;
@@ -412,7 +408,7 @@ function showPlaylist(playlistName, playlistUsername, playlistDescription, playl
     document.getElementById('playlistBox').style.display = 'block';
 }
 
-function getPlaylistSongs(playlistName) {
+function getPlaylistSongs(playlistName, playlistDescription, playlistUsername) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -422,6 +418,7 @@ function getPlaylistSongs(playlistName) {
             divBoxForSongResults.setAttribute('id', 'playlistSongResults');
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
+            amountSongs = response.length;
             for (let i = 0; i < response.length; i++) {
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
                     if (i === 0) {
@@ -434,6 +431,10 @@ function getPlaylistSongs(playlistName) {
             }
             divBoxForSongResults.appendChild(table);
             document.getElementById('playlistData').appendChild(divBoxForSongResults);
+
+            document.getElementById('playlistName').textContent = playlistName;
+            document.getElementById('playlistDescription').textContent = playlistDescription;
+            document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
         }
     };
     xhttp.open("POST", "./../php/getSongsFromPlaylist.php", true);
