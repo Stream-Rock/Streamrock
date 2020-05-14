@@ -402,7 +402,7 @@ function showPlaylist(playlistName, playlistUsername, playlistDescription, playl
     document.getElementById('playlistDescription').textContent = playlistDescription;
     document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
 
-    getPlaylistSongs(playlistName, playlistUsername);
+    getPlaylistSongs(playlistName);
 
     if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL') {
         document.getElementById('playlistPicture').src = defaultPicture;
@@ -413,7 +413,7 @@ function showPlaylist(playlistName, playlistUsername, playlistDescription, playl
     document.getElementById('playlistBox').style.display = 'block';
 }
 
-function getPlaylistSongs(playlistName, playlistUsername) {
+function getPlaylistSongs(playlistName) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -439,7 +439,7 @@ function getPlaylistSongs(playlistName, playlistUsername) {
     };
     xhttp.open("POST", "./../php/getSongsFromPlaylist.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("playlistName=" + playlistName + "&playlistUsername=" + playlistUsername);
+    xhttp.send("playlistName=" + playlistName);
 }
 
 function hideTabs() {
@@ -536,7 +536,7 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked, playlist
         addIcon.textContent = 'playlist_add_check';
         addIcon.setAttribute('title', 'Remove from playlist');
         addIcon.addEventListener('click', () => {
-            removeFromPlaylist();
+            removeSongFromPlaylist(songID, document.getElementById('playlistName').textContent);
         });
     } else {
         addIcon.setAttribute('class', 'tableIcon material-icons');
@@ -566,9 +566,6 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked, playlist
     return tableRow;
 }
 
-function removeFromPlaylist() {
-    console.log('Remove');
-}
 
 function addFavoriteSong(icon, songID) {
     let xhttp = new XMLHttpRequest();
@@ -691,6 +688,20 @@ function addSongToPlaylist(playlistName, songID, username, element) {
     xhttp.open("POST", "./../php/insertIntoPlaylist.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("playlistName=" + playlistName + "&song=" + songID + "&username=" + username);
+}
+
+function removeSongFromPlaylist(songID, playlistName) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText === 'Song was removed from playlist') {
+                getPlaylistSongs(playlistName);
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/removeSongFromPlaylist.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("playlistName=" + playlistName + "&song=" + songID);
 }
 
 
