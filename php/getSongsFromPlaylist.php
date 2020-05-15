@@ -7,7 +7,7 @@ if ($conn->connect_error) {
 }
 
 session_start();
-$username = &$_SESSION["username"];
+$username = $_SESSION["username"];
 $playlist_name = $_POST["playlistName"];
 $count = 0;
 
