@@ -46,8 +46,6 @@ function init(username, profile_picture) {
         });
         writePlaylistsFromUser(username);
         writeData("./../csv/recentlyPlayed.csv", "recentlyPlayedElement", "recentlyPlayed", username);
-        writeData("./../csv/artists.csv", "recentlyPlayedElement", "artists", username);
-        writeData("./../csv/favoritesongs.csv", "favoriteElement", "favoriteSongs", username);
         writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums", username);
 
         document.getElementById('logoutButton').addEventListener('click', logout);
@@ -79,6 +77,7 @@ function init(username, profile_picture) {
         document.getElementById('showAllFavorites').addEventListener('click', printFavorites);
         document.getElementById('showAllSpan').addEventListener('click', printFavorites);
         printFirstFavorites();
+        printRandomSongs(document.getElementById('artists'));
     }
 }
 
@@ -703,6 +702,35 @@ function removeSongFromPlaylist(songID, playlistName) {
     xhttp.open("POST", "./../php/removeSongFromPlaylist.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("playlistName=" + playlistName + "&song=" + songID);
+}
+
+function printRandomSongs(elementToAppendTo) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            deleteAllPreviousChilds(elementToAppendTo);
+            let response = JSON.parse(this.responseText);
+            let divBoxForSongResults = document.createElement('div');
+            divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
+            let table = document.createElement('table');
+            table.setAttribute('class', 'songResultsTable');
+            for (let i = 0; i < response.length; i++) {
+                if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
+                    if (i === 0) {
+                        table.appendChild(insertFirstRow('Release year'));
+                    }
+                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
+                } else {
+                    printNoAvailable(elementToAppendTo, 'There are no songs to discover');
+                }
+            }
+            divBoxForSongResults.appendChild(table);
+            elementToAppendTo.appendChild(divBoxForSongResults);
+        }
+    };
+    xhttp.open("POST", "./../php/getRandomSongs.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
 }
 
 
