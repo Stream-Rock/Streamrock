@@ -83,6 +83,10 @@ function init(username, profile_picture) {
         document.getElementById('deletePlaylist').addEventListener('click', () => {
             deletePlaylist(document.getElementById('playlistName').textContent, username);
         });
+
+        document.getElementById('addFavoriteArtist').addEventListener('click', () => {
+            addFavoriteArtist(username, document.getElementById('artistName').textContent, this);
+        });
     }
 }
 
@@ -756,6 +760,27 @@ function deletePlaylist(playlistName, username) {
     xhttp.send("playlistName=" + playlistName + "&username=" + username);
 }
 
+function addFavoriteArtist(username, artist, element) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = this.responseText;
+            if (response === 'Artist was liked') {
+                element.textContent = 'person_add_disabled';
+                element.addEventListener('click', () => {
+                    removeFavoriteArtist(username, artist, element);
+                });
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/addFavoriteArtist.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username=" + username + "&artist=" + artist);
+}
+
+function removeFavoriteArtist(username, artist, element) {
+    console.log('Remove ' + username + " " + artist + " " + element);
+}
 
 slider
     .draggable({
