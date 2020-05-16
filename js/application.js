@@ -437,6 +437,7 @@ function getPlaylistSongs(playlistName, playlistDescription, playlistUsername) {
 
             document.getElementById('playlistName').textContent = playlistName;
             document.getElementById('playlistDescription').textContent = playlistDescription;
+            amountSongs = amountSongs !== undefined ? amountSongs : '0';
             document.getElementById('playlistUsername').textContent = `Made by ${playlistUsername} ${amountSongs} Songs`;
         }
     };
