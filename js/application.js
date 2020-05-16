@@ -289,6 +289,7 @@ function savePlaylistToDB(name, description, username) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let response = this.responseText;
+            writePlaylistsFromUser(username)
         }
     };
     xhttp.open("POST", "./../php/savePlaylistToDB.php", true);
@@ -743,7 +744,10 @@ function deletePlaylist(playlistName, username) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let response = this.responseText;
-            console.log(response);
+            if (response === 'Playlist was deleted') {
+                writePlaylistsFromUser(username);
+                switchTab(document.getElementsByClassName('link')[0].dataset.tab, document.getElementsByClassName('navigationP')[0]);
+            }
         }
     };
     xhttp.open("POST", "./../php/deletePlaylist.php", true);
