@@ -810,3 +810,16 @@ h6 {
     background-color: gray;
     color: white;
 }
+
+#deletePlaylist {
+    color: #ff5533;
+    position: absolute;
+    margin-left: 15px;
+    bottom: 0;
+    left: 19.5vw;
+    outline: none;
+}
+
+#deletePlaylist:hover {
+    cursor: pointer;
+}

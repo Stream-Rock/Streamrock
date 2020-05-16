@@ -120,10 +120,13 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
 <div id="playlistBox" style="display: none;">
     <div class="playlistDescription">
         <img id="playlistPicture" src="./../images/profile_picture.png"/ alt="Playlist picture" >
-        <h3 id="playlistName">Playlist Name</h3>
-        <p id="playlistDescription">Some Description</p>
-        <p id="playlistUsername">Made by testuser 0 Songs</p>
+        <h3 id="playlistName"></h3>
+        <p id="playlistDescription"></p>
+        <p id="playlistUsername"></p>
         <button>Play</button>
+        <span class="material-icons" id="deletePlaylist" title="Delete playlist">
+            delete_sweep
+        </span>
     </div>
     <div id="playlistData">
 
