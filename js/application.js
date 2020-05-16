@@ -85,7 +85,7 @@ function init(username, profile_picture) {
         });
 
         document.getElementById('addFavoriteArtist').addEventListener('click', () => {
-            addFavoriteArtist(username, document.getElementById('artistName').textContent, this);
+            addFavoriteArtist(username, document.getElementById('artistName').textContent, document.getElementById('addFavoriteArtist'));
         });
     }
 }
