@@ -772,7 +772,7 @@ function addFavoriteArtist(username, artist, element) {
                 element.addEventListener('click', () => {
                     removeFavoriteArtist(username, artist, element);
                 });
-                element.setAttribute('title', 'Remove from favorite artists');
+                element.setAttribute('title', 'Remove from your favorite artists');
             }
         }
     };
@@ -783,6 +783,22 @@ function addFavoriteArtist(username, artist, element) {
 
 function removeFavoriteArtist(username, artist, element) {
     console.log('Remove ' + username + " " + artist + " " + element);
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = this.responseText;
+            if (response === 'Artist was removed from favorites') {
+                element.textContent = 'person_add';
+                element.addEventListener('click', () => {
+                    addFavoriteArtist(username, artist, element);
+                });
+                element.setAttribute('title', 'Add to your favorite artists');
+            }
+        }
+    };
+    xhttp.open("POST", "./../php/removeFavoriteArtist.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("username=" + username + "&artist=" + artist);
 }
 
 slider
