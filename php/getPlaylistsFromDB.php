@@ -11,7 +11,7 @@ if($conn -> connect_error){
 
 if (isset($username) && !empty($username)) {
     if ($_SESSION["username"] == $username && $_SESSION["loggedin"] == true) {
-        $stmt = $conn->prepare("SELECT playlist_name, username, playlist_description, playlist_picture_url FROM playlists WHERE username = ?");
+        $stmt = $conn->prepare("SELECT playlist_name, username, playlist_description, playlist_picture_url FROM playlists WHERE username = ? AND playlist_deleted = 0");
         $stmt->bind_param("s", $username);
 
         $stmt->execute();
