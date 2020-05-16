@@ -486,7 +486,9 @@ function openArtistPage(artist) {
                     printNoAvailable(document.getElementById('artistResults'), 'This artist has no songs so far.');
                 }
             }
-            divBoxForSongResults.appendChild(table);-
+            divBoxForSongResults.appendChild(table);
+            document.getElementById('addFavoriteArtist').textContent = response[0]["artistIsLiked"] ? 'person_add_disabled' : 'person_add';
+            document.getElementById('addFavoriteArtist').setAttribute('title', response[0]["artistIsLiked"] ? 'Remove from your favorite artists' : 'Add to your favorite artists');
             document.getElementById('artistResults').appendChild(divBoxForSongResults);
         }
         document.getElementById('artistBox').style.display = 'block';
