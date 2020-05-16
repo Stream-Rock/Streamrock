@@ -137,6 +137,9 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <img class="artistPicture" src="./../images/profile_picture.png"/ alt="Artist picture">
         <h3 id="artistName">Artist name</h3>
         <button>Play</button>
+        <span class="material-icons" id="addFavoriteArtist" title="Add to your favorite artists">
+            person_add
+        </span>
     </div>
     <div id="artistResults">
 

@@ -811,15 +811,19 @@ h6 {
     color: white;
 }
 
-#deletePlaylist {
+#deletePlaylist, #addFavoriteArtist {
     color: #ff5533;
     position: absolute;
     margin-left: 15px;
     bottom: 0;
-    left: 19.5vw;
+    left: 19vw;
     outline: none;
 }
 
-#deletePlaylist:hover {
+#addFavoriteArtist {
+    color: gray;
+}
+
+#deletePlaylist:hover, #addFavoriteArtist:hover {
     cursor: pointer;
 }
