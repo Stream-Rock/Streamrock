@@ -770,6 +770,7 @@ function addFavoriteArtist(username, artist, element) {
                 element.addEventListener('click', () => {
                     removeFavoriteArtist(username, artist, element);
                 });
+                element.setAttribute('title', 'Remove from favorite artists');
             }
         }
     };
