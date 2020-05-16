@@ -2,6 +2,7 @@ let activeColor = 'rgb(46, 204, 113)';
 let deactiveColor = 'gray';
 let amountSongs = 0;
 let defaultPicture = './../images/profile_picture.png';
+let defaultPlaylistPicture = './../images/playlist_picture.png';
 const slider = interact('.slider');
 
 window.addEventListener('load', init);
@@ -404,7 +405,7 @@ function showPlaylist(playlistName, playlistUsername, playlistDescription, playl
     getPlaylistSongs(playlistName, playlistDescription, playlistUsername);
 
     if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL' || playlistPicture === 'null') {
-        document.getElementById('playlistPicture').src = defaultPicture;
+        document.getElementById('playlistPicture').src = defaultPlaylistPicture;
     } else {
         document.getElementById('playlistPicture').src = playlistPicture;
     }
