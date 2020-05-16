@@ -25,8 +25,17 @@ if (isset($artist) && !empty($artist) && isset($username) && $username !== "") {
         } else {
             $response[$count]["star"] = false;
         }
+
         $count++;
     }
+
+    $favoriteArtistStmt = "SELECT * FROM accounts_artists WHERE username ='$username' AND artist = '$artist';";
+    if ($conn->query($favoriteArtistStmt)->fetch_assoc()) {
+        $response[0]["artistIsLiked"] = true;
+    } else {
+        $response[0]["artistIsLiked"] = false;
+    }
+
     echo json_encode($response);
 }
 
