@@ -139,10 +139,10 @@ function addPlaylistOn(element) {
 
 function addPlaylist(name, description) {
     if (name === '') {
-        disableAddPlaylistBox();
+        disableAddPlaylistBox(document.getElementById('createNewPlaylistBox'));
     }else{
         savePlaylistToDB(name, description, document.getElementById('profileName').textContent);
-        disableAddPlaylistBox();
+        disableAddPlaylistBox(document.getElementById('createNewPlaylistBox'));
         writePlaylistsFromUser(document.getElementById('profileName').textContent);
     }
 }
@@ -402,7 +402,7 @@ function showPlaylist(playlistName, playlistUsername, playlistDescription, playl
     hideTabs();
     getPlaylistSongs(playlistName, playlistDescription, playlistUsername);
 
-    if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL') {
+    if (playlistPicture === '' || playlistPicture === null || playlistPicture === 'NULL' || playlistPicture === 'null') {
         document.getElementById('playlistPicture').src = defaultPicture;
     } else {
         document.getElementById('playlistPicture').src = playlistPicture;
