@@ -78,6 +78,10 @@ function init(username, profile_picture) {
         document.getElementById('showAllSpan').addEventListener('click', printFavorites);
         printFirstFavorites();
         printRandomSongs(document.getElementById('artists'));
+
+        document.getElementById('deletePlaylist').addEventListener('click', () => {
+            deletePlaylist(document.getElementById('playlistName').textContent, username);
+        });
     }
 }
 
@@ -731,6 +735,19 @@ function printRandomSongs(elementToAppendTo) {
     xhttp.open("POST", "./../php/getRandomSongs.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
+}
+
+function deletePlaylist(playlistName, username) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let response = this.responseText;
+            console.log(response);
+        }
+    };
+    xhttp.open("POST", "./../php/deletePlaylist.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("playlistName=" + playlistName + "&username=" + username);
 }
 
 
