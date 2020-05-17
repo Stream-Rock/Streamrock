@@ -59,8 +59,8 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     </nav>
 </div>
 <div class="currentSongName">
-    <p id="currentSong">Current song</p>
-    <p id="currentArtist">Current Artist</p>
+    <p id="currentSong">No song is playing</p>
+    <p id="currentArtist"></p>
     <i class="far fa-star" id="star"></i>
 </div>
 <div class="searchBar">
