@@ -7,7 +7,8 @@ let musicPrefix = './../music/';
 let defaultSong = 'Rick Astley - Never Gonna Give You Up.mp3';
 const slider = interact('.slider');
 let loop = false;
-let volume = 0.0;
+let volume = 0.1;
+let activeSong;
 
 window.addEventListener('load', init);
 
@@ -17,11 +18,11 @@ function init(username, profile_picture) {
         document.getElementById('profilePicture').src = profile_picture;
 
         document.getElementById('loop').addEventListener('click', () => {
-            activateAndDeactivateIcon(document.getElementById('loop'))
+            switchLoop(document.getElementById('loop'));
         });
         document.getElementById('logo').addEventListener('click', openHomePage);
         document.getElementById('pause').addEventListener('click', () => {
-            changeIcon(document.getElementById('pause'), 'far fa-play-circle', 'far fa-pause-circle')
+            switchPausePlay(document.getElementById('pause'), 'far fa-play-circle', 'far fa-pause-circle')
         });
         document.getElementById('star').addEventListener('click', () => {
             changeIcon(document.getElementById('star'), 'fas fa-star', 'far fa-star')
@@ -88,13 +89,16 @@ function init(username, profile_picture) {
         document.getElementById('addFavoriteArtist').addEventListener('click', () => {
             addFavoriteArtist(username, document.getElementById('artistName').textContent, document.getElementById('addFavoriteArtist'));
         });
+        playSong();
     }
 }
 
-function activateAndDeactivateIcon(icon) {
+function switchLoop(icon) {
     if (icon.style.color === activeColor) {
+        loop = false;
         icon.style.color = deactiveColor;
     } else {
+        loop = true;
         icon.style.color = activeColor;
     }
 }
@@ -108,6 +112,16 @@ function changeIcon(icon, newIconClassName, oldIconClassName) {
         icon.className = oldIconClassName;
     } else {
         icon.className = newIconClassName;
+    }
+}
+
+function switchPausePlay(icon, newIconClassName, oldIconClassName) {
+    if (icon.className === newIconClassName) {
+        icon.className = oldIconClassName;
+        resumeSong();
+    } else {
+        icon.className = newIconClassName;
+        pauseSong();
     }
 }
 
@@ -802,8 +816,8 @@ function removeFavoriteArtist(username, artist, element) {
     xhttp.send("username=" + username + "&artist=" + artist);
 }
 
-function playSong() {
-    var sound = new Howl({
+function playSong(songSrc, songName, songArtist) {
+    activeSong = new Howl({
         src: [musicPrefix + defaultSong],
         autoplay: true,
         loop: loop,
@@ -812,6 +826,24 @@ function playSong() {
             console.log('Finished!');
         }
     });
+}
+
+function changeVolume(newVolume) {
+    if (activeSong !== null && activeSong !== undefined) {
+        activeSong.volume(newVolume);
+    }
+}
+
+function pauseSong() {
+    if (activeSong !== null && activeSong !== undefined) {
+        activeSong.pause();
+    }
+}
+
+function resumeSong() {
+    if (activeSong !== null && activeSong !== undefined) {
+        activeSong.play();
+    }
 }
 
 slider
