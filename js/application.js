@@ -3,7 +3,11 @@ let deactiveColor = 'gray';
 let amountSongs = 0;
 let defaultPicture = './../images/profile_picture.png';
 let defaultPlaylistPicture = './../images/playlist_picture.png';
+let musicPrefix = './../music/';
+let defaultSong = 'Rick Astley - Never Gonna Give You Up.mp3';
 const slider = interact('.slider');
+let loop = false;
+let volume = 0.0;
 
 window.addEventListener('load', init);
 
@@ -799,6 +803,18 @@ function removeFavoriteArtist(username, artist, element) {
     xhttp.open("POST", "./../php/removeFavoriteArtist.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username + "&artist=" + artist);
+}
+
+function playSong() {
+    var sound = new Howl({
+        src: [musicPrefix + defaultSong],
+        autoplay: true,
+        loop: loop,
+        volume: volume,
+        onend: function() {
+            console.log('Finished!');
+        }
+    });
 }
 
 slider
