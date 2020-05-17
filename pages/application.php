@@ -90,8 +90,80 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <h1 id="favoriteSongsHeading">Favorite songs <div class="showAllDiv"><span title="Show all favorite songs" id="showAllSpan">Show all</span><i id="showAllFavorites" title="Show all favorite songs" class="fas fa-chevron-right"></i></div></h1>
         <div class="suggestion" id="favoriteSongs">
         </div>
-        <h1 id="favoriteArtistsHeading">Favorite artists<div class="showAllDiv"><span title="Show all favorite artists" id="">Show all</span><i id="" title="Show all favorite artists" class="fas fa-chevron-right"></i></div></h1>
-        <div class="suggestion" id="favoriteAlbums">
+        <h1 id="favoriteArtistsHeading">Favorite artists<div class="showAllDiv"><span title="Show all favorite artists">Show all</span><i id="showAllArtists" title="Show all favorite artists" class="fas fa-chevron-right"></i></div></h1>
+        <div class="suggestion" id="favoriteArtists">
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
+            <div class="favoriteElement">
+                <div class="container">
+                    <img src="./../images/profile_picture.png" alt="Image">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <p>Artist name</p>
+            </div>
         </div>
     </div>
 </div>
