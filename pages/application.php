@@ -25,7 +25,6 @@ if (isset($loggedIn)) {
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.core.min.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="../images/shamrock_black.png">
 
 <body onload="init('<?php
@@ -184,7 +183,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     </div>
     <div class="songBar">
         <p id="currentTime">-:-</p>
-        <div id="songBar" class="slider"></div>
+        <div id="songBar" class="slider" style="width: 26%"></div>
         <p id="totalTime">-:-</p>
     </div>
 </div>
@@ -210,6 +209,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     </div>
     <i class="far fa-times-circle" id="cancelCreateNewPlaylist"></i>
 </div>
+<script src="./../js/howler.min.js"></script>
 <script src="./../js/application.js"></script>
 </body>
 </html>
