@@ -5,7 +5,7 @@ let defaultPicture = './../images/profile_picture.png';
 let defaultPlaylistPicture = './../images/playlist_picture.png';
 let musicPrefix = './../music/';
 let defaultSong = 'Rick Astley - Never Gonna Give You Up.mp3';
-const slider = interact('.slider');
+const volumeSlider = interact('#volumeBar');
 let loop = false;
 let volume = 0.1;
 let activeSong;
@@ -846,7 +846,7 @@ function resumeSong() {
     }
 }
 
-slider
+volumeSlider
     .draggable({
         origin: 'self',
         inertia: true,
