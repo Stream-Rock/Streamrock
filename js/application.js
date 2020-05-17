@@ -847,7 +847,8 @@ let utils = {
         let currentTime = utils.formatTime(Math.round(seek));
 
         document.getElementById('currentTime').textContent = currentTime;
-        //progress.style.width = (((seek / self.duration()) * 100) || 0) + '%';
+        //progress.style.width =
+        document.getElementById('songBar').style.paddingLeft = (((((seek / self.duration()) * 100) || 0) / 100) * document.getElementById('songBar').style.width) + '%';
 
         if (self.playing()) {
             requestAnimationFrame(utils.updateTimeTracker.bind(self));
@@ -906,5 +907,5 @@ songSlider
         const value = event.pageX / sliderWidth;
         event.target.style.paddingLeft = (value * 100) + '%';
         event.target.setAttribute('data-value', value.toFixed(2));
-        console.log(value * 3.8);
+        //console.log(value * 3.8);
     });
