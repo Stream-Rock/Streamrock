@@ -27,6 +27,20 @@ foreach ($file_array AS $currentLine) {
     }
 }
 
+$artistStmt = $conn -> prepare("INSERT INTO artist (artist) VALUES (?)");
+$artistStmt->bind_param("s", $artist);
+
+foreach ($file_array AS $currentLine) {
+    set_time_limit(10);
+    $line_array = explode(",", $currentLine);
+    if ($line_array[0] != "Song Clean") {
+        $artist = $line_array[1];
+
+        $artistStmt -> execute();
+        echo("$artist was added to database\n");
+    }
+}
+
 $stmt -> close();
 $conn -> close();
 ?>
