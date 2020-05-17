@@ -49,7 +49,6 @@ function init(username, profile_picture) {
             addPlaylist(document.getElementById('nameOfPlaylist').value, document.getElementById('descriptionOfPlaylist').value);
         });
         writePlaylistsFromUser(username);
-        writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums", username);
 
         document.getElementById('logoutButton').addEventListener('click', logout);
         document.getElementById('deleteAccountButton').addEventListener('click', () =>{
@@ -79,7 +78,10 @@ function init(username, profile_picture) {
         });
         document.getElementById('showAllFavorites').addEventListener('click', printFavorites);
         document.getElementById('showAllSpan').addEventListener('click', printFavorites);
+
         printFirstFavorites();
+        printFirstFavoriteArtists();
+
         printRandomSongs(document.getElementById('artists'));
 
         document.getElementById('deletePlaylist').addEventListener('click', () => {
@@ -648,6 +650,10 @@ function printFirstFavorites() {
     getFavorites(true, document.getElementById('favoriteSongs'));
 }
 
+function printFirstFavoriteArtists() {
+    getFavoriteArtists(true, document.getElementById('favoriteArtists'))
+}
+
 function getFavorites(isLimited, elementToAppendTo) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -677,6 +683,59 @@ function getFavorites(isLimited, elementToAppendTo) {
     xhttp.open("POST", "./../php/getFavoriteSongs.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
+}
+
+function getFavoriteArtists(isLimited, element) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            deleteAllPreviousChilds(element);
+            let response = JSON.parse(this.responseText);
+            let max = response.length > 5 ? isLimited ? 5 : response.length : response.length;
+
+            for (let i = 0; i < max; i++) {
+                element.appendChild(addArtistRow(response[i]["artist"], response[i]["artist_src"]));
+            }
+        }
+
+    };
+    xhttp.open("POST", "./../php/getFavoriteArtists.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+}
+
+function addArtistRow(artist, artistSrc) {
+    let src;
+
+    if (artistSrc !== '' && artistSrc !== null && artistSrc !== undefined) {
+        src = artistSrc;
+    } else {
+        src = defaultPicture;
+    }
+
+    let divBox = document.createElement('div');
+    divBox.setAttribute('class', 'favoriteElement');
+
+    let container = document.createElement('div');
+    container.setAttribute('class', 'container');
+
+    let image = document.createElement('img');
+    image.setAttribute('src', src);
+    image.setAttribute('alt', 'Artist image');
+
+    let overlay = document.createElement('div');
+    overlay.setAttribute('class', 'overlay');
+
+    container.appendChild(image);
+    container.appendChild(overlay);
+
+    let artistP = document.createElement('p');
+    artistP.textContent = artist;
+
+    divBox.appendChild(container);
+    divBox.appendChild(artistP);
+
+    return divBox;
 }
 
 function printNoAvailable(field, text) {
