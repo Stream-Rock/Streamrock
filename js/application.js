@@ -667,21 +667,24 @@ function getFavorites(isLimited, elementToAppendTo) {
             let response = JSON.parse(this.responseText);
             let divBoxForSongResults = document.createElement('div');
             divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
-            let table = document.createElement('table');
-            table.setAttribute('class', 'songResultsTable');
+
             let max = response.length >= 5 ? isLimited ? 5 : response.length : response.length;
 
-            for (let i = 0; i < max; i++) {
-                if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
-                    if (i === 0) {
-                        table.appendChild(insertFirstRow('Release year'));
-                    }
-                    table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
-                } else {
-                    printNoAvailable(elementToAppendTo, 'You have no favorite songs so far.');
+            if (response[0]["song_id"] !== null && response[0]["song_id"] !== undefined && response[0]["song_id"] !== '') {
+                let table = document.createElement('table');
+                table.setAttribute('class', 'songResultsTable');
+
+                for (let i = 0; i < max; i++) {
+                        if (i === 0) {
+                            table.appendChild(insertFirstRow('Release year'));
+                        }
+                        table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 }
+                
+                divBoxForSongResults.appendChild(table);
+            } else {
+                printNoAvailable(elementToAppendTo, "You have no favorite songs so far.");
             }
-            divBoxForSongResults.appendChild(table);
             elementToAppendTo.appendChild(divBoxForSongResults);
         }
     };
@@ -698,9 +701,14 @@ function getFavoriteArtists(isLimited, element) {
             let response = JSON.parse(this.responseText);
             let max = response.length > 5 ? isLimited ? 5 : response.length : response.length;
 
-            for (let i = 0; i < max; i++) {
-                element.appendChild(addArtistRow(response[i]["artist"], response[i]["artist_src"]));
+            if (response[0]["artist"] !== '' && response[0]["artist"] !== undefined) {
+                for (let i = 0; i < max; i++) {
+                    element.appendChild(addArtistRow(response[i]["artist"], response[i]["artist_src"]));
+                }
+            } else {
+                printNoAvailable(element, 'You have no favorite artists so far.');
             }
+
         }
 
     };
