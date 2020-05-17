@@ -847,8 +847,7 @@ let utils = {
         let currentTime = utils.formatTime(Math.round(seek));
 
         document.getElementById('currentTime').textContent = currentTime;
-        //progress.style.width =
-        document.getElementById('songBar').style.paddingLeft = (((((seek / self.duration()) * 100) || 0) / 100) * document.getElementById('songBar').style.width) + '%';
+        document.getElementById('songBar').style.paddingLeft = ((((seek / this.duration()) * 100 || 0) / 100) * document.getElementById('songBar').style.width.substring(0,2)) + '%';
 
         if (self.playing()) {
             requestAnimationFrame(utils.updateTimeTracker.bind(self));
@@ -871,6 +870,13 @@ function pauseSong() {
 function resumeSong() {
     if (activeSong !== null && activeSong !== undefined) {
         activeSong.play();
+    }
+}
+
+function seekSong(perCent) {
+    if (activeSong !== null && activeSong !== undefined) {
+        let seekPosition = activeSong.duration() * perCent;
+        activeSong.seek(seekPosition);
     }
 }
 
@@ -907,5 +913,5 @@ songSlider
         const value = event.pageX / sliderWidth;
         event.target.style.paddingLeft = (value * 100) + '%';
         event.target.setAttribute('data-value', value.toFixed(2));
-        //console.log(value * 3.8);
+        seekSong(value * 100 / document.getElementById('songBar').style.width.substring(0, 2));
     });
