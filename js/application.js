@@ -121,9 +121,11 @@ function changeIcon(icon, newIconClassName, oldIconClassName) {
 function switchPausePlay(icon, newIconClassName, oldIconClassName) {
     if (icon.className === newIconClassName) {
         icon.className = oldIconClassName;
+        icon.title = 'Resume track';
         resumeSong();
     } else {
         icon.className = newIconClassName;
+        icon.title = 'Pause track';
         pauseSong();
     }
 }
@@ -819,7 +821,7 @@ function removeFavoriteArtist(username, artist, element) {
     xhttp.send("username=" + username + "&artist=" + artist);
 }
 
-function playSong(songSrc, songName, songArtist) {
+function playSong(songSrc, songID, songName, artist, releaseYear, isLiked) {
     activeSong = new Howl({
         src: [musicPrefix + defaultSong],
         autoplay: true,
@@ -828,13 +830,39 @@ function playSong(songSrc, songName, songArtist) {
         onplay: function () {
             let time = utils.formatTime(Math.round(this.duration()));
             document.getElementById('totalTime').textContent = time;
-            // Start upating the progress of the track.
             requestAnimationFrame(utils.updateTimeTracker.bind(this));
         },
         onend: function() {
             console.log('Finished!');
+            if (!loop) {
+                addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, isLiked);
+                playNextSong();
+            }
         }
     });
+}
+
+function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, isLiked) {
+    let previousSongs = JSON.parse(localStorage.getItem('previousSongs'));
+    let index;
+
+    if (previousSongs !== undefined && previousSongs !== null) {
+        index = previousSongs.length;
+    } else {
+        index = 0;
+        previousSongs = [];
+    }
+
+    previousSongs[index]["songSrc"] = songSrc;
+    previousSongs[index]["songID"] = songID;
+    previousSongs[index]["songName"] = songName;
+    previousSongs[index]["artist"] = artist;
+    previousSongs[index]["releaseYear"] = releaseYear;
+    previousSongs[index]["isLiked"] = isLiked;
+}
+
+function playNextSong() {
+
 }
 
 let utils = {
