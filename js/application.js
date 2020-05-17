@@ -6,6 +6,7 @@ let defaultPlaylistPicture = './../images/playlist_picture.png';
 let musicPrefix = './../music/';
 let defaultSong = 'Rick Astley - Never Gonna Give You Up.mp3';
 const volumeSlider = interact('#volumeBar');
+let songSlider = interact('#songBar');
 let loop = false;
 let volume = 0.1;
 let activeSong;
@@ -822,11 +823,37 @@ function playSong(songSrc, songName, songArtist) {
         autoplay: true,
         loop: loop,
         volume: volume,
+        onplay: function () {
+            let time = utils.formatTime(Math.round(this.duration()));
+            document.getElementById('totalTime').textContent = time;
+            // Start upating the progress of the track.
+            requestAnimationFrame(utils.updateTimeTracker.bind(this));
+        },
         onend: function() {
             console.log('Finished!');
         }
     });
 }
+
+let utils = {
+    formatTime: function (secs) {
+        let minutes = Math.floor(secs / 60) || 0;
+        let seconds = (secs - minutes * 60) || 0;
+        return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    },
+    updateTimeTracker: function () {
+        let self = this;
+        let seek = activeSong.seek() || 0;
+        let currentTime = utils.formatTime(Math.round(seek));
+
+        document.getElementById('currentTime').textContent = currentTime;
+        //progress.style.width = (((seek / self.duration()) * 100) || 0) + '%';
+
+        if (self.playing()) {
+            requestAnimationFrame(utils.updateTimeTracker.bind(self));
+        }
+    }
+};
 
 function changeVolume(newVolume) {
     if (activeSong !== null && activeSong !== undefined) {
@@ -862,4 +889,22 @@ volumeSlider
         event.target.style.paddingLeft = (value * 100) + '%';
         event.target.setAttribute('data-value', value.toFixed(2));
         changeVolume(event.pageX / 100);
+    });
+
+songSlider
+    .draggable({
+        origin: 'self',
+        inertia: true,
+        modifiers: [
+            interact.modifiers.restrict({
+                restriction: 'self'
+            })
+        ]
+    })
+    .on('dragmove', function (event) {
+        const sliderWidth = interact.getElementRect(event.target.parentNode).width;
+        const value = event.pageX / sliderWidth;
+        event.target.style.paddingLeft = (value * 100) + '%';
+        event.target.setAttribute('data-value', value.toFixed(2));
+        console.log(value * 3.8);
     });
