@@ -8,7 +8,7 @@ let defaultSong = 'Rick Astley - Never Gonna Give You Up.mp3';
 const volumeSlider = interact('#volumeBar');
 let songSlider = interact('#songBar');
 let loop = false;
-let volume = 0.1;
+let songVolume = 0.1;
 let activeSong;
 
 window.addEventListener('load', init);
@@ -102,6 +102,8 @@ function switchLoop(icon) {
         loop = true;
         icon.style.color = activeColor;
     }
+
+    loopSong(loop);
 }
 
 function openHomePage() {
@@ -822,7 +824,7 @@ function playSong(songSrc, songName, songArtist) {
         src: [musicPrefix + defaultSong],
         autoplay: true,
         loop: loop,
-        volume: volume,
+        volume: songVolume,
         onplay: function () {
             let time = utils.formatTime(Math.round(this.duration()));
             document.getElementById('totalTime').textContent = time;
@@ -878,6 +880,10 @@ function seekSong(perCent) {
         let seekPosition = activeSong.duration() * perCent;
         activeSong.seek(seekPosition);
     }
+}
+
+function loopSong(loop) {
+    activeSong.loop(loop);
 }
 
 volumeSlider
