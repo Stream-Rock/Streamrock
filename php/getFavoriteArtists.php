@@ -11,18 +11,22 @@ $username = $_SESSION["username"];
 $count = 0;
 
 if (isset($username) && $username !== '') {
-    $stmt = "SELECT song_id FROM accounts_likes WHERE username = '$username' ORDER BY date_added DESC";
+    $stmt = "SELECT artist FROM accounts_artists WHERE username = '$username' ORDER BY date_added DESC";
 
     $result = $conn->query($stmt);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $stmt = "SELECT song_id, song_name, artist, release_year, song_src FROM song_list WHERE song_id = " . $row["song_id"];
-            $song = $conn->query($stmt)->fetch_assoc();
+            $srcStmt = "SELECT artist_src FROM artist WHERE artist = '" . $row["artist"] . "'";
+            $artist = $conn->query($srcStmt);
 
-            $response[$count] = $song;
-            $response[$count]["star"] = true;
+            if ($artist->num_rows > 0) {
+                $artist_src = $artist->fetch_assoc();
 
-            $count++;
+                $response[$count] = $row;
+                $response[$count]["artist_src"] = $artist_src["artist_src"];
+                $count++;
+            }
+
         }
 
         echo json_encode($response);
