@@ -49,7 +49,6 @@ function init(username, profile_picture) {
             addPlaylist(document.getElementById('nameOfPlaylist').value, document.getElementById('descriptionOfPlaylist').value);
         });
         writePlaylistsFromUser(username);
-        writeData("./../csv/recentlyPlayed.csv", "recentlyPlayedElement", "recentlyPlayed", username);
         writeData("./../csv/favoritealbums.csv", "favoriteElement", "favoriteAlbums", username);
 
         document.getElementById('logoutButton').addEventListener('click', logout);
@@ -90,7 +89,8 @@ function init(username, profile_picture) {
         document.getElementById('addFavoriteArtist').addEventListener('click', () => {
             addFavoriteArtist(username, document.getElementById('artistName').textContent, document.getElementById('addFavoriteArtist'));
         });
-        playSong();
+
+        printRecentlyPlayedElements(document.getElementById('recentlyPlayed'));
     }
 }
 
@@ -915,6 +915,18 @@ function seekSong(perCent) {
 
 function loopSong(loop) {
     activeSong.loop(loop);
+}
+
+function printRecentlyPlayedElements(element) {
+    deleteAllPreviousChilds(element);
+
+    let recentlyPlayed = JSON.parse(localStorage.getItem('previousSongs'));
+
+    if (recentlyPlayed !== null && recentlyPlayed !== undefined && recentlyPlayed.length !== 0) {
+
+    } else {
+        printNoAvailable(element, 'No songs were played recently.');
+    }
 }
 
 volumeSlider
