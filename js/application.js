@@ -830,7 +830,7 @@ function playSong(songSrc, songName, songArtist) {
 
 function changeVolume(newVolume) {
     if (activeSong !== null && activeSong !== undefined) {
-        activeSong.volume(newVolume);
+        Howler.volume(newVolume);
     }
 }
 
