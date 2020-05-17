@@ -350,7 +350,7 @@ function getResults(value) {
                             table.appendChild(insertFirstRow('Release year'));
                         }
 
-                        table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
+                        table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                     } else {
                         printNoAvailable(document.getElementById('songResults'), 'There were no songs found.');
                     }
@@ -453,7 +453,7 @@ function getPlaylistSongs(playlistName, playlistDescription, playlistUsername) {
                     if (i === 0) {
                         table.appendChild(insertFirstRow('Date added'));
                     }
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["date_added"], response[i]["star"], true));
+                    table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["date_added"], response[i]["star"], true));
                 } else {
                     printNoAvailable(document.getElementById('artistResults'), 'There are no songs in this playlist so far');
                 }
@@ -501,7 +501,7 @@ function openArtistPage(artist) {
                     if (i === 0) {
                         table.appendChild(insertFirstRow('Release year'));
                     }
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
+                    table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 } else {
                     printNoAvailable(document.getElementById('artistResults'), 'This artist has no songs so far.');
                 }
@@ -518,7 +518,7 @@ function openArtistPage(artist) {
     xhttp.send("artist=" + artist);
 }
 
-function createTableRow(songID, songName, artist, releaseYear, isLiked, playlistDelete) {
+function createTableRow(songSrc, songID, songName, artist, releaseYear, isLiked, playlistDelete) {
     let tableRow = document.createElement('tr');
 
     let iconRow = document.createElement('td');
@@ -585,6 +585,8 @@ function createTableRow(songID, songName, artist, releaseYear, isLiked, playlist
     tableRow.setAttribute('data-songName', songName);
     tableRow.setAttribute('data-artist', artist);
     tableRow.setAttribute('data-releaseYear', releaseYear);
+    tableRow.setAttribute('data-songSrc', songSrc !== '' ? songSrc : defaultSong);
+    
     tableRow.appendChild(iconRow);
     tableRow.appendChild(songRow);
     tableRow.appendChild(artistRow);
@@ -663,7 +665,7 @@ function getFavorites(isLimited, elementToAppendTo) {
                     if (i === 0) {
                         table.appendChild(insertFirstRow('Release year'));
                     }
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
+                    table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 } else {
                     printNoAvailable(elementToAppendTo, 'You have no favorite songs so far.');
                 }
@@ -752,7 +754,7 @@ function printRandomSongs(elementToAppendTo) {
                     if (i === 0) {
                         table.appendChild(insertFirstRow('Release year'));
                     }
-                    table.appendChild(createTableRow(response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
+                    table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 } else {
                     printNoAvailable(elementToAppendTo, 'There are no songs to discover');
                 }

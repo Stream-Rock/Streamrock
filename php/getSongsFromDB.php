@@ -13,7 +13,7 @@ if($conn -> connect_error){
 }
 
 if (isset($search) && !empty($search) && isset($username) && $username !== "") {
-    $stmt = "SELECT song_id, song_name, artist, release_year FROM song_list WHERE song_name LIKE '%" . $search . "%'";
+    $stmt = "SELECT song_id, song_name, artist, release_year, song_src FROM song_list WHERE song_name LIKE '%" . $search . "%'";
 
     $result = $conn->query($stmt);
     while($row = $result->fetch_assoc()) {

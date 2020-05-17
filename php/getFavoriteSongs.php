@@ -16,7 +16,7 @@ if (isset($username) && $username !== '') {
     $result = $conn->query($stmt);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $stmt = "SELECT song_id, song_name, artist, release_year FROM song_list WHERE song_id = " . $row["song_id"];
+            $stmt = "SELECT song_id, song_name, artist, release_year, song_src FROM song_list WHERE song_id = " . $row["song_id"];
             $song = $conn->query($stmt)->fetch_assoc();
 
             $response[$count] = $song;

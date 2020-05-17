@@ -22,7 +22,7 @@ if ($username !== '' && isset($username)) {
 
         for ($i = 0; $i < $amountRows; $i++) {
             $randomNumber = rand(1, $amountSongs);
-            $selectStmt = "SELECT song_id, song_name, artist, release_year FROM song_list where song_id = " . $randomNumber;
+            $selectStmt = "SELECT song_id, song_name, artist, release_year, song_src FROM song_list where song_id = " . $randomNumber;
             $song = $conn->query($selectStmt)->fetch_assoc();
 
             $response[$i] = $song;

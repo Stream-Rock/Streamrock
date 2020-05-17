@@ -13,7 +13,7 @@ if($conn -> connect_error){
 }
 
 if (isset($artist) && !empty($artist) && isset($username) && $username !== "") {
-    $stmt = "SELECT song_id, song_name, artist, release_year FROM song_list where artist = '$artist' ORDER BY release_year DESC;";
+    $stmt = "SELECT song_id, song_name, artist, release_year, song_src FROM song_list where artist = '$artist' ORDER BY release_year DESC;";
 
     $result = $conn->query($stmt);
     while($row = $result->fetch_assoc()) {
