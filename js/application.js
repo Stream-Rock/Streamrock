@@ -923,7 +923,20 @@ function printRecentlyPlayedElements(element) {
     let recentlyPlayed = JSON.parse(localStorage.getItem('previousSongs'));
 
     if (recentlyPlayed !== null && recentlyPlayed !== undefined && recentlyPlayed.length !== 0) {
-
+        let divBoxForSongResults = document.createElement('div');
+        divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
+        let table = document.createElement('table');
+        table.setAttribute('class', 'songResultsTable');
+        for (let i = 0; i < recentlyPlayed.length; i++) {
+            if (recentlyPlayed[i]["songID"] !== null && recentlyPlayed[i]["songID"] !== undefined && recentlyPlayed[i]["songID"] !== '') {
+                if (i === 0) {
+                    table.appendChild(insertFirstRow('Release year'));
+                }
+                table.appendChild(createTableRow(recentlyPlayed[i]["songSrc"], recentlyPlayed[i]["songID"], recentlyPlayed[i]["songName"], recentlyPlayed[i]["artist"], recentlyPlayed[i]["releaseYear"], recentlyPlayed[i]["isLiked"], false));
+            }
+        }
+        divBoxForSongResults.appendChild(table);
+        element.appendChild(divBoxForSongResults);
     } else {
         printNoAvailable(element, 'No songs were played recently.');
     }
