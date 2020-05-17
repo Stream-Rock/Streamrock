@@ -397,6 +397,18 @@ i, .material-icons {
     left: 37%;
 }
 
+#currentTime {
+    position: absolute;
+    bottom: 0.5%;
+    left: 32.5%;
+}
+
+#totalTime {
+    position: absolute;
+    bottom: 0.5%;
+    right: 32.5%;
+}
+
 #active {
     border-bottom: 5px solid #2ecc71;
 }

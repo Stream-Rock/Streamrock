@@ -183,7 +183,9 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <span class="material-icons" id="queue">queue_music</span>
     </div>
     <div class="songBar">
+        <p id="currentTime">0:00</p>
         <div id="songBar" class="slider"></div>
+        <p id="totalTime">0:00</p>
     </div>
 </div>
 <div class="createNewPlaylist" id="createNewPlaylistBox" style="display: none;">
