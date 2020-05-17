@@ -855,3 +855,8 @@ h6 {
 .favoriteElement {
     margin-bottom: 3.5vh;
 }
+
+.favoriteElement p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
