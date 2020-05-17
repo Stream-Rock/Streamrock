@@ -586,7 +586,7 @@ function createTableRow(songSrc, songID, songName, artist, releaseYear, isLiked,
     tableRow.setAttribute('data-artist', artist);
     tableRow.setAttribute('data-releaseYear', releaseYear);
     tableRow.setAttribute('data-songSrc', songSrc !== '' ? songSrc : defaultSong);
-    
+
     tableRow.appendChild(iconRow);
     tableRow.appendChild(songRow);
     tableRow.appendChild(artistRow);
@@ -909,6 +909,7 @@ function seekSong(perCent) {
     if (activeSong !== null && activeSong !== undefined) {
         let seekPosition = activeSong.duration() * perCent;
         activeSong.seek(seekPosition);
+        document.getElementById('currentTime').textContent = utils.formatTime(Math.round(seekPosition));
     }
 }
 
