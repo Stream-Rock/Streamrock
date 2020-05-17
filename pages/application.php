@@ -79,7 +79,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         </div>
     </div>
     <div class="tab" id="startSuggestions">
-        <h1 id="recentlyPlayedHeading">Recently played<div class="showAllDiv"><span title="Show all recently played songs" id="">Show all</span><i id="" title="Show all recently played songs" class="fas fa-chevron-right"></i></div></h1>
+        <h1 id="recentlyPlayedHeading">Recently played</h1>
         <div class="suggestion" id="recentlyPlayed">
         </div>
         <h1 id="favoritePlaylistsHeading">Discover songs</h1>
