@@ -173,13 +173,13 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <i class="fas fa-volume-up" id="volume_up"></i>
     </div>
     <div class="playOptions">
-        <i class="fas fa-step-backward" id="last"></i>
-        <i class="far fa-pause-circle" id="pause"></i>
-        <i class="fas fa-step-forward" id="next"></i>
+        <i class="fas fa-step-backward" id="last" title="Play previous track"></i>
+        <i class="far fa-pause-circle" id="pause" title="Pause track"></i>
+        <i class="fas fa-step-forward" id="next" title="Play next track"></i>
     </div>
     <div class="trackOptions">
-        <span class="material-icons" id="loop">repeat</span>
-        <span class="material-icons" id="queue">queue_music</span>
+        <span class="material-icons" id="loop" title="Enable loop">repeat</span>
+        <span class="material-icons" id="queue" title="Show queue">queue_music</span>
     </div>
     <div class="songBar">
         <p id="currentTime">-:-</p>
