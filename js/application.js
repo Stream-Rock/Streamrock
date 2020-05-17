@@ -860,5 +860,6 @@ volumeSlider
         const sliderWidth = interact.getElementRect(event.target.parentNode).width;
         const value = event.pageX / sliderWidth;
         event.target.style.paddingLeft = (value * 100) + '%';
-        event.target.setAttribute('data-value', value.toFixed(2))
+        event.target.setAttribute('data-value', value.toFixed(2));
+        changeVolume(event.pageX / 100);
     });
