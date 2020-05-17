@@ -16,9 +16,6 @@ function init(username, profile_picture) {
         document.getElementById("profileName").textContent = username;
         document.getElementById('profilePicture').src = profile_picture;
 
-        document.getElementById('random').addEventListener('click', () => {
-            activateAndDeactivateIcon(document.getElementById('random'))
-        });
         document.getElementById('loop').addEventListener('click', () => {
             activateAndDeactivateIcon(document.getElementById('loop'))
         });
