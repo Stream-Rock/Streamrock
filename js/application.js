@@ -737,6 +737,14 @@ function addArtistRow(artist, artistSrc) {
     let artistP = document.createElement('p');
     artistP.textContent = artist;
 
+    container.addEventListener('click', () => {
+        openArtistPage(artist)
+    });
+
+    artistP.addEventListener('click', () => {
+        openArtistPage(artist);
+    });
+
     divBox.appendChild(container);
     divBox.appendChild(artistP);
 
