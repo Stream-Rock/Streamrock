@@ -93,6 +93,10 @@ function init(username, profile_picture) {
         });
 
         printRecentlyPlayedElements(document.getElementById('recentlyPlayed'));
+
+        document.getElementById('showAllArtists').addEventListener('click', () => {
+            getAllFavoriteArtists();
+        });
     }
 }
 
@@ -483,6 +487,7 @@ function hideTabs() {
     document.getElementById('playlistBox').style.display = 'none';
     document.getElementById('artistBox').style.display = 'none';
     document.getElementById('favoriteSongsBox').style.display = 'none';
+    document.getElementById('favoriteArtistsBox').style.display = 'none';
 }
 
 function openArtistPage(artist) {
@@ -999,6 +1004,12 @@ function printRecentlyPlayedElements(element) {
     } else {
         printNoAvailable(element, 'No songs were played recently.');
     }
+}
+
+function getAllFavoriteArtists() {
+    hideTabs();
+    document.getElementById('favoriteArtistsBox').style.display = 'block';
+    getFavoriteArtists(false, document.getElementById('favoriteArtistsFull'));
 }
 
 volumeSlider

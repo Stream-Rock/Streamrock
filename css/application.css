@@ -203,7 +203,7 @@ i {
     margin-right: 30%;
 }
 
-#startSuggestions, #favorites, #profile, #searchResults, #playlistBox, #artistBox, #favoriteSongsBox
+#startSuggestions, #favorites, #profile, #searchResults, #playlistBox, #artistBox, #favoriteSongsBox, #favoriteArtistsBox
 
 {
     width: 75%;
@@ -847,7 +847,7 @@ h6 {
     width: 10vw;
 }
 
-#favoriteArtists {
+#favoriteArtists, #favoriteArtistsFull {
     flex-wrap: wrap;
     padding-right: 2vw;
 }
