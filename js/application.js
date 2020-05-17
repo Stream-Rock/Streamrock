@@ -64,7 +64,6 @@ function init(username, profile_picture) {
             switchResultTab('none');
         });
         document.getElementById('search').addEventListener('keyup', () => {
-            //getArtists(document.getElementById('search').value);
             getResults(document.getElementById('search').value);
         });
         document.getElementById('profilePictureToUpload').addEventListener('change', () => {
@@ -400,21 +399,10 @@ function getArtists(value) {
                 let response = JSON.parse(this.responseText);
                 let divBoxForArtistResults = document.createElement('div');
                 divBoxForArtistResults.setAttribute('id', 'artistResults');
+                divBoxForArtistResults.setAttribute('class', 'suggestion');
+                console.log(response);
                 for (let i = 0; i < response.length; i++) {
-
-                    let element = document.createElement('div');
-                    element.setAttribute('class', 'recentlyPlayedElement');
-
-                    let image = document.createElement('img');
-                    image.setAttribute('src', './../images/profile_picture.png');
-                    image.setAttribute('alt', 'Image');
-
-                    let artist = document.createElement('p');
-                    artist.textContent = response[i]['artist'];
-
-                    element.appendChild(image);
-                    element.appendChild(artist);
-                    divBoxForArtistResults.appendChild(element);
+                    divBoxForArtistResults.appendChild(addArtistRow(response[i]["artist"], ''));
                 }
                 document.getElementById('searchResultsBox').appendChild(divBoxForArtistResults);
             }
@@ -680,7 +668,7 @@ function getFavorites(isLimited, elementToAppendTo) {
                         }
                         table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
                 }
-                
+
                 divBoxForSongResults.appendChild(table);
             } else {
                 printNoAvailable(elementToAppendTo, "You have no favorite songs so far.");
