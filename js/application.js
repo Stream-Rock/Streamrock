@@ -560,6 +560,10 @@ function createTableRow(songSrc, songID, songName, artist, releaseYear, isLiked,
     queueIcon.textContent = 'queue';
     queueIcon.setAttribute('title', 'Add to queue');
 
+    queueIcon.addEventListener('click', () => {
+        addSongToQueue(songSrc, songID, songName, artist, releaseYear, isLiked);
+    });
+
     let addIcon = document.createElement('span');
     if (playlistDelete) {
         addIcon.setAttribute('class', 'tableIcon material-icons');
@@ -1073,7 +1077,7 @@ function showQueue() {
 }
 
 function addSongToQueue(songSrc, songID, songName, artist, releaseYear, isLiked) {
-    let nextSongs = JSON.parse(sessionStorage.getItem('nextSong'));
+    let nextSongs = JSON.parse(sessionStorage.getItem('nextSongs'));
     let index;
 
     if (nextSongs !== undefined && nextSongs !== null) {
@@ -1084,11 +1088,35 @@ function addSongToQueue(songSrc, songID, songName, artist, releaseYear, isLiked)
     }
     nextSongs[index] = [songSrc, songID, songName, artist, releaseYear, isLiked];
 
-    localStorage.setItem('previousSongsFrom' + localUsername, JSON.stringify(nextSongs));
+    sessionStorage.setItem('nextSongs', JSON.stringify(nextSongs));
 }
 
 function printQueue(element) {
+    deleteAllPreviousChilds(element);
 
+    let nextSongs = JSON.parse(sessionStorage.getItem('nextSongs'));
+
+    if (nextSongs !== null && nextSongs !== undefined && nextSongs.length !== 0) {
+        let divBoxForSongResults = document.createElement('div');
+        divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
+        let table = document.createElement('table');
+        table.setAttribute('class', 'songResultsTable');
+
+        for (let i = 0; i < nextSongs.length; i++) {
+            if (nextSongs[i][0] !== null && nextSongs[i][0] !== undefined) {
+                if (i === 0) {
+                    table.appendChild(insertFirstRow('Release year'));
+                }
+                table.appendChild(createTableRow(nextSongs[i][0], nextSongs[i][1], nextSongs[i][2], nextSongs[i][3], nextSongs[i][4], nextSongs[i][5], false));
+            } else {
+                printNoAvailable(element, 'There are no songs in queue.');
+            }
+        }
+        divBoxForSongResults.appendChild(table);
+        element.appendChild(divBoxForSongResults);
+    } else {
+        printNoAvailable(element, 'There are no songs in queue.');
+    }
 }
 
 volumeSlider
