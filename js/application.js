@@ -588,6 +588,7 @@ function createTableRow(songSrc, songID, songName, artist, releaseYear, isLiked,
     tableRow.setAttribute('data-songName', songName);
     tableRow.setAttribute('data-artist', artist);
     tableRow.setAttribute('data-releaseYear', releaseYear);
+    tableRow.setAttribute('data-isLiked', isLiked);
     tableRow.setAttribute('data-songSrc', songSrc !== '' ? songSrc : defaultSong);
 
     tableRow.appendChild(iconRow);
