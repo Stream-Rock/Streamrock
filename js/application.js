@@ -25,10 +25,10 @@ function init(username, profile_picture) {
         });
         document.getElementById('logo').addEventListener('click', openHomePage);
         document.getElementById('pause').addEventListener('click', () => {
-            switchPausePlay(document.getElementById('pause'), 'far fa-play-circle', 'far fa-pause-circle')
+            switchPausePlay(document.getElementById('pause'), 'far fa-play-circle', 'far fa-pause-circle');
         });
         document.getElementById('star').addEventListener('click', () => {
-            changeIcon(document.getElementById('star'), 'fas fa-star', 'far fa-star')
+            changeIcon(document.getElementById('star'), 'fas fa-star', 'far fa-star');
         });
         document.getElementById('search').addEventListener('focus', () => {
             changeDeleteCrossVisibility(true)
@@ -110,6 +110,8 @@ function init(username, profile_picture) {
         document.getElementById('playPlaylist').addEventListener('click', () => {
             playSongsOfPlaylist();
         });
+
+        document.getElementById('deleteQueue').addEventListener('click', deleteQueue);
     }
 }
 
@@ -1177,6 +1179,7 @@ function playSongsOfPlaylist() {
 
 function deleteQueue() {
     sessionStorage.setItem('nextSongs', JSON.stringify([]));
+    printQueue(document.getElementById('songsInQueue'));
 }
 
 volumeSlider

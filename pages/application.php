@@ -99,9 +99,11 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     <div id="profileBox">
         <img src="./../images/profile_picture.png" alt="Image" id="profilePicture">
         <p id="profileName"></p>
-        <div>
+        <div id="changeProfileBox">
+            <p>Change profile picture</p>
             <form id="profilePictureForm" action="./../php/uploadProfilePicture.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="fileToUpload" id="profilePictureToUpload" class="file-input" accept="image/*">
+                <label for="profilePictureToUpload" class="btn-1">Upload file</label>
             </form>
         </div>
         <button id="logoutButton">Log out</button>
@@ -156,7 +158,11 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
 
 <div id="queueSongs" style="display: none">
     <div class="artistDescription">
-        <h3>Songs in queue</h3>
+        <h3>Songs in queue
+            <span class="material-icons" id="deleteQueue" title="Delete queue">
+            delete_sweep
+            </span>
+        </h3>
     </div>
     <div id="songsInQueue">
 
