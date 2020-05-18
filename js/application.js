@@ -410,7 +410,6 @@ function getArtists(value) {
                 let divBoxForArtistResults = document.createElement('div');
                 divBoxForArtistResults.setAttribute('id', 'artistResults');
                 divBoxForArtistResults.setAttribute('class', 'suggestion');
-                console.log(response);
                 for (let i = 0; i < response.length; i++) {
                     divBoxForArtistResults.appendChild(addArtistRow(response[i]["artist"], ''));
                 }
@@ -905,7 +904,6 @@ function addFavoriteArtist(username, artist, element) {
 }
 
 function removeFavoriteArtist(username, artist, element) {
-    console.log('Remove ' + username + " " + artist + " " + element);
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -937,7 +935,6 @@ function playSong(songSrc, songID, songName, artist, releaseYear, isLiked) {
             requestAnimationFrame(utils.updateTimeTracker.bind(this));
         },
         onend: function() {
-            console.log('Finished!');
             if (!loop) {
                 addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, isLiked);
                 printRecentlyPlayedElements(document.getElementById('recentlyPlayed'));
@@ -949,7 +946,6 @@ function playSong(songSrc, songID, songName, artist, releaseYear, isLiked) {
 
 function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, isLiked) {
     let nameToSearch = 'previousSongsFrom' + localUsername;
-    console.log(nameToSearch);
     let previousSongs = JSON.parse(localStorage.getItem('' + nameToSearch));
     let index;
 
@@ -960,10 +956,8 @@ function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, 
         previousSongs = [];
     }
 
-    console.log(index);
     previousSongs[index] = [songSrc, songID, songName, artist, releaseYear, isLiked];
 
-    console.log(previousSongs);
     localStorage.setItem('previousSongsFrom' + localUsername, JSON.stringify(previousSongs));
 }
 
