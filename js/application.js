@@ -607,7 +607,11 @@ function addLikeEventListener(isLiked, icon, songId) {
     }
 }
 
-
+function printSongPlaying(songName, artist, isLiked, songID) {
+    document.getElementById('currentSong').textContent = songName;
+    document.getElementById('currentArtist').textContent = artist;
+    addLikeEventListener(isLiked, document.getElementById('star'), songID);
+}
 
 
 function addFavoriteSong(icon, songID) {
