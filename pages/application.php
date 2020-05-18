@@ -136,7 +136,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
 </div>
 <div id="artistBox" style="display: none">
     <div class="artistDescription">
-        <img class="artistPicture" src="./../images/profile_picture.png"/ alt="Artist picture">
+        <img id="artistProfilePicture" class="artistPicture" src="./../images/profile_picture.png"/ alt="Artist picture">
         <h3 id="artistName">Artist name</h3>
         <button>Play</button>
         <span class="material-icons" id="addFavoriteArtist" title="Add to your favorite artists">

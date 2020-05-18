@@ -36,6 +36,14 @@ if (isset($artist) && !empty($artist) && isset($username) && $username !== "") {
         $response[0]["artistIsLiked"] = false;
     }
 
+    $srcStmt = "SELECT artist_src FROM artist WHERE artist = '" . $artist . "'";
+    $artist = $conn->query($srcStmt);
+
+    if ($artist->num_rows > 0) {
+        $artist_src = $artist->fetch_assoc();
+        $response[0]["artistSrc"] = $artist_src["artist_src"];
+    }
+
     echo json_encode($response);
 }
 

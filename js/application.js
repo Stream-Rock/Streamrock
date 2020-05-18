@@ -506,6 +506,11 @@ function openArtistPage(artist) {
             let response = JSON.parse(this.responseText);
             let divBoxForSongResults = document.createElement('div');
             divBoxForSongResults.setAttribute('id', 'artistsSongResults');
+
+            let artistSrc = response[0]["artistSrc"] !== '' ? response[0]["artistSrc"] : defaultPicture;
+            document.getElementById('artistProfilePicture').src = artistSrc;
+
+
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
             for (let i = 0; i < response.length; i++) {
@@ -514,8 +519,6 @@ function openArtistPage(artist) {
                         table.appendChild(insertFirstRow('Release year'));
                     }
                     table.appendChild(createTableRow(response[i]["song_src"], response[i]["song_id"], response[i]["song_name"], response[i]["artist"], response[i]["release_year"], response[i]["star"], false));
-                } else {
-                    printNoAvailable(document.getElementById('artistResults'), 'This artist has no songs so far.');
                 }
             }
             divBoxForSongResults.appendChild(table);
