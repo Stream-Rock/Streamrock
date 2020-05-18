@@ -10,11 +10,13 @@ let songSlider = interact('#songBar');
 let loop = false;
 let songVolume = 0.1;
 let activeSong;
+let localUsername = '';
 
 window.addEventListener('load', init);
 
 function init(username, profile_picture) {
     if (typeof username == "string") {
+        localUsername = username;
         document.getElementById("profileName").textContent = username;
         document.getElementById('profilePicture').src = profile_picture;
 
@@ -521,21 +523,15 @@ function createTableRow(songSrc, songID, songName, artist, releaseYear, isLiked,
     let icon = document.createElement('i');
     icon.setAttribute('class', 'tableIcon far fa-play-circle');
     icon.setAttribute('title', 'Play');
+
+    icon.addEventListener('click', () => {
+        printSongPlaying(songName, artist, isLiked, songID);
+        playSong(songSrc, songID, songName, artist, releaseYear, isLiked);
+    });
+
     let icon2 = document.createElement('i');
 
-    if (isLiked) {
-        icon2.setAttribute('class', 'fas fa-star');
-        icon2.setAttribute('title', 'Remove from favorites');
-        icon2.addEventListener('click', () => {
-            removeFavoriteSong(icon2, tableRow.getAttribute('data-songID'));
-        });
-    } else {
-        icon2.setAttribute('class', 'far fa-star');
-        icon2.setAttribute('title', 'Add to favorites');
-        icon2.addEventListener('click', () => {
-            addFavoriteSong(icon2, tableRow.getAttribute('data-songID'));
-        });
-    }
+    addLikeEventListener(isLiked, icon2, songID);
 
     span.appendChild(icon);
     iconRow.appendChild(span);
@@ -594,6 +590,24 @@ function createTableRow(songSrc, songID, songName, artist, releaseYear, isLiked,
 
     return tableRow;
 }
+
+function addLikeEventListener(isLiked, icon, songId) {
+    if (isLiked) {
+        icon.setAttribute('class', 'fas fa-star');
+        icon.setAttribute('title', 'Remove from favorites');
+        icon.addEventListener('click', () => {
+            removeFavoriteSong(icon, songId);
+        });
+    } else {
+        icon.setAttribute('class', 'far fa-star');
+        icon.setAttribute('title', 'Add to favorites');
+        icon.addEventListener('click', () => {
+            addFavoriteSong(icon, songId);
+        });
+    }
+}
+
+
 
 
 function addFavoriteSong(icon, songID) {
@@ -923,12 +937,12 @@ function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, 
         previousSongs = [];
     }
 
-    previousSongs[index]["songSrc"] = songSrc;
-    previousSongs[index]["songID"] = songID;
-    previousSongs[index]["songName"] = songName;
-    previousSongs[index]["artist"] = artist;
-    previousSongs[index]["releaseYear"] = releaseYear;
-    previousSongs[index]["isLiked"] = isLiked;
+    previousSongs[localUsername][index]["songSrc"] = songSrc;
+    previousSongs[localUsername][index]["songID"] = songID;
+    previousSongs[localUsername][index]["songName"] = songName;
+    previousSongs[localUsername][index]["artist"] = artist;
+    previousSongs[localUsername][index]["releaseYear"] = releaseYear;
+    previousSongs[localUsername][index]["isLiked"] = isLiked;
 }
 
 function playNextSong() {
@@ -991,20 +1005,26 @@ function printRecentlyPlayedElements(element) {
     let recentlyPlayed = JSON.parse(localStorage.getItem('previousSongs'));
 
     if (recentlyPlayed !== null && recentlyPlayed !== undefined && recentlyPlayed.length !== 0) {
-        let divBoxForSongResults = document.createElement('div');
-        divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
-        let table = document.createElement('table');
-        table.setAttribute('class', 'songResultsTable');
-        for (let i = 0; i < recentlyPlayed.length; i++) {
-            if (recentlyPlayed[i]["songID"] !== null && recentlyPlayed[i]["songID"] !== undefined && recentlyPlayed[i]["songID"] !== '') {
-                if (i === 0) {
-                    table.appendChild(insertFirstRow('Release year'));
+        let recentlyPlayedFromUser = recentlyPlayed[localUsername];
+
+        if (recentlyPlayedFromUser !== null && recentlyPlayedFromUser !== undefined && recentlyPlayedFromUser.length !== 0) {
+            let divBoxForSongResults = document.createElement('div');
+            divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
+            let table = document.createElement('table');
+            table.setAttribute('class', 'songResultsTable');
+            for (let i = 0; i < recentlyPlayed.length; i++) {
+                if (recentlyPlayed[i]["songID"] !== null && recentlyPlayed[i]["songID"] !== undefined && recentlyPlayed[i]["songID"] !== '') {
+                    if (i === 0) {
+                        table.appendChild(insertFirstRow('Release year'));
+                    }
+                    table.appendChild(createTableRow(recentlyPlayed[i]["songSrc"], recentlyPlayed[i]["songID"], recentlyPlayed[i]["songName"], recentlyPlayed[i]["artist"], recentlyPlayed[i]["releaseYear"], recentlyPlayed[i]["isLiked"], false));
                 }
-                table.appendChild(createTableRow(recentlyPlayed[i]["songSrc"], recentlyPlayed[i]["songID"], recentlyPlayed[i]["songName"], recentlyPlayed[i]["artist"], recentlyPlayed[i]["releaseYear"], recentlyPlayed[i]["isLiked"], false));
             }
+            divBoxForSongResults.appendChild(table);
+            element.appendChild(divBoxForSongResults);
+        } else {
+            printNoAvailable(element, 'No songs were played recently.');
         }
-        divBoxForSongResults.appendChild(table);
-        element.appendChild(divBoxForSongResults);
     } else {
         printNoAvailable(element, 'No songs were played recently.');
     }
