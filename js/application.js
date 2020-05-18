@@ -932,7 +932,9 @@ function playSong(songSrc, songID, songName, artist, releaseYear, isLiked) {
 }
 
 function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, isLiked) {
-    let previousSongs = JSON.parse(localStorage.getItem('previousSongs'));
+    let nameToSearch = 'previousSongsFrom' + localUsername;
+    console.log(nameToSearch);
+    let previousSongs = JSON.parse(localStorage.getItem('' + nameToSearch));
     let index;
 
     if (previousSongs !== undefined && previousSongs !== null) {
@@ -942,12 +944,11 @@ function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, 
         previousSongs = [];
     }
 
-    previousSongs[localUsername][index]["songSrc"] = songSrc;
-    previousSongs[localUsername][index]["songID"] = songID;
-    previousSongs[localUsername][index]["songName"] = songName;
-    previousSongs[localUsername][index]["artist"] = artist;
-    previousSongs[localUsername][index]["releaseYear"] = releaseYear;
-    previousSongs[localUsername][index]["isLiked"] = isLiked;
+    console.log(index);
+    previousSongs[index] = [songSrc, songID, songName, artist, releaseYear, isLiked];
+
+    console.log(previousSongs);
+    localStorage.setItem('previousSongsFrom' + localUsername, JSON.stringify(previousSongs));
 }
 
 function playNextSong() {
@@ -1017,12 +1018,12 @@ function printRecentlyPlayedElements(element) {
             divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
-            for (let i = 0; i < recentlyPlayed.length; i++) {
-                if (recentlyPlayed[i]["songID"] !== null && recentlyPlayed[i]["songID"] !== undefined && recentlyPlayed[i]["songID"] !== '') {
+            for (let i = 0; i < recentlyPlayedFromUser.length; i++) {
+                if (recentlyPlayedFromUser[i][0] !== null && recentlyPlayedFromUser[i][0] !== undefined && recentlyPlayedFromUser[i][0] !== '') {
                     if (i === 0) {
                         table.appendChild(insertFirstRow('Release year'));
                     }
-                    table.appendChild(createTableRow(recentlyPlayed[i]["songSrc"], recentlyPlayed[i]["songID"], recentlyPlayed[i]["songName"], recentlyPlayed[i]["artist"], recentlyPlayed[i]["releaseYear"], recentlyPlayed[i]["isLiked"], false));
+                    table.appendChild(createTableRow(recentlyPlayedFromUser[i][0], recentlyPlayedFromUser[i][1], recentlyPlayedFromUser[i][2], recentlyPlayedFromUser[i][3], recentlyPlayedFromUser[i][4], recentlyPlayedFromUser[i][5], false));
                 }
             }
             divBoxForSongResults.appendChild(table);
