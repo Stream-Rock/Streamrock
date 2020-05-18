@@ -1069,6 +1069,26 @@ function getAllFavoriteArtists() {
 function showQueue() {
     hideTabs();
     document.getElementById('queueSongs').style.display = 'block';
+    printQueue(document.getElementById('songsInQueue'));
+}
+
+function addSongToQueue(songSrc, songID, songName, artist, releaseYear, isLiked) {
+    let nextSongs = JSON.parse(sessionStorage.getItem('nextSong'));
+    let index;
+
+    if (nextSongs !== undefined && nextSongs !== null) {
+        index = nextSongs.length;
+    } else {
+        index = 0;
+        nextSongs = [];
+    }
+    nextSongs[index] = [songSrc, songID, songName, artist, releaseYear, isLiked];
+
+    localStorage.setItem('previousSongsFrom' + localUsername, JSON.stringify(nextSongs));
+}
+
+function printQueue(element) {
+
 }
 
 volumeSlider
