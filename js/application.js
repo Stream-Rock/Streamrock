@@ -98,6 +98,8 @@ function init(username, profile_picture) {
         document.getElementById('showAllArtists').addEventListener('click', () => {
             getAllFavoriteArtists();
         });
+
+        document.getElementById('last').addEventListener('click', playPreviousSong);
     }
 }
 
@@ -956,6 +958,22 @@ function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, 
 
 function playNextSong() {
 
+}
+
+function playPreviousSong() {
+    if (activeSong) {
+        let recentlyPlayed = JSON.parse(localStorage.getItem('previousSongsFrom' + localUsername));
+
+        if (recentlyPlayed !== null && recentlyPlayed !== undefined && recentlyPlayed.length !== 0) {
+            endActiveSong(activeSong);
+            playSong(recentlyPlayed[recentlyPlayed.length - 1][0], recentlyPlayed[recentlyPlayed.length - 1][1], recentlyPlayed[recentlyPlayed.length - 1][2], recentlyPlayed[recentlyPlayed.length - 1][3], recentlyPlayed[recentlyPlayed.length - 1][4], recentlyPlayed[recentlyPlayed.length - 1][5]);
+            printSongPlaying(recentlyPlayed[recentlyPlayed.length - 1][2], recentlyPlayed[recentlyPlayed.length - 1][3], recentlyPlayed[recentlyPlayed.length - 1][5], recentlyPlayed[recentlyPlayed.length - 1][1]);
+        }
+    }
+}
+
+function endActiveSong(activeSong) {
+    activeSong.stop();
 }
 
 let utils = {
