@@ -925,6 +925,7 @@ function playSong(songSrc, songID, songName, artist, releaseYear, isLiked) {
             console.log('Finished!');
             if (!loop) {
                 addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, isLiked);
+                printRecentlyPlayedElements(document.getElementById('recentlyPlayed'));
                 playNextSong();
             }
         }
@@ -1015,11 +1016,11 @@ function printRecentlyPlayedElements(element) {
          divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
          let table = document.createElement('table');
          table.setAttribute('class', 'songResultsTable');
-        let max = recentlyPlayed.length > 5 ? 5 : recentlyPlayed.length;
+        let max = recentlyPlayed.length > 5 ? recentlyPlayed.length - 5 : 0;
 
-            for (let i = 0; i < recentlyPlayed.length; i++) {
+            for (let i = recentlyPlayed.length - 1; i >= max; i--) {
                 if (recentlyPlayed[i][0] !== null && recentlyPlayed[i][0] !== undefined) {
-                    if (i === 0) {
+                    if (i === recentlyPlayed.length - 1) {
                         table.appendChild(insertFirstRow('Release year'));
                     }
                     table.appendChild(createTableRow(recentlyPlayed[i][0], recentlyPlayed[i][1], recentlyPlayed[i][2], recentlyPlayed[i][3], recentlyPlayed[i][4], recentlyPlayed[i][5], false));
