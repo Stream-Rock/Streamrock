@@ -154,6 +154,15 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
     </div>
 </div>
 
+<div id="queueSongs" style="display: none">
+    <div class="artistDescription">
+        <h3>Songs in queue</h3>
+    </div>
+    <div id="songsInQueue">
+
+    </div>
+</div>
+
 <div id="favoriteArtistsBox" style="display: none">
     <div class="artistDescription">
         <h3>Favorite artists</h3>

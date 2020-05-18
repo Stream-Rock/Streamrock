@@ -203,7 +203,7 @@ i {
     margin-right: 30%;
 }
 
-#startSuggestions, #favorites, #profile, #searchResults, #playlistBox, #artistBox, #favoriteSongsBox, #favoriteArtistsBox
+#startSuggestions, #favorites, #profile, #searchResults, #playlistBox, #artistBox, #favoriteSongsBox, #favoriteArtistsBox, #queueSongs
 
 {
     width: 75%;

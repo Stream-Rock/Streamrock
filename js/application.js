@@ -100,6 +100,10 @@ function init(username, profile_picture) {
         });
 
         document.getElementById('last').addEventListener('click', playPreviousSong);
+
+        document.getElementById('queue').addEventListener('click', () => {
+            showQueue();
+        });
     }
 }
 
@@ -480,6 +484,7 @@ function hideTabs() {
     document.getElementById('artistBox').style.display = 'none';
     document.getElementById('favoriteSongsBox').style.display = 'none';
     document.getElementById('favoriteArtistsBox').style.display = 'none';
+    document.getElementById('queueSongs').style.display = 'none';
 }
 
 function openArtistPage(artist) {
@@ -1059,6 +1064,11 @@ function getAllFavoriteArtists() {
     hideTabs();
     document.getElementById('favoriteArtistsBox').style.display = 'block';
     getFavoriteArtists(false, document.getElementById('favoriteArtistsFull'));
+}
+
+function showQueue() {
+    hideTabs();
+    document.getElementById('queueSongs').style.display = 'block';
 }
 
 volumeSlider
