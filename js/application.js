@@ -101,6 +101,8 @@ function init(username, profile_picture) {
 
         document.getElementById('last').addEventListener('click', playPreviousSong);
 
+        document.getElementById('next').addEventListener('click', playNextSong);
+
         document.getElementById('queue').addEventListener('click', () => {
             showQueue();
         });
@@ -966,7 +968,24 @@ function addSongToPreviousSongs(songSrc, songID, songName, artist, releaseYear, 
 }
 
 function playNextSong() {
+    let nextSongs = JSON.parse(sessionStorage.getItem('nextSongs'));
+    let newNextSongs = [];
 
+    if (nextSongs !== null) {
+        if (nextSongs.length > 0) {
+            endActiveSong(activeSong);
+
+            playSong(nextSongs[0][0], nextSongs[0][1], nextSongs[0][2], nextSongs[0][3], nextSongs[0][4], nextSongs[0][5]);
+            printSongPlaying(nextSongs[0][2], nextSongs[0][3], nextSongs[0][5], nextSongs[0][1]);
+
+            for (let i = 0; i < nextSongs.length - 1; i++) {
+                newNextSongs[i] = nextSongs[i + 1];
+            }
+
+            sessionStorage.setItem('nextSongs', JSON.stringify(newNextSongs));
+            printQueue(document.getElementById('songsInQueue'));
+        }
+    }
 }
 
 function playPreviousSong() {
