@@ -551,6 +551,7 @@ h6 {
 }
 
 #profileBox{
+    margin-top: 5vh;
     display: flex;
     height: 40vh;
     align-items: center;
@@ -577,12 +578,13 @@ h6 {
     width: 20%;
     min-width: 20%;
     height: 5vh;
-    border-radius: 25px;
+    border-radius: 5px;
     background: #2ecc71;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
+    padding: 10px 5px;
 }
 
 #deleteAccountButton, #sureButton, #cancelButton{
@@ -825,7 +827,7 @@ h6 {
     color: white;
 }
 
-#deletePlaylist, #addFavoriteArtist {
+#deletePlaylist, #addFavoriteArtist, #deleteQueue {
     color: #ff5533;
     position: absolute;
     margin-left: 15px;
@@ -838,7 +840,7 @@ h6 {
     color: gray;
 }
 
-#deletePlaylist:hover, #addFavoriteArtist:hover, .container:hover {
+#deletePlaylist:hover, #addFavoriteArtist:hover, .container:hover, #deleteQueue:hover {
     cursor: pointer;
 }
 
@@ -859,4 +861,51 @@ h6 {
 .favoriteElement p:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+#changeProfileBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+#profilePictureForm input {
+    margin-left: 7.5vw;
+}
+
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+}
+
+[type="file"] + label {
+    background: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: inherit;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 10px 5px;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    vertical-align: middle;
+}
+[type="file"] + label:hover {
+    background-color: #4CAF50;
+}
+[type="file"] + label.btn-1 {
+    background-color: #2ecc71;
+    box-shadow: 0 6px #4CAF50;
+    -webkit-transition: none;
+    transition: none;
+}
+[type="file"] + label.btn-1:hover {
+    box-shadow: 0 4px #4CAF50;
+    top: 2px;
 }
