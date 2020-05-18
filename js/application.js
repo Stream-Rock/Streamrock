@@ -1008,29 +1008,27 @@ function loopSong(loop) {
 function printRecentlyPlayedElements(element) {
     deleteAllPreviousChilds(element);
 
-    let recentlyPlayed = JSON.parse(localStorage.getItem('previousSongs'));
+    let recentlyPlayed = JSON.parse(localStorage.getItem('previousSongsFrom' + localUsername));
 
     if (recentlyPlayed !== null && recentlyPlayed !== undefined && recentlyPlayed.length !== 0) {
-        let recentlyPlayedFromUser = recentlyPlayed[localUsername];
+         let divBoxForSongResults = document.createElement('div');
+         divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
+         let table = document.createElement('table');
+         table.setAttribute('class', 'songResultsTable');
+        let max = recentlyPlayed.length > 5 ? 5 : recentlyPlayed.length;
 
-        if (recentlyPlayedFromUser !== null && recentlyPlayedFromUser !== undefined && recentlyPlayedFromUser.length !== 0) {
-            let divBoxForSongResults = document.createElement('div');
-            divBoxForSongResults.setAttribute('class', 'favoriteSongResults');
-            let table = document.createElement('table');
-            table.setAttribute('class', 'songResultsTable');
-            for (let i = 0; i < recentlyPlayedFromUser.length; i++) {
-                if (recentlyPlayedFromUser[i][0] !== null && recentlyPlayedFromUser[i][0] !== undefined && recentlyPlayedFromUser[i][0] !== '') {
+            for (let i = 0; i < recentlyPlayed.length; i++) {
+                if (recentlyPlayed[i][0] !== null && recentlyPlayed[i][0] !== undefined) {
                     if (i === 0) {
                         table.appendChild(insertFirstRow('Release year'));
                     }
-                    table.appendChild(createTableRow(recentlyPlayedFromUser[i][0], recentlyPlayedFromUser[i][1], recentlyPlayedFromUser[i][2], recentlyPlayedFromUser[i][3], recentlyPlayedFromUser[i][4], recentlyPlayedFromUser[i][5], false));
+                    table.appendChild(createTableRow(recentlyPlayed[i][0], recentlyPlayed[i][1], recentlyPlayed[i][2], recentlyPlayed[i][3], recentlyPlayed[i][4], recentlyPlayed[i][5], false));
+                } else {
+                    printNoAvailable(element, 'No songs were played recently.');
                 }
             }
             divBoxForSongResults.appendChild(table);
             element.appendChild(divBoxForSongResults);
-        } else {
-            printNoAvailable(element, 'No songs were played recently.');
-        }
     } else {
         printNoAvailable(element, 'No songs were played recently.');
     }
