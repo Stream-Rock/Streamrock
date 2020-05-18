@@ -882,6 +882,7 @@ function addFavoriteArtist(username, artist, element) {
                     removeFavoriteArtist(username, artist, element);
                 });
                 element.setAttribute('title', 'Remove from your favorite artists');
+                printFirstFavoriteArtists();
             }
         }
     };
@@ -902,6 +903,7 @@ function removeFavoriteArtist(username, artist, element) {
                     addFavoriteArtist(username, artist, element);
                 });
                 element.setAttribute('title', 'Add to your favorite artists');
+                printFirstFavoriteArtists();
             }
         }
     };
