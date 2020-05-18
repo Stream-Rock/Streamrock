@@ -639,6 +639,7 @@ function removeFavoriteSong(icon, songID) {
                     addFavoriteSong(icon, songID);
                 });
                 icon.setAttribute('title', 'Add to favorites');
+                printFirstFavorites();
             }
         }
     };
