@@ -106,6 +106,10 @@ function init(username, profile_picture) {
         document.getElementById('queue').addEventListener('click', () => {
             showQueue();
         });
+
+        document.getElementById('playPlaylist').addEventListener('click', () => {
+            playSongsOfPlaylist();
+        });
     }
 }
 
@@ -450,6 +454,7 @@ function getPlaylistSongs(playlistName, playlistDescription, playlistUsername) {
             divBoxForSongResults.setAttribute('id', 'playlistSongResults');
             let table = document.createElement('table');
             table.setAttribute('class', 'songResultsTable');
+            table.setAttribute('id', 'playlistSongsTable');
             amountSongs = response.length;
             for (let i = 0; i < response.length; i++) {
                 if (response[i]["song_id"] !== null && response[i]["song_id"] !== undefined && response[i]["song_id"] !== '') {
@@ -996,7 +1001,9 @@ function playPreviousSong() {
 }
 
 function endActiveSong(activeSong) {
-    activeSong.stop();
+    if (activeSong) {
+        activeSong.stop();
+    }
 }
 
 let utils = {
@@ -1131,6 +1138,45 @@ function printQueue(element) {
     } else {
         printNoAvailable(element, 'There are no songs in queue.');
     }
+}
+
+function playSongsOfPlaylist() {
+    let table = document.getElementById('playlistSongsTable');
+
+    if (table.children) {
+        if (table.children[1]) {
+            deleteQueue();
+            endActiveSong(activeSong);
+
+            let firstSong = table.children[1];
+            playSong(
+                firstSong.getAttribute('data-songsrc'),
+                firstSong.getAttribute('data-songid'),
+                firstSong.getAttribute('data-songname'),
+                firstSong.getAttribute('data-artist'),
+                firstSong.getAttribute('data-releaseyear'),
+                firstSong.getAttribute('data-isLiked')
+            );
+
+            printSongPlaying(firstSong.getAttribute('data-songname'), firstSong.getAttribute('data-artist'), firstSong.getAttribute('data-isLiked'), firstSong.getAttribute('data-songid'));
+
+            for (let i = 2; i < table.children.length; i++) {
+                let song = table.children[i];
+                addSongToQueue(
+                    song.getAttribute('data-songsrc'),
+                    song.getAttribute('data-songid'),
+                    song.getAttribute('data-songname'),
+                    song.getAttribute('data-artist'),
+                    song.getAttribute('data-releaseyear'),
+                    song.getAttribute('data-isLiked')
+                );
+            }
+        }
+    }
+}
+
+function deleteQueue() {
+    sessionStorage.setItem('nextSongs', JSON.stringify([]));
 }
 
 volumeSlider

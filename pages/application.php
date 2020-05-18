@@ -123,7 +123,7 @@ if (isset($_SESSION['profile_picture']) && $_SESSION['profile_picture'] !== '') 
         <h3 id="playlistName"></h3>
         <p id="playlistDescription"></p>
         <p id="playlistUsername"></p>
-        <button>Play</button>
+        <button id="playPlaylist">Play</button>
         <span class="material-icons" id="deletePlaylist" title="Delete playlist">
             delete_sweep
         </span>
